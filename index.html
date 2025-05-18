@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+
+  <style>
+    /* TODO: temporary fix for white flash BREAKS white mode */
+    body {
+      /* .darkMode {  */
+      background-color: #121212 !important;
+      color: #fff !important;
+    }  
+  </style>
+
+  <!-- seems to be causing white flash -->
+  <!-- <link rel="dns-prefetch" href="https://mdbg.net/" /> -->
+
+  <!-- <link rel="preload" as="script" href="src/npm/darkMode.js" crossorigin />
+  <script type="module" src="src/npm/darkMode.js"></script> -->
+  <link rel="preload" as="script" href="src/script.js" crossorigin />
+  <script type="module" src="src/script.js"></script>
+  <link rel="preload" as="script" href="src/draw.js" crossorigin />
+  <link rel="preload" as="script" href="src/npm/color.js" crossorigin />
+  <link rel="preload" as="style" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- <link rel="preload" href="fonts/noto-sans.woff2" as="font" type="font/woff2" crossorigin /> -->
+  <link rel="preload" as="script" href="src/cacheUpdate.js" crossorigin />
+  <link rel="preload" as="script" href="src/getRandomWord.js" crossorigin />
+  <link rel="preload" as="script" href="src/npm/getRandomNumber.js" crossorigin />
+
+  <title>ㅤ</title>
+</head>
+
+<body>
+  <div id="app">
+  </div>
+
+</body>
+
+</html>

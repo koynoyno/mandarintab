@@ -1,0 +1,198 @@
+/* :root {
+  color-scheme: light dark;
+} */
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/noto-sans.woff2") format("woff2");
+}
+
+body {
+  margin: 2em;
+  user-select: none;
+  font-family: "Noto Sans", Fallback, sans-serif;
+  /* width: 165px; */
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(0deg, #f1f3f4 0%, #dee1e6 100%);
+  line-height: 1em;
+  min-width: 150px;
+  /* TODO: lazy fix, replace with em */
+}
+
+/* DARK MODE */
+
+.darkMode {
+  background: linear-gradient(180deg, #202124 0%, #353535 100%) !important;
+  color: #fff !important;
+}
+
+.darkMode #support {
+  color: white;
+}
+
+.darkMode select {
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.darkMode select:hover {
+  background-color: #111;
+}
+
+.darkMode select option {
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.darkMode input[type="button"] {
+  font-family: "Noto Sans", Fallback, sans-serif;
+  padding: 2px 0;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border: 1px solid #707070;
+  border-radius: 1px;
+}
+
+.darkMode input[type="button"]:hover {
+  background-color: #111;
+  border: 1px solid #aaa;
+}
+
+/* multiple select */
+/* #testType {
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+} */
+
+input[type="button"] {
+  font-family: "Noto Sans", Fallback, sans-serif;
+  margin: 0 0 5px 0;
+}
+
+input[type="checkbox"] {
+  font-family: "Noto Sans", Fallback, sans-serif;
+  vertical-align: middle;
+  margin: 3px 0;
+}
+
+label {
+  font-weight: normal;
+}
+
+select {
+  margin-top: 0.1em;
+  margin-bottom: 0.4em;
+}
+
+select:hover {
+  background-color: #eee;
+}
+
+#support {
+  background: none;
+  border: none;
+  text-align: center;
+  font-size: 0.7em;
+  margin-top: 3px;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+#support,
+input[type="button"],
+input[type="checkbox"],
+select,
+.cb {
+  cursor: pointer;
+}
+
+#supportLink {
+  color: #ef5592;
+  text-decoration: underline;
+  opacity: 0.87;
+  /* transition: opacity .2s ease-in-out; */
+}
+
+#supportLink:hover {
+  color: #c52464;
+  opacity: 1;
+
+}
+
+.disabled {
+  cursor: default !important;
+}
+
+#panda {
+  /* BIG CUP STYLE */
+  /* margin: 2em; */
+  /* position: absolute; */
+  /* bottom: -50px; */
+  /* right: -40px !important; */
+  /* width: 160px; */
+  /* margin: auto;
+  width: 48px;
+  opacity: 0.87;
+  transition: opacity .2s ease-in-out;
+  cursor: pointer;
+  transform: scaleX(-1); */
+
+  /* margin: auto; */
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 10em;
+  /* opacity: 0.87; */
+  /* transition: opacity .2s ease-in-out; */
+  /* cursor: pointer; */
+  /* transform: scaleX(-1); */
+}
+
+#panda.darkMode,
+#kofi.darkMode {
+  filter: invert(1);
+}
+
+/* #panda:hover {
+  opacity: 1;
+  transition: opacity 0.225s ease-in;
+
+} */
+
+#kofi {
+  /* mix-blend-mode: darken; */
+  /* position: absolute; */
+  /* bottom: .2em; */
+  /* right: 0em; */
+  width: 4.5em;
+  padding-top: 1em;
+  margin: auto;
+  z-index: 10;
+  opacity: 0.87;
+  transition: opacity .2s ease-in-out;
+  cursor: pointer;
+  filter: drop-shadow(1px 1px 1px #222);
+}
+
+#kofi:hover {
+  opacity: 1;
+  transition: opacity 0.225s ease-in;
+  /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px; */
+}
+
+#info {
+  opacity: 0.3;
+  transition: opacity .2s ease-in-out;
+}
+
+#info:hover {
+  opacity: 1;
+}
+
+.darkMode #info:hover {
+  color: #fff;
+  opacity: 1;
+}

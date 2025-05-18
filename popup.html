@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body {
+      zoom: 1.2;
+    }
+  </style>
+  <!-- <link rel="preload" href="fonts/noto-sans.woff2" as="font" type="font/woff2" crossorigin /> -->
+  <link rel="preload" as="style" href="css/style-popup.css" />
+  <link rel="stylesheet" href="css/style-popup.css" />
+  <!-- <script>
+    // document.body.classList.add(localStorage.getItem("darkMode"));
+  </script> -->
+  <!-- <script src="src/popup.js"></script> -->
+  <link rel="preload" as="script" href="src/popup.js" crossorigin />
+  <script type="module" src="src/popup.js"></script>
+</head>
+
+<body>
+  <!-- <label class="cb" for="qr"><input type="checkbox" id="qr" name="qr" disabled /> QR for Pleco</label> -->
+
+  <label class="cb" for="darkMode"><input type="checkbox" id="darkMode" name="darkMode" /> 🌙</label>
+
+  <label class="cb" for="pinyin"><input type="checkbox" id="pinyin" name="pinyin" /> Pinyin</label>
+
+  <label class="cb" for="zhuyin"><input type="checkbox" id="zhuyin" name="zhuyin" /> Zhuyin</label>
+
+  <label class="cb" for="translation"><input type="checkbox" id="translation" name="translation" />
+    Translation<sup style="font-size: 8px;"> (HSK only)</sup></label>
+
+  <label class="cb" for="color"><input type="checkbox" id="color" name="color" /> Tone colors<sup
+      style="font-size: 8px;"> (HSK only)</sup></label>
+
+  <label class="cb" for="sentenceExamples"><input type="checkbox" id="sentenceExamples" name="sentenceExamples" />
+    Sentence examples
+    <!--      <span id="info" title="Click the word">ℹ</span>--></label>
+
+  <br />
+
+  <!-- introduces white square bug -->
+  <!-- <img src="images/pusheencat.png" id="kofi" /> -->
+
+
+  <!-- TODO: add zh_TW and zh_CN -->
+
+  <label for="fontType">Font<sup style="font-size: 8px;"> (macOS only)</sup></label>
+  <select name="fontType" id="fontType">
+    <option value="PingFang">PingFang (default)</option>
+    <option value="Baoli">Baoli</option>
+    <option value="Hannotate">Hannotate</option>
+    <option value="HanziPen">HanziPen</option>
+    <option value="LingWai">LingWai</option>
+    <option value="Times">Times</option>
+    <option value="Wawati">Wawati</option>
+    <option value="Xingkai">Xingkai</option>
+    <option value="Yuanti">Yuanti</option>
+    <option value="Kaiti">Kaiti</option>
+  </select>
+
+  <label for="dayLimit">Study today</label>
+  <select name="dayLimit" id="dayLimit">
+    <option value="5">5 words</option>
+    <option value="10">10 words</option>
+    <option value="15">15 words</option>
+    <option value="20">20 words</option>
+    <option value="0">All words</option>
+  </select>
+
+  <label for="level">Level</label>
+  <select name="level" id="level">
+    <!-- substituted in popup.js:restoreSettings() -->
+  </select>
+
+  <label for="char">Character style<sup style="font-size: 8px;"> (HSK only)</sup></label>
+  <select name="char" id="char">
+    <option value="simplified">Simplified</option>
+    <option disabled>🇨🇳 China</option>
+    <!-- <option disabled>🇸🇬 Singapore</option> -->
+    <option disabled></option>
+    <option value="traditional">Traditional</option>
+    <option disabled>🇭🇰 Hong Kong</option>
+    <option disabled>🇲🇴 Macau</option>
+    <option disabled>🇹🇼 Taiwan</option>
+  </select>
+
+  <label for="testType">Test</label>
+  <select name="testType" id="testType">
+    <option value="hsk3">HSK</option>
+    <option disabled>🇨🇳 China</option>
+    <option disabled>🇭🇰 Hong Kong</option>
+    <option disabled>🇲🇴 Macau</option>
+    <option disabled></option>
+    <option value="tocfl">TOCFL</option>
+    <option disabled>🇹🇼 Taiwan</option>
+    <!-- <option disabled></option>
+    <option value="hsk2">HSK (before 2021)</option> -->
+  </select>
+
+
+
+
+
+
+
+
+
+  <!-- <label for="clickAction">On click</label>
+    <select name="clickAction" id="clickAction">
+      <option value="nothing">Do nothing</option>
+      <option value="next">Show next word</option>
+      <option value="reverso">Sentence examples</option>
+      <option value="translate">Translate</option>
+    </select> -->
+
+  <br />
+
+
+
+  <!-- <br /> -->
+
+  <!-- <input type="button" value="Set wallpaper" disabled/> -->
+  <!-- <button id="support">
+      <strong
+        >ᴄʜɪɴᴇsᴇ ᴛᴀʙ ɪs sᴘᴏɴsᴏʀᴇᴅ ʙʏ
+        <span id="supportLink">ʏᴏᴜ</span> 💕</strong
+      >
+    </button> -->
+
+  <!-- <br /> -->
+
+  <!-- <input type="button" id="feedback" value="Share feedback" /> -->
+
+  <!-- TODO: make a game too? -->
+  <!-- <img src="images/panda.png" id="kofi" draggable="false" /> -->
+  <!-- <img src="images/corner.png" id="panda" draggable="false" title="偶喜欢中文~" /> -->
+
+
+  <!-- <script src="src/popup.js"></script> -->
+</body>
+
+</html>

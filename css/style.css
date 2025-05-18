@@ -1,0 +1,344 @@
+/* 080924 | seems to be not working? */
+/* :root {
+  color-scheme: light dark;
+} */
+
+.darkMode { 
+  background-color: #121212 !important;
+  color: #fff !important;
+} 
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/noto-sans.woff2") format("woff2");
+}
+
+#app,
+html,
+body {
+  height: 100%;
+  margin: 0;
+  /* panda bottom fix */
+}
+
+/* DEBUG */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  opacity: 0.87;
+  cursor: default;
+  /* 080924 | transition looks awful */
+  /* transition: background-color .2s cubic-bezier(0.22, 0.61, 0.36, 1); */
+  /* overflow: hidden; */
+  user-select: none;
+}
+
+/* to be able to select text */
+.pinyin,
+.zhuyin,
+.char,
+.english,
+#wordsSeen,
+#wordsSeenNumber {
+  user-select: text;
+}
+
+p {
+  /* 080924 | transition looks awful */
+  /* transition: color .2s cubic-bezier(0.22, 0.61, 0.36, 1); */
+}
+
+.darkMode .tone5 {
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgb(255, 255, 255) 100%);
+  padding-top: 1em;
+  background-clip: text;
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+#welcome {
+  animation: fadeInPanda .2s;
+}
+
+#panda {
+  position: absolute;
+  /* transform: rotate(180deg); */
+  /* top: -1px; */
+  bottom: 0px;
+  opacity: 0.87;
+  transition: opacity .2s ease-in-out;
+  cursor: pointer;
+  width: 240px;
+  /* height: 172px; */
+  /* -webkit-animation-name: fadeInPanda, floatBubble;
+  -webkit-animation-duration: 1s, 1s; */
+  animation: fadeIn .4s,
+    floatBubble .2s normal ease-out
+}
+
+@keyframes floatBubble {
+  from {
+    bottom: -100px;
+  }
+
+  to {
+    bottom: -1px;
+  }
+}
+
+@keyframes fadeInPanda {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.87;
+  }
+}
+
+#panda:hover {
+  opacity: 1;
+}
+
+#panda.fade {
+  opacity: 0;
+  cursor: default !important;
+}
+
+#wordsSeen,
+#welcome {
+  /* font-family: "Noto Sans", Fallback, sans-serif; */
+  font-size: 2em;
+  position: absolute;
+  /* bottom: 0px; */
+  top: 0px;
+  /* z-index: -99; */
+  opacity: 1;
+  /* padding-bottom: 1em; */
+  padding-top: 1em;
+  transition: opacity .2s ease-in-out;
+}
+
+#wordsSeenNumber,
+#welcome {
+  vertical-align: middle;
+  font-size: 4em !important;
+}
+
+#easter {
+  position: absolute;
+  z-index: 100;
+}
+
+#wordsSeen.invisible {
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.87;
+  }
+}
+
+.char {
+  margin: 0 0.1em;
+  font-size: 20rem;
+}
+
+/* 移動設備適配 */
+@media screen and (max-width: 768px) {
+  .char {
+    font-size: 10rem;
+  }
+  
+  .pinyin {
+    font-size: 1.5rem;
+  }
+  
+  .english {
+    font-size: 1rem;
+  }
+  
+  .zhuyin {
+    font-size: 2rem !important;
+  }
+}
+
+/* 更小的屏幕 */
+@media screen and (max-width: 480px) {
+  .char {
+    font-size: 6rem;
+  }
+  
+  .pinyin {
+    font-size: 1.2rem;
+  }
+  
+  .english {
+    font-size: 0.9rem;
+  }
+  
+  .zhuyin {
+    font-size: 1.5rem !important;
+  }
+}
+
+
+/* different fonts */
+/* for some reason SC works for TC fonts as well */
+/* TODO read SC/TC value to avoid any potential bugs  */
+.PingFang-font {
+  font-family: "PingFang SC" !important;
+}
+
+.Wawati-font {
+  font-family: "Wawati SC" !important;
+}
+
+.Xingkai-font {
+  font-family: "Xingkai SC" !important;
+}
+
+.HanziPen-font {
+  font-family: "HanziPen SC" !important;
+}
+
+.Hannotate-font {
+  font-family: "Hannotate SC" !important;
+}
+
+.Baoli-font {
+  font-family: "Baoli SC" !important;
+}
+
+.LingWai-font {
+  font-family: "LingWai SC" !important;
+}
+
+.Yuanti-font {
+  font-family: "Yuanti SC" !important;
+}
+
+.Times-font {
+  font-family: "Times" !important;
+}
+
+.Kaiti-font {
+  font-family: "STKaiti", "Kaiti" !important;
+}
+
+/* nice fonts */
+
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.charClickable {
+  cursor: pointer;
+  transition: transform .2s ease-in-out;
+}
+
+
+
+.charClickable:hover {
+  transition: transform 0.225s ease-in;
+  transform: scale(1.01);
+}
+
+/* .zhuyin, */
+.pinyin {
+  /* font-family: "Noto Sans", Fallback, sans-serif !important; */
+  font-size: 2.5rem;
+  margin: 0.1em;
+  font-weight: bold;
+
+  /* padding-top: 0.5em; */
+}
+
+.english {
+  /* font-family: "Noto Sans", Fallback, sans-serif; */
+  font-size: 1.5rem;
+  /* font-weight: bold; */
+  /* margin: 0.1em 3em !important; */
+  margin: 0.1em !important;
+}
+
+.zhuyin {
+  font-size: 4rem !important;
+  font-weight: bold;
+  /* margin: 0.1em 3em !important; */
+  margin: 0.1em !important;
+  /* padding-top: 0.5em; */
+  /* padding-top: 0.1em; */
+}
+
+.hide {
+  display: none;
+}
+
+/* Pleco Tone Colors */
+.tone1 {
+  /* background-image: rgb(227,0,0); */
+  background: linear-gradient(180deg,
+      rgba(227, 0, 0, 0.67) 0%,
+      rgba(227, 0, 0, 1) 100%);
+}
+
+.tone2 {
+  background: linear-gradient(180deg,
+      rgba(2, 179, 28, 0.67) 0%,
+      rgba(2, 179, 28, 1) 100%);
+}
+
+.tone3 {
+  background: linear-gradient(180deg,
+      rgba(36, 32, 255, 0.67) 0%,
+      rgb(36, 32, 255) 100%);
+}
+
+.tone4 {
+  background: linear-gradient(180deg,
+      rgba(160, 16, 218, 0.67) 0%,
+      rgb(160, 16, 218) 100%);
+}
+
+.tone5 {
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.67) 0%,
+      rgba(0, 0, 0, 1) 100%);
+}
+
+.tone1,
+.tone2,
+.tone3,
+.tone4,
+.tone5 {
+  /* padding-top: 0.3em; */
+  background-clip: text;
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}

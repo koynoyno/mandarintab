@@ -1,0 +1,10 @@
+{
+    "extName": {
+        "message": "Chinese Tab",
+        "description": "Extension name"
+    },
+    "extDescription": {
+        "message": "Learn Chinese while browsing",
+        "description": "Extension description"
+    }
+}

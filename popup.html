@@ -22,7 +22,7 @@
 <body>
   <!-- <label class="cb" for="qr"><input type="checkbox" id="qr" name="qr" disabled /> QR for Pleco</label> -->
 
-  <label class="cb" for="darkMode"><input type="checkbox" id="darkMode" name="darkMode" /> 🌙</label>
+  <!-- <label class="cb" for="darkMode"><input type="checkbox" id="darkMode" name="darkMode" /> 🌙</label> -->
 
   <label class="cb" for="pinyin"><input type="checkbox" id="pinyin" name="pinyin" /> Pinyin</label>
 
@@ -46,8 +46,8 @@
 
   <!-- TODO: add zh_TW and zh_CN -->
 
-  <label for="fontType">Font<sup style="font-size: 8px;"> (macOS only)</sup></label>
-  <select name="fontType" id="fontType">
+  <label for="fontType" id="fontTypeLabel" hidden>Font</label>
+  <select name="fontType" id="fontType" hidden>
     <option value="PingFang">PingFang (default)</option>
     <option value="Baoli">Baoli</option>
     <option value="Hannotate">Hannotate</option>

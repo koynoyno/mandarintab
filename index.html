@@ -5,19 +5,20 @@
   <meta charset="utf-8" />
 
   <style>
-    /* TODO: temporary fix for white flash BREAKS white mode */
-    body {
-      /* .darkMode {  */
-      background-color: #121212 !important;
-      color: #fff !important;
-    }  
+    @media (prefers-color-scheme: light) {
+      body{
+        background-color: #fff !important;
+        color: #121212 !important;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      body{
+        background-color: #121212 !important;
+        color: #fff !important;
+      }
+    }
   </style>
-
-  <!-- seems to be causing white flash -->
   <!-- <link rel="dns-prefetch" href="https://mdbg.net/" /> -->
-
-  <!-- <link rel="preload" as="script" href="src/npm/darkMode.js" crossorigin />
-  <script type="module" src="src/npm/darkMode.js"></script> -->
   <link rel="preload" as="script" href="src/script.js" crossorigin />
   <script type="module" src="src/script.js"></script>
   <link rel="preload" as="script" href="src/draw.js" crossorigin />

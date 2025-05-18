@@ -20,45 +20,7 @@ body {
   /* TODO: lazy fix, replace with em */
 }
 
-/* DARK MODE */
 
-.darkMode {
-  background: linear-gradient(180deg, #202124 0%, #353535 100%) !important;
-  color: #fff !important;
-}
-
-.darkMode #support {
-  color: white;
-}
-
-.darkMode select {
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-}
-
-.darkMode select:hover {
-  background-color: #111;
-}
-
-.darkMode select option {
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-}
-
-.darkMode input[type="button"] {
-  font-family: "Noto Sans", Fallback, sans-serif;
-  padding: 2px 0;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  border: 1px solid #707070;
-  border-radius: 1px;
-}
-
-.darkMode input[type="button"]:hover {
-  background-color: #111;
-  border: 1px solid #aaa;
-}
 
 /* multiple select */
 /* #testType {
@@ -151,10 +113,10 @@ select,
   /* transform: scaleX(-1); */
 }
 
-#panda.darkMode,
+/* #panda.darkMode,
 #kofi.darkMode {
   filter: invert(1);
-}
+} */
 
 /* #panda:hover {
   opacity: 1;
@@ -192,7 +154,54 @@ select,
   opacity: 1;
 }
 
-.darkMode #info:hover {
-  color: #fff;
-  opacity: 1;
+
+/* DARK MODE, these settings should be applied at the end */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(180deg, #202124 0%, #353535 100%) !important;
+    color: #fff !important;
+  }
+
+  #support {
+    color: white;
+  }
+
+  select {
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+  }
+
+  select:hover {
+    background-color: #111;
+  }
+
+  select option {
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  input[type="button"] {
+    font-family: "Noto Sans", Fallback, sans-serif;
+    padding: 2px 0;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    border: 1px solid #707070;
+    border-radius: 1px;
+  }
+
+  input[type="button"]:hover {
+    background-color: #111;
+    border: 1px solid #aaa;
+  }
+
+  #panda,
+  #kofi {
+    filter: invert(1);
+  }
+
+  #info:hover {
+      color: #fff;
+      opacity: 1;
+    }
 }

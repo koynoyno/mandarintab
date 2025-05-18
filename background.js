@@ -15,7 +15,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
       pinyin: true,
       zhuyin: false,
       translation: true,
-      darkMode: true, // DEBUG, change back to true TODO: detect darkMode on install
+      // darkMode: true, // TODO: detect darkMode on install
       // qr: true,
       firstLaunch: true,
       game: {
@@ -23,7 +23,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
         // get from cookie? .sync isn't supported on Safari
       },
       cache: {
-        english: "Hello!",
+        english: "Hello~",
         pinyinNumbered: "ni3hao3",
         pinyin: "nǐhǎo",
         zhuyin: "ㄋㄧˇ ㄏㄠˇ",

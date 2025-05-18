@@ -110,7 +110,8 @@ export let draw = (items) => {
       english = words.slice(0, 3).join(', ');
     }
 
-    drawObject = `<p class="english ${items.fontType}-font" align="center">${english}</p>` + drawObject;
+    drawObject = `<p class="english" align="center">${english}</p>` + drawObject;
+    // drawObject = `<p class="english ${items.fontType}-font" align="center">${english}</p>` + drawObject;
     
     // OLD just draw everything, but `hsk3` has too many words
     // drawObject = `<p class="english ${items.fontType}-font" align="center">${data.english}</p>` + drawObject;
@@ -125,7 +126,8 @@ export let draw = (items) => {
 
   // show pinyin
   if (items.pinyin) {
-    drawObject += `<p class="pinyin ${items.fontType}-font" align="center">${data.pinyin}</p>`;
+    // drawObject += `<p class="pinyin ${items.fontType}-font" align="center">${data.pinyin}</p>`;
+    drawObject += `<p class="pinyin align="center">${data.pinyin}</p>`;
   }
 
   // draw everything

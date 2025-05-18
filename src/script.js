@@ -91,16 +91,16 @@ chrome.storage.local.get(null, async (items) => {
 });
 
 // apply dark mode beautiful way
-chrome.storage.onChanged.addListener(function (changes, namespace) {
-  for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
-    switch (key) {
-      case "darkMode":
-        document.body.classList.toggle("darkMode");
-      default:
-      // console.log(
-      //   `Storage key "${key}" in namespace "${namespace}" changed.`,
-      //   `Old value was "${JSON.stringify(oldValue, undefined, 4)}", new value is "${JSON.stringify(newValue, undefined, 4)}".`
-      // );
-    }
-  }
-});
+// chrome.storage.onChanged.addListener(function (changes, namespace) {
+//   for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
+//     switch (key) {
+//       case "darkMode":
+//         document.body.classList.toggle("darkMode");
+//       default:
+//       // console.log(
+//       //   `Storage key "${key}" in namespace "${namespace}" changed.`,
+//       //   `Old value was "${JSON.stringify(oldValue, undefined, 4)}", new value is "${JSON.stringify(newValue, undefined, 4)}".`
+//       // );
+//     }
+//   }
+// });

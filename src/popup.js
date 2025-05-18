@@ -1,5 +1,10 @@
 // darkMode
-document.body.classList.add(localStorage.getItem("darkMode"));
+// document.body.classList.add(localStorage.getItem("darkMode"));
+
+if (navigator.userAgent.indexOf('Mac') > -1) {
+    document.getElementById('fontType').removeAttribute("hidden")
+    document.getElementById('fontTypeLabel').removeAttribute("hidden")
+  }
 
 // ==========================================
 // apply settings
@@ -65,17 +70,18 @@ let saveSettings = (id, checkbox = false) => {
     case "testType":
       // reset cache
       chrome.storage.local.set({ [id]: value, randomWords: [], cache: {} });
-      level = document.querySelector("#level");
-      levelValue = level.value;
+      let level = document.querySelector("#level");
+      let levelValue = level.value;
       while (level.lastElementChild) {
         level.removeChild(level.lastElementChild);
       }
       redrawTestLevels(value);
       // fallback to HSK6 from HSK7-9 when switching to HSK 2.0
-      if (value == "hsk2" && levelValue == "7") {
-        chrome.storage.local.set({ level: "6" });
-        level.value = "6";
-      } else if (value == "tocfl" && levelValue > 5) {
+      // if (value == "hsk2" && levelValue == "7") {
+      //   chrome.storage.local.set({ level: "6" });
+      //   level.value = "6";
+      // } else if (value == "tocfl" && levelValue > 5) {
+      if (value == "tocfl" && levelValue > 5) {
         chrome.storage.local.set({ level: "5" });
         level.value = "5";
       } else {
@@ -91,18 +97,18 @@ let saveSettings = (id, checkbox = false) => {
       break;
 
     // redraw popup if darkMode is toggled
-    case "darkMode":
-      chrome.storage.local.set({ [id]: value });
-      document.body.classList.toggle("darkMode");
-      if (value) {
-        // document.body.classList.add("darkMode");
-        localStorage.setItem("darkMode", "darkMode");
+    // case "darkMode":
+    //   chrome.storage.local.set({ [id]: value });
+    //   document.body.classList.toggle("darkMode");
+    //   if (value) {
+    //     // document.body.classList.add("darkMode");
+    //     localStorage.setItem("darkMode", "darkMode");
 
-      } else {
-        // document.body.classList.remove("darkMode");
-        localStorage.removeItem("darkMode");
-      }
-      break;
+    //   } else {
+    //     // document.body.classList.remove("darkMode");
+    //     localStorage.removeItem("darkMode");
+    //   }
+    //   break;
     // TODO: disable Simplified when TOCFL is selected?
     default:
       chrome.storage.local.set({ [id]: value });
@@ -124,8 +130,8 @@ let restoreSettings = () => {
       color: color,
       pinyin: pinyin,
       zhuyin: zhuyin,
-      translation: translation,
-      darkMode: darkMode
+      translation: translation
+      // darkMode: darkMode
     },
     (items) => {
       redrawTestLevels(items.testType);
@@ -139,7 +145,7 @@ let restoreSettings = () => {
       pinyin.checked = items.pinyin;
       zhuyin.checked = items.zhuyin;
       translation.checked = items.translation;
-      darkMode.checked = items.darkMode;
+      // darkMode.checked = items.darkMode;
     }
   );
 };
@@ -157,17 +163,6 @@ let redrawTestLevels = (testType) => {
       '<option value="5">[HSK 5] 1071 words</option>' +
       '<option value="6">[HSK 6] 1140 words</option>' +
       '<option value="7">[HSK 7-9] 5636 words</option>'
-    );
-  } else if (testType == "hsk2") {
-    level.insertAdjacentHTML(
-      "afterbegin",
-      "<option disabled>5000 words</option>" +
-      '<option value="1">[HSK 1] 150 words</option>' +
-      '<option value="2">[HSK 2] 150 words</option>' +
-      '<option value="3">[HSK 3] 300 words</option>' +
-      '<option value="4">[HSK 4] 600 words</option>' +
-      '<option value="5">[HSK 5] 1300 words</option>' +
-      '<option value="6">[HSK 6] 2500 words</option>'
     );
   } else if (testType == "tocfl") {
     level.insertAdjacentHTML(
@@ -246,9 +241,9 @@ window.addEventListener("load", async () => {
     saveSettings("translation", { checkbox: true });
   });
 
-  darkMode.addEventListener("click", () => {
-    saveSettings("darkMode", { checkbox: true });
-  });
+  // darkMode.addEventListener("click", () => {
+  //   saveSettings("darkMode", { checkbox: true });
+  // });
 
   // button event listeners
   // feedback.addEventListener("click", () => {

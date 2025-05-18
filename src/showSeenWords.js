@@ -18,7 +18,8 @@ export let showSeenWords = async (wordsSeen, color, char, fontType) => {
 
   // TODO: get the message from _locales
   if (char == "simplified" ) { message = `您打开了<span id="wordsSeenNumber">${wordsSeenNumber}</span>个标签页`} 
-  else { message =`您打開了<span id="wordsSeenNumber">${wordsSeenNumber}</span>個標籤頁`}
+  // else char == "traditional"
+  else { message =`您打開了<span id="wordsSeenNumber">${wordsSeenNumber}</span>個分頁`}
 
   // let jiayou = color
   //   ? '<br/><span class="tone1 times-font">加</span>' +

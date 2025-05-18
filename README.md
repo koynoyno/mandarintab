@@ -1,4 +1,4 @@
-# Chinese Tab | 中文标签页 | 中文標籤頁
+# Chinese Tab | 中文标签页 | 中文分頁
 
 <img align="right" src=images/panda.png title="酷酷酷！">
 

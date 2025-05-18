@@ -31,5 +31,6 @@ export let ifFirstLaunch = (char) => {
   chrome.storage.local.set({ firstLaunch: false });
 
   // open settings
-  chrome.action.openPopup();
+  // Firefox prohibits it's as "no surprises policy"
+  // chrome.action.openPopup();
 };

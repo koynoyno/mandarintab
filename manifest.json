@@ -2,14 +2,12 @@
   "default_locale": "en",
   "manifest_version": 3,
   "name": "__MSG_extName__",
-  "version": "3",
-  "version_name": "三",
+  "version": "0.3",
   "description": "__MSG_extDescription__",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "offline_enabled": true,
-  "minimum_chrome_version": "99",
+  "minimum_chrome_version": "109",
   "permissions": ["storage", "offscreen"],
   "background": {
     "service_worker": "background.js",

@@ -9,7 +9,7 @@ export let draw = (items) => {
 
   //  let data = testType.words[rand];
   let data = items.cache;
-  console.log(items.fontType)
+  // console.log(items.fontType)
 
   // adapter for TOCFL dictionaries...
   if (items.testType === "tocfl") {

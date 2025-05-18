@@ -2,7 +2,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
   if (details.reason === "install") {
     // TODO sync after install, leave only cache
     chrome.storage.local.set({
-      testType: "hsk",
+      testType: "hsk3",
       level: "1", // string for easier convertation
       char: "simplified",
       dayLimit: "0",

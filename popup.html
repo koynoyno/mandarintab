@@ -20,26 +20,6 @@
 </head>
 
 <body>
-  <!-- <label class="cb" for="qr"><input type="checkbox" id="qr" name="qr" disabled /> QR for Pleco</label> -->
-
-  <!-- <label class="cb" for="darkMode"><input type="checkbox" id="darkMode" name="darkMode" /> 🌙</label> -->
-
-  <label class="cb" for="pinyin"><input type="checkbox" id="pinyin" name="pinyin" /> Pinyin</label>
-
-  <label class="cb" for="zhuyin"><input type="checkbox" id="zhuyin" name="zhuyin" /> Zhuyin</label>
-
-  <label class="cb" for="translation"><input type="checkbox" id="translation" name="translation" />
-    Translation<sup style="font-size: 8px;"> (HSK only)</sup></label>
-
-  <label class="cb" for="color"><input type="checkbox" id="color" name="color" /> Tone colors<sup
-      style="font-size: 8px;"> (HSK only)</sup></label>
-
-  <label class="cb" for="sentenceExamples"><input type="checkbox" id="sentenceExamples" name="sentenceExamples" />
-    Sentence examples
-    <!--      <span id="info" title="Click the word">ℹ</span>--></label>
-
-  <br />
-
   <!-- introduces white square bug -->
   <!-- <img src="images/pusheencat.png" id="kofi" /> -->
 
@@ -95,8 +75,6 @@
     <option disabled></option>
     <option value="tocfl">TOCFL</option>
     <option disabled>🇹🇼 Taiwan</option>
-    <!-- <option disabled></option>
-    <option value="hsk2">HSK (before 2021)</option> -->
   </select>
 
 
@@ -116,6 +94,28 @@
     </select> -->
 
   <br />
+
+  <!-- <label class="cb" for="qr"><input type="checkbox" id="qr" name="qr" disabled /> QR for Pleco</label> -->
+
+  <!-- <label class="cb" for="darkMode"><input type="checkbox" id="darkMode" name="darkMode" /> 🌙</label> -->
+
+  <label class="cb" for="pinyin"><input type="checkbox" id="pinyin" name="pinyin" /> Pinyin</label>
+
+  <label class="cb" for="zhuyin"><input type="checkbox" id="zhuyin" name="zhuyin" /> Zhuyin</label>
+
+  <label class="cb" for="sentenceExamples"><input type="checkbox" id="sentenceExamples" name="sentenceExamples" />
+    Sentence examples
+    <!--      <span id="info" title="Click the word">ℹ</span>--></label>
+
+  <!-- TODO add support for TOCFL -->
+  <div id="translationLabel" hidden><label class="cb" for="translation"><input type="checkbox" id="translation" name="translation" />
+    Translation<sup style="font-size: 8px;"> (HSK only)</sup></label></div>
+
+  <!-- TODO add support for TOCFL -->
+  <div id="colorLabel" hidden><label class="cb" for="color"><input type="checkbox" id="color" name="color" /> Tone colors<sup
+      style="font-size: 8px;"> (HSK only)</sup></label></div>
+
+  <!-- <br /> -->
 
 
 

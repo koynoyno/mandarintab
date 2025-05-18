@@ -25,39 +25,6 @@ let saveSettings = (id, checkbox = false) => {
   //   chrome.storage.local.set({ [id]: value });
   // }
 
-  // // remove cache and redraw #level options if HSK version is toggled
-  // if (id == "testType") {
-  //   chrome.storage.local.set({ randomWords: [], cache: {} }); // bug fix
-  //   level = document.querySelector("#level");
-  //   levelValue = level.value;
-  //   while (level.lastElementChild) {
-  //     level.removeChild(level.lastElementChild);
-  //   }
-  //   redrawTestLevels(value);
-
-  //   // fallback to HSK6 from HSK7-9 when switching to HSK 2.0
-  //   if (value == "hsk2" && levelValue == "hsk7-9") {
-  //     chrome.storage.local.set({ level: "hsk6" });
-  //     level.value = "hsk6";
-  //   } else {
-  //     level.value = levelValue;
-  //   }
-  // }
-
-  // // redraw popup if darkMode is toggled
-  // if (id == "darkMode") {
-  //   document.body.classList.toggle("darkMode");
-  //   if (value) {
-  //     // document.body.classList.add("darkMode");
-  //     localStorage.setItem("darkMode", "darkMode");
-  //   } else {
-  //     // document.body.classList.remove("darkMode");
-  //     localStorage.removeItem("darkMode");
-  //   }
-  // } else {
-  //   chrome.tabs.reload();
-  // }
-
   switch (id) {
     // remove cache if level or day limit is changed
     case "level":
@@ -76,16 +43,22 @@ let saveSettings = (id, checkbox = false) => {
         level.removeChild(level.lastElementChild);
       }
       redrawTestLevels(value);
-      // fallback to HSK6 from HSK7-9 when switching to HSK 2.0
-      // if (value == "hsk2" && levelValue == "7") {
-      //   chrome.storage.local.set({ level: "6" });
-      //   level.value = "6";
-      // } else if (value == "tocfl" && levelValue > 5) {
       if (value == "tocfl" && levelValue > 5) {
         chrome.storage.local.set({ level: "5" });
         level.value = "5";
       } else {
         level.value = levelValue;
+      }
+      
+      // BETA
+      // hide 'translationLabel' and 'colorLabel' when switching to TOCFL
+      if (value == "tocfl") {
+        document.getElementById('colorLabel').hidden = true;
+        document.getElementById('translationLabel').hidden = true;
+      // display them back when switching to HSK
+      } else {
+        document.getElementById('colorLabel').hidden = false;
+        document.getElementById('translationLabel').hidden = false;
       }
 
       // TODO: switch to traditional if tocfl
@@ -141,11 +114,18 @@ let restoreSettings = () => {
       dayLimit.value = items.dayLimit;
       fontType.value = items.fontType;
       sentenceExamples.checked = items.sentenceExamples;
-      color.checked = items.color;
+      // color.checked = items.color;
       pinyin.checked = items.pinyin;
       zhuyin.checked = items.zhuyin;
-      translation.checked = items.translation;
+      // translation.checked = items.translation;
       // darkMode.checked = items.darkMode;
+      // BETA show translation and colors only if HSK selected
+      if (testType.value === "hsk3") {
+        document.getElementById('colorLabel').hidden = false;
+        document.getElementById('translationLabel').hidden = false;
+        color.checked = items.color;
+        translation.checked = items.translation;
+      }
     }
   );
 };

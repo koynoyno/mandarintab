@@ -1,6 +1,6 @@
-<img align="right" src=images/panda.png title="酷酷酷！">
-
 # Chinese Tab | 中文标签页 | 中文標籤頁
+
+<img align="right" src=images/panda.png title="酷酷酷！">
 
 Memorize Chinese words ****every time you open a new Chrome tab****. Works both on desktop (Chrome, Safari) and mobile (Safari, Kiwi) browsers. 
 
@@ -23,8 +23,6 @@ Memorize Chinese words ****every time you open a new Chrome tab****. Works both 
 
 🤓 Translation, Pinyin, and Zhuyin can be turned off (hardcore mode)
 
-🐼 Mandarin speaking panda Ou
-
 ## Sounds nice. Anything else?
 
 💨 Opens instantly
@@ -42,8 +40,3 @@ Memorize Chinese words ****every time you open a new Chrome tab****. Works both 
 💖 Open source
 
 ✨ It's free!
-
-## I love this extension! Any way I can help?
-
-<img align="left" src=images/panda_easter.png><h1><strong>Share the word!</strong></h1>
-

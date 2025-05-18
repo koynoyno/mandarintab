@@ -31,7 +31,8 @@ export let draw = (items) => {
     title = `title="${data.pinyin}\n\n${data.english}"`;
   } else if (!items.pinyin) {
     title = `title="${data.pinyin}"`;
-  } else if (!items.zhuyin) {
+  // zhuyin shouldn't be displayed when `hsk3` is used 
+  } else if (!items.zhuyin && items.testType === "tocfl") {
     title = `title="${data.zhuyin}"`;
   } else if (!items.translation) {
     title = `title="${data.english}"`;
@@ -99,7 +100,20 @@ export let draw = (items) => {
   // IDEA what if not to draw it? 
   // show translation
   if (items.translation) {
-    drawObject = `<p class="english ${items.fontType}-font" align="center">${data.english}</p>` + drawObject;
+    // BETA 180525 display up to 3 words
+    // TODO should I cut only `hsk3`? currently it cut's `tocfl` as well
+    let english = data.english;
+
+    // Trim to max 3 words separated by commas
+    let words = english.split(',').map(word => word.trim());
+    if (words.length > 3) {
+      english = words.slice(0, 3).join(', ');
+    }
+
+    drawObject = `<p class="english ${items.fontType}-font" align="center">${english}</p>` + drawObject;
+    
+    // OLD just draw everything, but `hsk3` has too many words
+    // drawObject = `<p class="english ${items.fontType}-font" align="center">${data.english}</p>` + drawObject;
   }
 
   // show zhuyin

@@ -1,5 +1,24 @@
 export let ifFirstLaunch = (char) => {
-  let message;
+  const ua = navigator.userAgent
+  let shortcut;
+  let desktop = true;
+  if (ua.indexOf('Windows') > -1 || ua.indexOf('Linux') > -1) {
+    shortcut = 'Alt+S'
+  }
+  else if (ua.indexOf('Mac') > -1) {
+    shortcut = 'Opt+S'
+  }
+  if (ua.indexOf('iPhone') > -1) {
+    desktop = false;
+  }
+  if (ua.indexOf('iPad') > -1) {
+    desktop = false;
+  }
+  if (ua.indexOf('iPod') > -1) {
+    desktop = false;
+  }
+
+  let message = `Press ${shortcut} to open settings 🐼`;
 
   // document
   //   .querySelector(".app")
@@ -15,10 +34,12 @@ export let ifFirstLaunch = (char) => {
   //  if (char == "simplified" ) { message = `继续浏览`} else { message =`繼續瀏覽`}
 
   // if desktop
-  // app.insertAdjacentHTML(
-  //   "afterbegin",
-  //   `<p id="welcome" align="center">${message} 🐼</p>`
-  // );
+  if (desktop) {
+    app.insertAdjacentHTML(
+      "afterbegin",
+      `<p id="welcome" align="center">${message}</p>`
+    );
+  }
 
 
   // app.insertAdjacentHTML(

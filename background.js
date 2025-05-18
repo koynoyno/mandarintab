@@ -2,19 +2,19 @@ chrome.runtime.onInstalled.addListener(function (details) {
   if (details.reason === "install") {
     // TODO sync after install, leave only cache
     chrome.storage.local.set({
-      testType: "tocfl",
+      testType: "hsk",
       level: "1", // string for easier convertation
-      char: "traditional",
+      char: "simplified",
       dayLimit: "0",
       fontType: "PingFang", // TODO implement .woff2 fonts?
       date: new Date().getDate(),
       // date: new Date().getMinutes() }); // debug
       randomWords: [],
       sentenceExamples: true,
-      color: false,
-      pinyin: false,
-      zhuyin: true,
-      translation: false,
+      color: true,
+      pinyin: true,
+      zhuyin: false,
+      translation: true,
       darkMode: true, // DEBUG, change back to true TODO: detect darkMode on install
       // qr: true,
       firstLaunch: true,

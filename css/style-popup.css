@@ -81,7 +81,9 @@ select,
 #supportLink:hover {
   color: #c52464;
   opacity: 1;
-
+  /* transition doesn't work for some reason */
+  /* transition: transform 0.225s ease-in;
+  transform: scale(1.5); */
 }
 
 .disabled {
@@ -195,10 +197,10 @@ select,
     border: 1px solid #aaa;
   }
 
-  #panda,
+  /* #panda,
   #kofi {
     filter: invert(1);
-  }
+  } */
 
   #info:hover {
       color: #fff;

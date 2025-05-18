@@ -53,10 +53,14 @@ let saveSettings = (id, checkbox = false) => {
       // BETA
       // hide 'translationLabel' and 'colorLabel' when switching to TOCFL
       if (value == "tocfl") {
-        document.getElementById('colorLabel').hidden = true;
+        document.getElementById('char').hidden = true;
+        document.getElementById('charLabel').hidden = true;
+        document.getElementById('translationLabel').hidden = true;
         document.getElementById('translationLabel').hidden = true;
       // display them back when switching to HSK
       } else {
+        document.getElementById('char').hidden = false;
+        document.getElementById('charLabel').hidden = false;
         document.getElementById('colorLabel').hidden = false;
         document.getElementById('translationLabel').hidden = false;
       }
@@ -110,7 +114,7 @@ let restoreSettings = () => {
       redrawTestLevels(items.testType);
       testType.value = items.testType;
       level.value = items.level;
-      char.value = items.char;
+      // char.value = items.char;
       dayLimit.value = items.dayLimit;
       fontType.value = items.fontType;
       sentenceExamples.checked = items.sentenceExamples;
@@ -123,8 +127,12 @@ let restoreSettings = () => {
       if (testType.value === "hsk3") {
         document.getElementById('colorLabel').hidden = false;
         document.getElementById('translationLabel').hidden = false;
+        document.getElementById('charLabel').hidden = false;
+        document.getElementById('char').hidden = false;
+        
         color.checked = items.color;
         translation.checked = items.translation;
+        char.value = items.char;
       }
     }
   );
@@ -234,12 +242,12 @@ window.addEventListener("load", async () => {
   //   window.close();
   // });
 
-  // support.addEventListener("click", () => {
-  //   chrome.tabs.update({
-  //     url: "https://ko-fi.com/chinesetab",
-  //   });
-  //   window.close();
-  // });
+  support.addEventListener("click", () => {
+    chrome.tabs.create({
+      url: "https://chinesetab.com",
+    });
+    // window.close();
+  });
 
   // kofi.addEventListener("click", () => {
   //   chrome.tabs.update({

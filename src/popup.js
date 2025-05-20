@@ -49,6 +49,17 @@ let saveSettings = (id, checkbox = false) => {
       } else {
         level.value = levelValue;
       }
+
+      // BETA
+      // Automatically switch char type
+      let char = document.querySelector("#char");
+      if (value == "tocfl") {
+        char.value = "traditional";
+        chrome.storage.local.set({ char: "traditional" });
+      } else if (value == "hsk3") {
+        char.value = "simplified";
+    chrome.storage.local.set({ char: "simplified" });
+  }
       
       // BETA
       // hide 'translationLabel' and 'colorLabel' when switching to TOCFL

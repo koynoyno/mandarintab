@@ -108,9 +108,12 @@ export let draw = (items) => {
     let words = english.split(',').map(word => word.trim());
     if (words.length > 3) {
       english = words.slice(0, 3).join(', ');
+      drawObject = `<p class="english" align="center" title="${data.english}">${english},</p>` + drawObject;
+    } else {
+      drawObject = `<p class="english" align="center">${data.english}</p>` + drawObject;
     }
 
-    drawObject = `<p class="english" align="center">${english}</p>` + drawObject;
+    // drawObject = `<p class="english" align="center">${english}</p>` + drawObject;
     // drawObject = `<p class="english ${items.fontType}-font" align="center">${english}</p>` + drawObject;
     
     // OLD just draw everything, but `hsk3` has too many words

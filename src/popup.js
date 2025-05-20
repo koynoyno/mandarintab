@@ -55,7 +55,7 @@ let saveSettings = (id, checkbox = false) => {
       if (value == "tocfl") {
         document.getElementById('char').hidden = true;
         document.getElementById('charLabel').hidden = true;
-        document.getElementById('translationLabel').hidden = true;
+        document.getElementById('colorLabel').hidden = true;
         document.getElementById('translationLabel').hidden = true;
       // display them back when switching to HSK
       } else {

@@ -225,8 +225,8 @@ p {
 }
 
 .Kaiti-font {
-  font-family: "Kaiti" !important;
-  /* font-family: "STKaiti", "Kaiti" !important; */
+  /* font-family: "Kaiti" !important; */
+  font-family: "STKaiti", "Kaiti" !important;
 }
 
 /* nice fonts */

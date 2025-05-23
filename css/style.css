@@ -231,6 +231,14 @@ p {
   font-family: "STKaiti", "Kaiti" !important;
 }
 
+.Heiti-font {
+  font-family: "Heiti SC" !important;
+}
+
+.Songti-font {
+  /* not required to be set */
+}
+
 /* nice fonts */
 
 

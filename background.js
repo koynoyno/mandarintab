@@ -2,9 +2,12 @@ chrome.runtime.onInstalled.addListener(function (details) {
   let pinyinText;
   if (details.reason === "install") {
   // BETA fix Safari encoding issue omg, see https://stackoverflow.com/a/42096487
-  if (navigator.userAgent.indexOf("Safari") != -1) {
-    pinyinText = "ni3hao3" }
-  else { pinyinText = "nǐhǎo"}
+  if (navigator.userAgent.indexOf("Chrome") != -1) {
+    pinyinText = "nǐhǎo"
+} else if (navigator.userAgent.indexOf("Safari") != -1) {
+    pinyinText = "ni3hao3"
+}
+
 
     // TODO sync after install, leave only cache
     chrome.storage.local.set({

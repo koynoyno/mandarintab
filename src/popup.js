@@ -1,10 +1,15 @@
 // darkMode
 // document.body.classList.add(localStorage.getItem("darkMode"));
-
-if (navigator.userAgent.indexOf('Mac') > -1) {
+let userAgent = navigator.userAgent;
+if (userAgent.indexOf('Mac') > -1) {
+  document.getElementById('fontTypeLabel').removeAttribute("hidden")
+  if (navigator.userAgent.indexOf("Chrome") != -1) {
     document.getElementById('fontType').removeAttribute("hidden")
-    document.getElementById('fontTypeLabel').removeAttribute("hidden")
+    // document.getElementById('fontTypeSafari').removeAttribute("hidden")
+  } else if (navigator.userAgent.indexOf("Safari") != -1) {
+    document.getElementById('fontTypeSafari').removeAttribute("hidden")
   }
+}
 
 // ==========================================
 // apply settings
@@ -98,6 +103,10 @@ let saveSettings = (id, checkbox = false) => {
     //   }
     //   break;
     // TODO: disable Simplified when TOCFL is selected?
+    case "fontTypeSafari":
+      chrome.storage.local.set({ fontType: value });
+      chrome.tabs.reload();
+      break;
     default:
       chrome.storage.local.set({ [id]: value });
       chrome.tabs.reload();
@@ -210,6 +219,10 @@ window.addEventListener("load", async () => {
 
   fontType.addEventListener("change", () => {
     saveSettings("fontType");
+  });
+
+  fontTypeSafari.addEventListener("change", () => {
+    saveSettings("fontTypeSafari");
   });
 
 

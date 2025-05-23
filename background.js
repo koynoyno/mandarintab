@@ -1,5 +1,11 @@
 chrome.runtime.onInstalled.addListener(function (details) {
+  let pinyinText;
   if (details.reason === "install") {
+  // BETA fix Safari encoding issue omg, see https://stackoverflow.com/a/42096487
+  if (navigator.userAgent.indexOf("Safari") != -1) {
+    pinyinText = "ni3hao3" }
+  else { pinyinText = "nǐhǎo"}
+
     // TODO sync after install, leave only cache
     chrome.storage.local.set({
       testType: "hsk3",
@@ -15,7 +21,6 @@ chrome.runtime.onInstalled.addListener(function (details) {
       pinyin: true,
       zhuyin: false,
       translation: true,
-      // darkMode: true, // TODO: detect darkMode on install
       // qr: true,
       firstLaunch: true,
       game: {
@@ -25,11 +30,11 @@ chrome.runtime.onInstalled.addListener(function (details) {
       cache: {
         english: "Hello~",
         pinyinNumbered: "ni3hao3",
-        pinyin: "nǐhǎo",
+        pinyin: pinyinText,
         zhuyin: "ㄋㄧˇ ㄏㄠˇ",
         simplified: "你好",
         traditional: "你好",
-        "漢語拼音": "nǐhǎo",
+        "漢語拼音": pinyinText,
         "注音": "ㄋㄧˇ ㄏㄠˇ",
         "展開表": "你好",
       },

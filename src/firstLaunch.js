@@ -37,7 +37,8 @@ export let ifFirstLaunch = (char) => {
   if (desktop) {
     app.insertAdjacentHTML(
       "afterbegin",
-      `<p id="welcome" align="center">${message}</p>`
+      // `<p id="welcome" align="center">${message}</p>`
+      `<p id="pinyin" align="center">${message}</p>`
     );
   }
 

@@ -104,7 +104,7 @@ p {
 
 #wordsSeen,
 #welcome {
-  /* font-family: "Noto Sans", Fallback, sans-serif; */
+  font-family: "Noto Sans", Fallback, sans-serif;
   font-size: 2em;
   position: absolute;
   /* bottom: 0px; */
@@ -188,6 +188,8 @@ p {
 /* different fonts */
 /* for some reason SC works for TC fonts as well */
 /* TODO read SC/TC value to avoid any potential bugs  */
+/* doesn't work in Safari, use: Heiti, PingFang, -apple-system */
+/* TODO: support different fonts on macOS/iOS/Windows/+default for Linux */
 .PingFang-font {
   font-family: "PingFang SC" !important;
 }
@@ -251,7 +253,8 @@ a {
 
 /* .zhuyin, */
 .pinyin {
-  /* font-family: "Noto Sans", Fallback, sans-serif !important; */
+  /* not sure why it was disabled */
+  font-family: "Noto Sans", Fallback, sans-serif !important;
   font-size: 2.5rem;
   margin: 0.1em;
   font-weight: bold;

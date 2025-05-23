@@ -1,11 +1,14 @@
 chrome.runtime.onInstalled.addListener(function (details) {
-  let pinyinText;
+  let pinyinText, simplifiedText;
   if (details.reason === "install") {
   // BETA fix Safari encoding issue omg, see https://stackoverflow.com/a/42096487
   if (navigator.userAgent.indexOf("Chrome") != -1) {
-    pinyinText = "nǐhǎo"
+    pinyinText = "nǐhǎo";
+    simplifiedText = "你好";
 } else if (navigator.userAgent.indexOf("Safari") != -1) {
-    pinyinText = "ni3hao3"
+    pinyinText = "ni3hao3";
+    // TODO: fix Safari encoding issue
+    simplifiedText = ":)";
 }
 
 
@@ -34,12 +37,12 @@ chrome.runtime.onInstalled.addListener(function (details) {
         english: "Hello~",
         pinyinNumbered: "ni3hao3",
         pinyin: pinyinText,
-        zhuyin: "ㄋㄧˇ ㄏㄠˇ",
-        simplified: "你好",
-        traditional: "你好",
-        "漢語拼音": pinyinText,
-        "注音": "ㄋㄧˇ ㄏㄠˇ",
-        "展開表": "你好",
+        simplified: simplifiedText,
+        // zhuyin: "ㄋㄧˇ ㄏㄠˇ",
+        // traditional: "你好",
+        // "漢語拼音": pinyinText,
+        // "注音": "ㄋㄧˇ ㄏㄠˇ",
+        // "展開表": "你好",
       },
     });
 
@@ -65,6 +68,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
 
 /* BETA 150525 | to launch new page instantly without `offscreen` */
 // to prevent Firefox from throwing warnings 
+// I think it doesn't work, REMOVE!
 const keepAlive = () => setInterval(chrome.runtime.getPlatformInfo, 20e3);
 chrome.runtime.onStartup.addListener(keepAlive);
 keepAlive();

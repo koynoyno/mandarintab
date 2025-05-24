@@ -102,7 +102,7 @@ export let showSeenWords = async (wordsSeen, color, char, fontType) => {
     (function frame() {
       confetti({
         particleCount: Math.floor(getRandomArbitrary(2,4)),
-        startVelocity: Math.floor(getRandomArbitrary(0,20)),
+        startVelocity: Math.floor(getRandomArbitrary(0,3)),
         spread: 360,
         colors: colors,
         ticks: 1000,

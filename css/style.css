@@ -229,6 +229,8 @@ p {
 .Kaiti-font {
   /* font-family: "Kaiti" !important; */
   font-family: "STKaiti", "Kaiti" !important;
+  /* BETA fix zhuyin being too close */
+  margin-bottom: 0.1em;
 }
 
 .Heiti-font {

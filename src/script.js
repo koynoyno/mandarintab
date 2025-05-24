@@ -94,10 +94,10 @@ chrome.storage.local.get(null, async (items) => {
     let prompt;
     if (items.char == "simplified") {
       // prompt = `explain what is ${items.cache.simplified}`
-      prompt = `explain what is ${items.cache.english}`
+      prompt = `explain what is ${items.cache.english} in 3 sentences.`
     } else {
       // prompt = `explain what is ${items.cache.traditional}`
-      prompt = `explain what is ${items.cache.english}`
+      prompt = `explain what is ${items.cache.english} in 3 sentences.`
     }
     console.log(prompt)
     await ollama(prompt);

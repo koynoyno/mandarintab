@@ -343,6 +343,21 @@ a {
 }
 
 
+
+/* BETA AI */
+#output {
+  font-family: "Noto Sans", Fallback, sans-serif !important;
+  font-size: 1.2rem;
+  margin: 0.5em auto;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  max-width: 90%;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+
 /* DARK MODE, these settings should be applied at the end */
 /* .darkMode .tone5 { */
 @media (prefers-color-scheme: dark) {

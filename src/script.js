@@ -88,6 +88,41 @@ chrome.storage.local.get(null, async (items) => {
     return false;
   })
 
+  // BETA AI
+  ai.addEventListener("click", async () => {
+    let prompt;
+    if (items.char == "simplified") {
+      // prompt = `explain what is ${items.cache.simplified}`
+      prompt = `explain what is ${items.cache.english}`
+    } else {
+      // prompt = `explain what is ${items.cache.traditional}`
+      prompt = `explain what is ${items.cache.english}`
+    }
+    console.log(prompt)
+    try {
+      const response = await fetch("http://localhost:11434/api/generate", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            model: "llama3.2:1b-instruct-q2_K",
+            prompt: prompt,
+            stream: false
+          })
+        });
+    
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+    
+        const data = await response.json();
+        console.log(data);
+        alert(data.response)
+      } catch (error) {
+        console.error("Failed to call Ollama API:", error);
+      }
+    });
 });
 
 // apply dark mode beautiful way

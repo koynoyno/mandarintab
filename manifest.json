@@ -13,7 +13,17 @@
     "newtab": "index.html"
   },
   "minimum_chrome_version": "110",
-  "permissions": ["storage"],
+  "permissions": ["declarativeNetRequest", "declarativeNetRequestWithHostAccess", "storage"],
+  "host_permissions": ["http://localhost:11434/"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "modify-origin",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
   "background": {
     "service_worker": "background.js",
     "scripts": ["background.js"]

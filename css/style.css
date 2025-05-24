@@ -235,6 +235,8 @@ p {
 
 .Heiti-font {
   font-family: "Heiti SC" !important;
+  /* BETA fix zhuyin being too close */
+  margin-bottom: 0.1em;
 }
 
 .Songti-font {

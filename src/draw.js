@@ -5,7 +5,7 @@ import splitAndKeep from "./npm/color.js";
 export let draw = (items) => {
   let char = "";
   let drawObject = ""; // to call insertAdjacentHTML only once
-
+  let minHeight = 3; // BETA for AI to prevent jumping text
 
   //  let data = testType.words[rand];
   let data = items.cache;
@@ -94,6 +94,7 @@ export let draw = (items) => {
   // IDEA what if not to draw it? 
   // show translation
   if (items.translation) {
+    minHeight += 2;
     // BETA 180525 display up to 3 words
     // TODO should I cut only `hsk3`? currently it cut's `tocfl` as well
     let english = data.english;
@@ -123,6 +124,7 @@ export let draw = (items) => {
 
   // show pinyin
   if (items.pinyin) {
+    minHeight += 2;
     // drawObject += `<p class="pinyin ${items.fontType}-font" align="center">${data.pinyin}</p>`;
     drawObject += `<p class="pinyin align="center">${data.pinyin}</p>`;
   }
@@ -130,7 +132,8 @@ export let draw = (items) => {
   // show AI output
   if (items.ai) {
     // drawObject += `<button id="example">Example</button><div class="ai"><pre id="output"></pre></div>`
-    drawObject += `<div class="ai"><pre id="output"></pre></div>`
+     // BETA for AI to prevent jumping text
+    drawObject += `<div class="ai" style="min-height: ${minHeight}rem;"></div>`
   }
 
   // draw everything

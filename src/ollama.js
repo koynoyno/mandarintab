@@ -1,18 +1,18 @@
 export let ollamaPrompt = async (items) => {
 
     // example.addEventListener("click", async () => {
-        let prompt;
+        let prompt = "Provide a single sentence example using ";
         if (items.char == "simplified" && items.testType === "hsk3") {
-            prompt = `provide a single sentence example using ${items.cache.simplified} word in Simplified Chinese.`
+            prompt += `${items.cache.simplified} word in Simplified Chinese.`
         } else if (items.char == "traditional" && items.testType === "hsk3") {
-            prompt = `provide a single sentence example using ${items.cache.traditional} word in Traditional Chinese.`
+            prompt += `${items.cache.traditional} word in Traditional Chinese.`
         } else {
-            prompt = `provide a single sentence example using ${items.cache.詞彙} word in Traditional Chinese (Taiwan).`
+            prompt += `${items.cache.詞彙} word in Traditional Chinese (Taiwan).`
         }
-        if (items.pinyin) { prompt += " Provide pinyin for the example on a separate line." } else { prompt += " Don't provide pinyin for the example." }
+        if (items.pinyin) { prompt += " Provide pinyin for the generated sentence example on a separate line." } else { prompt += " Don't provide pinyin for the generated sentence example." }
         // 2025 May: doesn't work with gemma3 (4b, 12b) or llama3.2 (3b)
         // if (items.zhuyin) { prompt += " Provide zhuyin for the example on a separate line."} else {prompt += " Don't provide zhuyin for the example."}
-        if (items.translation && items.testType !== "tocfl") { prompt += " Provide English translation on a separate line." } else { prompt += " Don't provide translation for the example." }
+        if (items.translation && items.testType !== "tocfl") { prompt += " Provide English translation for the generated sentence example on a separate line." } else { prompt += " Don't provide translation for the generated sentence example." }
         prompt += " Don't output anything else."
         console.log(prompt)
         await ollama(prompt);
@@ -39,7 +39,7 @@ export let ollamaPrompt = async (items) => {
 // });
 
 // const prompt = document.getElementById('prompt').value;
-const output = document.getElementById('output');
+const output = document.querySelector('.ai');
 output.textContent = ''; // Clear previous
 
 export let ollama = async (prompt) => {
@@ -74,9 +74,18 @@ export let ollama = async (prompt) => {
             if (!line.trim()) continue;
             try {
                 const json = JSON.parse(line);
+                // if (json.response) {
+                //     result += json.response;
+                //     output.textContent = result;
+                // }
                 if (json.response) {
                     result += json.response;
-                    output.textContent = result;
+                    // 將每一行用 <pre> 包起來
+                    const html = result
+                        .split('\n')
+                        .map(line => `<pre class="output">${line}</pre>`)
+                        .join('');
+                    output.innerHTML = html;
                 }
             } catch (err) {
                 console.warn('Failed to parse JSON line:', line);

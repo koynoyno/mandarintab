@@ -35,7 +35,7 @@ body {
 .zhuyin,
 .char,
 .english,
-#output,
+.output,
 #wordsSeen,
 #wordsSeenNumber {
   user-select: text;
@@ -365,14 +365,15 @@ a {
   .ai {
     /* align-self: flex-start; */
     /* align-self: baseline; */
-    
-    /* margin: 2em;
-    position: absolute;
+    /* margin: 0em; */
+    /* position: absolute;
     bottom: 0px;
     padding-bottom: 1em; */
+    margin-top: 0.1em;
+    margin-bottom: 0;
   }
   
-  #output {
+  .output {
     font-family: "Noto Sans", Fallback, sans-serif;
     font-size: 2em;
     /* top: 0px; */
@@ -382,7 +383,11 @@ a {
     white-space: pre-wrap;
     user-select: all;
     transition: opacity .2s ease-in-out;
-    min-height: 3em; /* to prevent content from moving */
+    text-align: center;
+    /* to prevent content from moving */
+    /* min-height: 2em;  */
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 

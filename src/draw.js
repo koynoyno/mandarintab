@@ -76,24 +76,18 @@ export let draw = (items) => {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
   if (items.sentenceExamples) {
     let url;
-    // /*OLD*/ if (window.innerWidth < window.innerHeight) {
-    // untested
     if (isMobile) {
       // console.log('mobile')
       url = `plecoapi://x-callback-url/df?hw=${char}&sec=dict`;
       // dict|stroke|chars|words|sents
     } else {
       // console.log('desktop')
-      // url = `https://context.reverso.net/translation/chinese-english/${char}`;
       if (items.char == "simplified") {
-        // url = `https://www.mdbg.net/chinese/dictionary?wdqb=c%3A%2A${char}%2A&wdrst=0`;
         url = `https://www.mdbg.net/chinese/dictionary?wdqb=%2A${char}%2A&wdrst=0`;
       } else {
-        // url = `https://www.mdbg.net/chinese/dictionary?wdqb=c%3A%2A${char}%2A&wdrst=1`;
         url = `https://www.mdbg.net/chinese/dictionary?wdqb=%2A${char}%2A&wdrst=1`;
       }
     }
-    // drawObject = `<a href="${url}" class="link">${drawObject}</a>`;
     drawObject = `<a href="${url}" class="link" target="_blank">${drawObject}</a>`;
   }
 

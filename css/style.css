@@ -155,7 +155,7 @@ p {
   }
   
   .pinyin {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
   }
   
   .english {
@@ -174,7 +174,7 @@ p {
   }
   
   .pinyin {
-    font-size: 1.2rem;
+    font-size: 1rem !important;
   }
   
   .english {
@@ -286,7 +286,7 @@ a {
 .zhuyin {
   /* apply selected font to make it fun */
   /* font-family: "Noto Sans", Fallback, sans-serif; */
-  font-size: 4rem !important;
+  font-size: 4rem;
   font-weight: bold;
   /* margin: 0.1em 3em !important; */
   margin: 0.1em !important;

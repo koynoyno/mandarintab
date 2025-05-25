@@ -9,7 +9,7 @@ export let ollamaPrompt = async (items) => {
         }
         if (items.pinyin) { prompt += " Provide pinyin for the example on a separate line." } else { prompt += " Don't provide pinyin for the example." }
         // doesn't work with gemma3 or llama3.2, TODO verify in fine-tuned model
-        // if (items.zhuyin) { prompt += " Provide zhuyin for the example on a separate line."} else {prompt += " Don't provide zhuyin for the example."}
+        if (items.zhuyin) { prompt += " Provide zhuyin for the example on a separate line."} else {prompt += " Don't provide zhuyin for the example."}
         if (items.translation) { prompt += " Provide translation for the example on a separate line." } else { prompt += " Don't provide translation for the example." }
         prompt += " Don't output anything else."
         console.log(prompt)
@@ -45,8 +45,9 @@ export let ollama = async (prompt) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+            model: 'llama3.2-tw',
             // model: 'llama3.2',
-            model: 'gemma3',
+            // model: 'gemma3',
             prompt: prompt,
             stream: true
         })

@@ -89,3 +89,26 @@ keepAlive();
 // TODO: typeform
 // not supported in Safari
 // chrome.runtime.setUninstallURL("https://forms.gle/A2j7TKjXwUfuALqz7");
+
+
+
+// BETA try to fix CORS error
+// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+//   if (message.type === "ollama-fetch") {
+//     (async () => {
+//       try {
+//         const response = await fetch(message.url, {
+//           method: "POST",
+//           headers: { "Content-Type": "application/json" },
+//           body: JSON.stringify(message.body)
+//         });
+//         const data = await response.json();
+//         sendResponse({ success: true, data });
+//       } catch (error) {
+//         sendResponse({ success: false, error: error.toString() });
+//       }
+//     })();
+//     // 必須 return true 來啟用非同步回應
+//     return true;
+//   }
+// });

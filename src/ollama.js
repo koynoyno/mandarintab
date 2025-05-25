@@ -1,21 +1,21 @@
 export let ollamaPrompt = async (items) => {
 
     // example.addEventListener("click", async () => {
-        let prompt = "Provide a single sentence example using ";
-        if (items.char == "simplified" && items.testType === "hsk3") {
-            prompt += `${items.cache.simplified} word in Simplified Chinese.`
-        } else if (items.char == "traditional" && items.testType === "hsk3") {
-            prompt += `${items.cache.traditional} word in Traditional Chinese.`
-        } else {
-            prompt += `${items.cache.詞彙} word in Traditional Chinese (Taiwan).`
-        }
-        if (items.pinyin) { prompt += " Provide pinyin for the generated sentence example on a separate line." } else { prompt += " Don't provide pinyin for the generated sentence example." }
-        // 2025 May: doesn't work with gemma3 (4b, 12b) or llama3.2 (3b)
-        // if (items.zhuyin) { prompt += " Provide zhuyin for the example on a separate line."} else {prompt += " Don't provide zhuyin for the example."}
-        if (items.translation && items.testType !== "tocfl") { prompt += " Provide English translation for the generated sentence example on a separate line." } else { prompt += " Don't provide translation for the generated sentence example." }
-        prompt += " Don't output anything else."
-        console.log(prompt)
-        await ollama(prompt);
+    let prompt = "Provide a single sentence example using ";
+    if (items.char == "simplified" && items.testType === "hsk3") {
+        prompt += `${items.cache.simplified} word in Simplified Chinese.`
+    } else if (items.char == "traditional" && items.testType === "hsk3") {
+        prompt += `${items.cache.traditional} word in Traditional Chinese.`
+    } else {
+        prompt += `${items.cache.詞彙} word in Traditional Chinese (Taiwan).`
+    }
+    if (items.pinyin) { prompt += " Provide pinyin for the generated sentence example on a separate line." } else { prompt += " Don't provide pinyin for the generated sentence example." }
+    // 2025 May: doesn't work with gemma3 (4b, 12b) or llama3.2 (3b)
+    // if (items.zhuyin) { prompt += " Provide zhuyin for the example on a separate line."} else {prompt += " Don't provide zhuyin for the example."}
+    if (items.translation && items.testType !== "tocfl") { prompt += " Provide English translation for the generated sentence example on a separate line." } else { prompt += " Don't provide translation for the generated sentence example." }
+    prompt += " Don't output anything else. Reply in plain text."
+    console.log(prompt)
+    await ollama(prompt);
     // });
 
     console.log(items)
@@ -45,15 +45,34 @@ output.textContent = ''; // Clear previous
 export let ollama = async (prompt) => {
     const response = await fetch('http://localhost:11434/api/generate/', {
         method: 'POST',
-        mode: 'cors',
+        // mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            model: 'gemma3:12b', // requires RTX 3060 12GB, 40% performance
-            // model: 'gemma3', // requires RTX 3050 8GB, 100% performance
+            // model: 'gemma3:12b', // requires RTX 3060 12GB, 40% performance
+            model: 'gemma3', // requires RTX 3050 8GB, 100% performance
             prompt: prompt,
             stream: true
         })
     });
+
+    // const response = await new Promise((resolve, reject) => {
+    //     chrome.runtime.sendMessage({
+    //         type: "ollama-fetch",
+    //         url: "http://localhost:11434/api/generate/",
+    //         body: {
+    //             // model: 'gemma3:12b', // requires RTX 3060 12GB, 40% performance
+    //             model: 'gemma3', // requires RTX 3050 8GB, 100% performance
+    //             prompt: prompt,
+    //             stream: false
+    //         }
+    //     }, (response) => {
+    //         if (response && response.success) {
+    //             resolve(response.data);
+    //         } else {
+    //             reject(response ? response.error : "No response");
+    //         }
+    //     });
+    // });
 
     const reader = response.body.getReader();
     const decoder = new TextDecoder();

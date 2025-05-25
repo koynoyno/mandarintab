@@ -13,8 +13,8 @@
     "newtab": "index.html"
   },
   "minimum_chrome_version": "110",
-  "permissions": ["declarativeNetRequestWithHostAccess", "storage"],
-  "host_permissions": ["http://localhost:11434/"],
+  "permissions": ["storage", "declarativeNetRequestWithHostAccess"],
+  "host_permissions": ["http://localhost:11434/*"],
   "declarative_net_request": {
     "rule_resources": [
       {

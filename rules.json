@@ -8,12 +8,12 @@
           {
             "header": "Origin",
             "operation": "set",
-            "value": "http://localhost"
+            "value": "http://localhost:11434"
           }
         ]
       },
       "condition": {
-        "urlFilter": "http://localhost:11434/",
+        "urlFilter": "http://localhost:11434/*",
         "resourceTypes": ["xmlhttprequest"]
       }
     }

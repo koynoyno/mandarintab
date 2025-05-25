@@ -3,7 +3,7 @@ import { cacheUpdate } from "./cacheUpdate.js";
 
 chrome.storage.local.get(null, async (items) => {
 
-  const luck = 88;
+  const luck = 888;
 
   // if extension is updated
   if (items.updated) {
@@ -88,27 +88,12 @@ chrome.storage.local.get(null, async (items) => {
     return false;
   })
 
-  // BETA AI
-  ai.addEventListener("click", async () => {
-    const { ollama } = await import("./ollama.js");
-    let prompt;
-    if (items.char == "simplified") {
-      // prompt = `explain what is ${items.cache.simplified}`
-      prompt = `explain what is ${items.cache.english} in 3 sentences.`
-    } else {
-      // prompt = `explain what is ${items.cache.traditional}`
-      prompt = `explain what is ${items.cache.english} in 3 sentences.`
-    }
-    console.log(prompt)
-    await ollama(prompt);
-  });
-
-  ask.addEventListener("click", async () => {
-    const { ollama } = await import("./ollama.js");
-    let prompt = `give me 3 sentence examples for ${items.cache.english}`;
-    await ollama(prompt);
-  });
+  if (items.ai) {
+    const { ollamaPrompt } = await import("./ollama.js");
+    await ollamaPrompt(items)
+  }
 });
+
 
 // apply dark mode beautiful way
 // chrome.storage.onChanged.addListener(function (changes, namespace) {

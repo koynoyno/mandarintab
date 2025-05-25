@@ -27,6 +27,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
       pinyin: true,
       zhuyin: false,
       translation: true,
+      ai: false,
       // qr: true,
       firstLaunch: true,
       game: {

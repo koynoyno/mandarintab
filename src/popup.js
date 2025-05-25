@@ -127,7 +127,8 @@ let restoreSettings = () => {
       color: color,
       pinyin: pinyin,
       zhuyin: zhuyin,
-      translation: translation
+      translation: translation,
+      ai: ai
       // darkMode: darkMode
     },
     (items) => {
@@ -141,6 +142,7 @@ let restoreSettings = () => {
       // color.checked = items.color;
       pinyin.checked = items.pinyin;
       zhuyin.checked = items.zhuyin;
+      ai.checked = items.ai;
       // translation.checked = items.translation;
       // darkMode.checked = items.darkMode;
       // BETA show translation and colors only if HSK selected
@@ -251,6 +253,10 @@ window.addEventListener("load", async () => {
 
   translation.addEventListener("click", () => {
     saveSettings("translation", { checkbox: true });
+  });
+
+  ai.addEventListener("click", () => {
+    saveSettings("ai", { checkbox: true });
   });
 
   // darkMode.addEventListener("click", () => {

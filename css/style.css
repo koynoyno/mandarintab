@@ -35,6 +35,7 @@ body {
 .zhuyin,
 .char,
 .english,
+#output,
 #wordsSeen,
 #wordsSeenNumber {
   user-select: text;
@@ -56,6 +57,7 @@ p {
 #welcome {
   animation: fadeInPanda .2s;
 }
+
 
 #panda {
   position: absolute;
@@ -345,16 +347,34 @@ a {
 
 
 /* BETA AI */
-#output {
+/* #output {
   font-family: "Noto Sans", Fallback, sans-serif !important;
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin: 0.5em auto;
   font-weight: bold;
   text-align: center;
   display: block;
   max-width: 90%;
   white-space: pre-wrap;
-  word-break: break-word;
+  } */
+  .ai {
+    align-self: flex-start;
+    /* align-self: baseline; */
+    margin: 2em;
+    position: absolute;
+    bottom: 0px;
+    padding-bottom: 1em;
+  }
+  
+  #output {
+    font-family: "Noto Sans", Fallback, sans-serif;
+    font-size: 2em;
+    /* top: 0px; */
+    /* z-index: -99; */
+    opacity: 1;
+    /* padding-top: 1em; */
+    white-space: pre-wrap;
+    transition: opacity .2s ease-in-out;
 }
 
 

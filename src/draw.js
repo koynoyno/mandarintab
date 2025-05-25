@@ -133,6 +133,11 @@ export let draw = (items) => {
     drawObject += `<p class="pinyin align="center">${data.pinyin}</p>`;
   }
 
+  // show AI output
+  if (items.ai) {
+    drawObject += `<button id="example">Example</button><div class="ai"><pre id="output"></pre></div>`
+  }
+
   // draw everything
   app.insertAdjacentHTML("beforeend", drawObject);
 

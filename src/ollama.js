@@ -43,8 +43,9 @@ const output = document.getElementById('output');
 output.textContent = ''; // Clear previous
 
 export let ollama = async (prompt) => {
-    const response = await fetch('http://localhost:11434/api/generate', {
+    const response = await fetch('http://localhost:11434/api/generate/', {
         method: 'POST',
+        mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             model: 'gemma3:12b', // requires RTX 3060 12GB, 40% performance

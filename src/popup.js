@@ -11,6 +11,13 @@ if (userAgent.indexOf('Mac') > -1) {
   }
 }
 
+// hide AI checkbox on mobile
+const isMobile = /iPhone|iPad|iPod|Android/i.test(userAgent)
+if (!isMobile) {
+  document.getElementById('ai').removeAttribute("hidden")
+  document.getElementById('aiLabel').removeAttribute("hidden")
+}
+
 // ==========================================
 // apply settings
 let saveSettings = (id, checkbox = false) => {

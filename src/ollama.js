@@ -1,20 +1,22 @@
 export let ollamaPrompt = async (items) => {
 
-    example.addEventListener("click", async () => {
+    // example.addEventListener("click", async () => {
         let prompt;
-        if (items.char == "simplified") {
+        if (items.char == "simplified" && items.testType === "hsk3") {
             prompt = `provide a single sentence example using ${items.cache.simplified} word in Simplified Chinese.`
-        } else {
+        } else if (items.char == "traditional" && items.testType === "hsk3") {
             prompt = `provide a single sentence example using ${items.cache.traditional} word in Traditional Chinese.`
+        } else {
+            prompt = `provide a single sentence example using ${items.cache.詞彙} word in Traditional Chinese (Taiwan).`
         }
         if (items.pinyin) { prompt += " Provide pinyin for the example on a separate line." } else { prompt += " Don't provide pinyin for the example." }
-        // doesn't work with gemma3 or llama3.2, TODO verify in fine-tuned model
-        if (items.zhuyin) { prompt += " Provide zhuyin for the example on a separate line."} else {prompt += " Don't provide zhuyin for the example."}
-        if (items.translation) { prompt += " Provide translation for the example on a separate line." } else { prompt += " Don't provide translation for the example." }
+        // 2025 May: doesn't work with gemma3 (4b, 12b) or llama3.2 (3b)
+        // if (items.zhuyin) { prompt += " Provide zhuyin for the example on a separate line."} else {prompt += " Don't provide zhuyin for the example."}
+        if (items.translation && items.testType !== "tocfl") { prompt += " Provide English translation on a separate line." } else { prompt += " Don't provide translation for the example." }
         prompt += " Don't output anything else."
         console.log(prompt)
         await ollama(prompt);
-    });
+    // });
 
     console.log(items)
 }
@@ -45,9 +47,8 @@ export let ollama = async (prompt) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            model: 'llama3.2-tw',
-            // model: 'llama3.2',
-            // model: 'gemma3',
+            model: 'gemma3:12b', // requires RTX 3060 12GB, 40% performance
+            // model: 'gemma3', // requires RTX 3050 8GB, 100% performance
             prompt: prompt,
             stream: true
         })

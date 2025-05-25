@@ -358,7 +358,7 @@ a {
   white-space: pre-wrap;
   } */
   .ai {
-    align-self: flex-start;
+    /* align-self: flex-start; */
     /* align-self: baseline; */
     margin: 2em;
     position: absolute;
@@ -374,6 +374,7 @@ a {
     opacity: 1;
     /* padding-top: 1em; */
     white-space: pre-wrap;
+    user-select: all;
     transition: opacity .2s ease-in-out;
 }
 

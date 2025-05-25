@@ -129,7 +129,8 @@ export let draw = (items) => {
 
   // show AI output
   if (items.ai) {
-    drawObject += `<button id="example">Example</button><div class="ai"><pre id="output"></pre></div>`
+    // drawObject += `<button id="example">Example</button><div class="ai"><pre id="output"></pre></div>`
+    drawObject += `<div class="ai"><pre id="output"></pre></div>`
   }
 
   // draw everything

@@ -14,8 +14,8 @@ export let ollamaPrompt = async (items) => {
     // if (items.zhuyin) { prompt += " Provide zhuyin for the example on a separate line."} else {prompt += " Don't provide zhuyin for the example."}
     if (items.translation && items.testType !== "tocfl") { prompt += " Provide English translation for the generated sentence example on a separate line." } else { prompt += " Don't provide translation for the generated sentence example." }
     prompt += " Don't output anything else. Reply in plain text."
-    console.log(prompt)
-    await ollama(prompt);
+    console.log(prompt, items.fontType)
+    await ollama(prompt, items.fontType);
     // });
 
     console.log(items)
@@ -42,16 +42,17 @@ export let ollamaPrompt = async (items) => {
 const output = document.querySelector('.ai');
 output.textContent = ''; // Clear previous
 
-export let ollama = async (prompt) => {
+export let ollama = async (prompt, fontType) => {
     const response = await fetch('http://localhost:11434/api/generate/', {
         method: 'POST',
         // mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            // model: 'gemma3:12b', // requires RTX 3060 12GB, 40% performance
-            model: 'gemma3', // requires RTX 3050 8GB, 100% performance
+            // model: 'gemma3:12b', // 9.8Gb RAM
+            model: 'gemma3', // 4.2Gb RAM
             prompt: prompt,
-            stream: true
+            stream: true,
+            keep_alive: -1 // highly experimental lol 
         })
     });
 
@@ -100,9 +101,15 @@ export let ollama = async (prompt) => {
                 if (json.response) {
                     result += json.response;
                     // 將每一行用 <pre> 包起來
+                    // const html = result
+                    //     .split('\n')
+                    //     .map(line => `<pre class="output">${line}</pre>`)
+                    //     .join('');
                     const html = result
                         .split('\n')
-                        .map(line => `<pre class="output">${line}</pre>`)
+                        .map((line, idx) => 
+                            `<pre class="${idx === 0 ? `${fontType}-font output` : 'output'}">${line}</pre>`
+                        )
                         .join('');
                     output.innerHTML = html;
                 }

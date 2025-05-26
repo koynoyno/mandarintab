@@ -5,7 +5,7 @@ import splitAndKeep from "./npm/color.js";
 export let draw = (items) => {
   let char = "";
   let drawObject = ""; // to call insertAdjacentHTML only once
-  let minHeight = 3; // BETA for AI to prevent jumping text
+  let minHeight = 3.5; // BETA for AI to prevent jumping text
 
   //  let data = testType.words[rand];
   let data = items.cache;

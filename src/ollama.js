@@ -1,7 +1,7 @@
 export let ollamaPrompt = async (items) => {
 
     // example.addEventListener("click", async () => {
-    let prompt = "Provide a single sentence example using ";
+    let prompt = "Provide a single sentence example with the ";
     if (items.char == "simplified" && items.testType === "hsk3") {
         prompt += `${items.cache.simplified} word in Simplified Chinese.`
     } else if (items.char == "traditional" && items.testType === "hsk3") {
@@ -10,70 +10,53 @@ export let ollamaPrompt = async (items) => {
         prompt += `${items.cache.詞彙} word in Traditional Chinese (Taiwan).`
     }
     if (items.pinyin) { prompt += " Provide pinyin for the generated sentence example on a separate line." } else { prompt += " Don't provide pinyin for the generated sentence example." }
-    // 2025 May: doesn't work with gemma3 (4b, 12b) or llama3.2 (3b)
-    // if (items.zhuyin) { prompt += " Provide zhuyin for the example on a separate line."} else {prompt += " Don't provide zhuyin for the example."}
+    // 2025 May: doesn't work well with gemma3 (4b, 12b) or llama3.2 (3b)
+    // if (items.zhuyin) { prompt += " Provide zhuyin for the generated sentence example on a separate line."} else {prompt += " Don't provide zhuyin for the generated sentence example."}
     if (items.translation && items.testType !== "tocfl") { prompt += " Provide English translation for the generated sentence example on a separate line." } else { prompt += " Don't provide translation for the generated sentence example." }
     prompt += " Don't output anything else. Reply in plain text."
-    console.log(prompt, items.fontType)
-    await ollama(prompt, items.fontType);
+    console.log(prompt)
+    
+    // let model = "gemma3:12b" // 9.8Gb RAM
+    let model = "gemma3" // 4.2Gb RAM
+
+    // BETA workaround for Safari ignoring Origin header rule
+    // TODO: remove
+    const isSafariUA = /^Mozilla\/5.0.*Macintosh.*AppleWebKit(?!.*Chrome).*Safari/.test(navigator.userAgent);
+
+    if (isSafariUA) {
+        await ollamaSafari(model, prompt, items.fontType);
+        // console.log("Safari")
+    } else {
+        await ollama(model, prompt, items.fontType);
+    }
     // });
 
-    console.log(items)
+    // console.log(items)
 }
 
-// BETA AI
-// explain.addEventListener("click", async () => {
-//   const { ollama } = await import("./ollama.js");
-//   let prompt;
-//   if (items.char == "simplified") {
-//     prompt = `explain in Simplified Chinese what is ${items.cache.simplified}, 1 sentence. Use simplified characters.`
-//   } else {
-//     prompt = `explain in Traditional Chinese what is ${items.cache.traditional}, 1 sentence. Use traditional characters.`
-//   }
-//   if (items.pinyin) { prompt += "Provide pinyin for the explanation on a separate line."} else {prompt += "Don't provide pinyin for the explanation."}
-//   if (items.zhuyin) { prompt += " Provide zhuyin for the explanation on a separate line."} else {prompt += " Don't provide zhuyin for the explanation."}
-//   if (items.translation) { prompt += " Provide translation for the explanation on a separate line."} else {prompt += " Don't provide translation for the explanation."}
-//   prompt += " Don't output anything else."
-//   console.log(prompt)
-//   await ollama(prompt);
-// });
-
-// const prompt = document.getElementById('prompt').value;
 const output = document.querySelector('.ai');
 output.textContent = ''; // Clear previous
 
-export let ollama = async (prompt, fontType) => {
-    const response = await fetch('http://localhost:11434/api/generate/', {
-        method: 'POST',
-        // mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
+// debug
+// chrome.declarativeNetRequest.getEnabledRulesets().then((rulesets) => {
+//     console.log("logRulesets", rulesets);
+// }).catch((error) => {
+//     console.log("logRulesets", error);
+// });
+
+export let ollama = async (model, prompt, fontType) => {
+
+    const response = await fetch('http://localhost:11434/api/generate', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            // model: 'gemma3:12b', // 9.8Gb RAM
-            model: 'gemma3', // 4.2Gb RAM
+            model: model, // 4.2Gb RAM
             prompt: prompt,
             stream: true,
-            keep_alive: -1 // highly experimental lol 
+            keep_alive: -1 // BETA highly experimental lol 
         })
     });
-
-    // const response = await new Promise((resolve, reject) => {
-    //     chrome.runtime.sendMessage({
-    //         type: "ollama-fetch",
-    //         url: "http://localhost:11434/api/generate/",
-    //         body: {
-    //             // model: 'gemma3:12b', // requires RTX 3060 12GB, 40% performance
-    //             model: 'gemma3', // requires RTX 3050 8GB, 100% performance
-    //             prompt: prompt,
-    //             stream: false
-    //         }
-    //     }, (response) => {
-    //         if (response && response.success) {
-    //             resolve(response.data);
-    //         } else {
-    //             reject(response ? response.error : "No response");
-    //         }
-    //     });
-    // });
+    // console.log(response)
 
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
@@ -118,4 +101,34 @@ export let ollama = async (prompt, fontType) => {
             }
         }
     }
+}
+
+// BETA workaround for Safari ignoring Origin header rule
+export let ollamaSafari = async (model, prompt, fontType) => {
+    const response = await new Promise((resolve, reject) => {
+        chrome.runtime.sendMessage({
+            type: "ollama-fetch",
+            url: "http://localhost:11434/api/generate",
+            body: {
+                model: model, 
+                prompt: prompt,
+                stream: false, // fails when true
+                keep_alive: -1
+            }
+        }, (response) => {
+            if (response && response.success) {
+                resolve(response.data);
+            } else {
+                reject(response ? response.error : "No response");
+            }
+        });
+    });
+
+    const html = response.response
+        .split('\n')
+        .map((line, idx) => 
+            `<pre class="${idx === 0 ? `${fontType}-font output` : 'output'}">${line}</pre>`
+        )
+        .join('');
+    output.innerHTML = html;
 }

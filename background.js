@@ -92,23 +92,40 @@ keepAlive();
 
 
 
-// BETA try to fix CORS error
-// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+// BETA workaround for Safari ignoring Origin header rule
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type === "ollama-fetch") {
+    (async () => {
+      try {
+        const response = await fetch(message.url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(message.body)
+        });
+        const data = await response.json();
+        sendResponse({ success: true, data });
+      } catch (error) {
+        sendResponse({ success: false, error: error.toString() });
+      }
+    })();
+    return true;
+  }
+});
+
+// background.js
+// chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
 //   if (message.type === "ollama-fetch") {
-//     (async () => {
 //       try {
-//         const response = await fetch(message.url, {
-//           method: "POST",
-//           headers: { "Content-Type": "application/json" },
-//           body: JSON.stringify(message.body)
-//         });
-//         const data = await response.json();
-//         sendResponse({ success: true, data });
-//       } catch (error) {
-//         sendResponse({ success: false, error: error.toString() });
+//           const res = await fetch(message.url, {
+//               method: "POST",
+//               headers: { "Content-Type": "application/json" },
+//               body: JSON.stringify(message.body)
+//           });
+//           const text = await res.json(); // 或 .json()，看 API 回傳格式
+//           sendResponse({ success: true, data: text });
+//       } catch (e) {
+//           sendResponse({ success: false, error: e.toString() });
 //       }
-//     })();
-//     // 必須 return true 來啟用非同步回應
-//     return true;
+//       return true; // 表示會 async 回應
 //   }
 // });

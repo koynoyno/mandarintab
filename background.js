@@ -1,11 +1,13 @@
 chrome.runtime.onInstalled.addListener(function (details) {
   let pinyinText, simplifiedText;
+  let ua = navigator.userAgent;
+  
   if (details.reason === "install") {
   // BETA fix Safari encoding issue omg, see https://stackoverflow.com/a/42096487
-  if (navigator.userAgent.indexOf("Chrome") != -1) {
+  if (ua.indexOf("Chrome") != -1) {
     pinyinText = "nǐhǎo";
     simplifiedText = "你好";
-} else if (navigator.userAgent.indexOf("Safari") != -1) {
+} else if (ua.indexOf("Safari") != -1) {
     pinyinText = "ni3hao3";
     // TODO: fix Safari encoding issue
     simplifiedText = ":)";
@@ -30,6 +32,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
       ai: false,
       // qr: true,
       firstLaunch: true,
+      ua: ua,
       game: {
         wordsSeen: 1, // :(
         // get from cookie? .sync isn't supported on Safari

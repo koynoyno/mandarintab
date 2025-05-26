@@ -10,28 +10,28 @@ export let ollamaPrompt = async (items) => {
         prompt += `${items.cache.詞彙} word in Traditional Chinese (Taiwan).`
     }
     if (items.pinyin) { prompt += " Provide pinyin for the generated sentence example on a separate line." } else { prompt += " Don't provide pinyin for the generated sentence example." }
-    // 2025 May: doesn't work well with gemma3 (4b, 12b) or llama3.2 (3b)
+    // 2025 May: I'm yet to find a local model which can produce Zhuyin
     // if (items.zhuyin) { prompt += " Provide zhuyin for the generated sentence example on a separate line."} else {prompt += " Don't provide zhuyin for the generated sentence example."}
     if (items.translation && items.testType !== "tocfl") { prompt += " Provide English translation for the generated sentence example on a separate line." } else { prompt += " Don't provide translation for the generated sentence example." }
-    prompt += " Don't output anything else. Reply in plain text."
+    prompt += " Don't output anything else. Reply in plain text. Don't add periods."
     console.log(prompt)
     
     // let model = "gemma3:12b" // 9.8Gb RAM
-    let model = "gemma3" // 4.2Gb RAM
+    let model = "glm4-0414:9b" // ??Gb RAM
+    // let model = "gemma3" // 4.2Gb RAM
 
     // BETA workaround for Safari ignoring Origin header rule
     // TODO: remove
-    const isSafariUA = /^Mozilla\/5.0.*Macintosh.*AppleWebKit(?!.*Chrome).*Safari/.test(navigator.userAgent);
+    const isSafariUA = /^Mozilla\/5.0.*Macintosh.*AppleWebKit(?!.*Chrome).*Safari/.test(items.ua);
 
     if (isSafariUA) {
         await ollamaSafari(model, prompt, items.fontType);
-        // console.log("Safari")
+        console.log("Safari")
     } else {
         await ollama(model, prompt, items.fontType);
+        console.log("Chrome")
     }
     // });
-
-    // console.log(items)
 }
 
 const output = document.querySelector('.ai');
@@ -127,7 +127,7 @@ export let ollamaSafari = async (model, prompt, fontType) => {
     const html = response.response
         .split('\n')
         .map((line, idx) => 
-            `<pre class="${idx === 0 ? `${fontType}-font output` : 'output'}">${line}</pre>`
+            `<pre class="${idx === 0 ? `${fontType}-font output fadeIn` : 'output fadeIn'}">${line}</pre>`
         )
         .join('');
     output.innerHTML = html;

@@ -60,6 +60,35 @@ p {
   animation: fadeInPanda .2s;
 }
 
+/* for Safari AI output */
+/* .fadeIn {
+  animation: fadeIn .4s
+} */
+
+.fadeIn {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+	animation-duration: .25s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+
+
+
+
+
+
+
 
 #panda {
   position: absolute;
@@ -171,6 +200,18 @@ p {
   .zhuyin {
     font-size: 2rem !important;
   }
+
+  #wordsSeen {
+    font-size: 1rem !important;
+  }
+
+  #wordsSeenNumber {
+    font-size: 2rem !important;
+  }
+
+  #panda {
+    width: 160px;
+  }
 }
 
 /* 更小的屏幕 */
@@ -190,6 +231,18 @@ p {
   
   .zhuyin {
     font-size: 1.5rem !important;
+  }
+
+  #wordsSeen {
+    font-size: 0.9rem !important;
+  }
+
+  #wordsSeenNumber {
+    font-size: 1.8rem !important;
+  }
+
+  #panda {
+    width: 120px;
   }
 }
 

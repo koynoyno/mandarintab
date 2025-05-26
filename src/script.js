@@ -3,7 +3,7 @@ import { cacheUpdate } from "./cacheUpdate.js";
 
 chrome.storage.local.get(null, async (items) => {
 
-  const luck = 888;
+  const luck = 88;
 
   // if extension is updated
   if (items.updated) {
@@ -91,6 +91,13 @@ chrome.storage.local.get(null, async (items) => {
   if (items.ai) {
     const { ollamaPrompt } = await import("./ollama.js");
     await ollamaPrompt(items)
+    document.getElementsByClassName("ai")[0].addEventListener("mousedown", async (e) => {
+      if (e.button == 2) {
+        e.stopPropagation();
+        document.getElementsByClassName("ai")[0].innerHTML = "";
+        await ollamaPrompt(items)
+      }
+    });
   }
 });
 

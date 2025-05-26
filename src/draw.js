@@ -59,21 +59,18 @@ export let draw = (items) => {
       }
     }
 
-    // drawObject += `<p class="${classChar}" align="center">${coloredChar}</p>`;
-    // drawObject += `<p class="${classChar}" align="center" ${title}>${coloredChar}</p>`;
-    // drawObject += `<p class="${classChar} times-font" align="center" ${title}> ${coloredChar} </p>`;
     drawObject += `<p class="${classChar} ${items.fontType}-font" align="center" ${title}>${coloredChar}</p>`;
   } else {
     // just draw characters
-    // drawObject += `<p class="${classChar}" align="center"">${char}</p>`;
-    // drawObject += `<p class="${classChar}" align="center" ${title}>${char}</p>`;
-    // drawObject += `<p class="${classChar} times-font" align="center" ${title}> ${char} </p>`;
     drawObject += `<p class="${classChar} ${items.fontType}-font" align="center" ${title}>${char}</p>`;
   }
 
   // add sentence examples link
   // BETA: or deeplink to pleco, taken from https://stackoverflow.com/a/29509267
+  // TODO: doesn't work for some reason
+  // const isMobile = /iPhone|iPad|iPod|Android/i.test(items.ua)
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+
   if (items.sentenceExamples) {
     let url;
     if (isMobile) {

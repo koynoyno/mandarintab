@@ -1,4 +1,4 @@
-import { getRandomNumber } from "./npm/getRandomNumber.js";
+// import { getRandomNumber } from "./npm/getRandomNumber.js";
 
 export let getRandomWord = (testTypeLength, items) => {
   let randomWords = [];
@@ -23,3 +23,6 @@ export let getRandomWord = (testTypeLength, items) => {
 };
 
 // TODO: omg please optimize this
+export let getRandomNumber = (data) => {
+  return Math.floor(Math.random() * data);
+};

@@ -1,19 +1,18 @@
 // darkMode
 // document.body.classList.add(localStorage.getItem("darkMode"));
-let userAgent = navigator.userAgent;
-if (userAgent.indexOf('Mac') > -1) {
+let ua = chrome.storage.local.get("ua");
+if (ua.os == "Mac") {
   document.getElementById('fontTypeLabel').removeAttribute("hidden")
-  if (navigator.userAgent.indexOf("Chrome") != -1) {
+  if (ua.browser == "Chrome") {
     document.getElementById('fontType').removeAttribute("hidden")
     // document.getElementById('fontTypeSafari').removeAttribute("hidden")
-  } else if (navigator.userAgent.indexOf("Safari") != -1) {
+  } else if (ua.browser == "Safari") {
     document.getElementById('fontTypeSafari').removeAttribute("hidden")
   }
 }
 
 // hide AI checkbox on mobile
-const isMobile = /iPhone|iPad|iPod|Android/i.test(userAgent)
-if (!isMobile) {
+if (!ua.mobile) {
   document.getElementById('ai').removeAttribute("hidden")
   document.getElementById('aiLabel').removeAttribute("hidden")
 }

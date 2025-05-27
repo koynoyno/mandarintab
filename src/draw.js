@@ -3,9 +3,16 @@ import splitAndKeep from "./npm/color.js";
 // TODO: if items.timesFont then ${times-font} resolves to CSS class
 
 export let draw = (items) => {
+
+  // debug
+  // console.log(items)
+
   let char = "";
   let drawObject = ""; // to call insertAdjacentHTML only once
   let minHeight = 3.5; // BETA for AI to prevent jumping text
+  if (items.ua.browser == "Safari") {
+    minHeight += 2.5; // BETA for Safari to prevent jumping text   
+  }
 
   //  let data = testType.words[rand];
   let data = items.cache;
@@ -68,16 +75,14 @@ export let draw = (items) => {
   // add sentence examples link
   // BETA: or deeplink to pleco, taken from https://stackoverflow.com/a/29509267
   // TODO: doesn't work for some reason
-  // const isMobile = /iPhone|iPad|iPod|Android/i.test(items.ua)
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
 
   if (items.sentenceExamples) {
     let url;
-    if (isMobile) {
+    if (items.ua.mobile) {
       // console.log('mobile')
       url = `plecoapi://x-callback-url/df?hw=${char}&sec=dict`;
       // dict|stroke|chars|words|sents
-    } else {
+    } else { // desktop
       // console.log('desktop')
       if (items.char == "simplified") {
         url = `https://www.mdbg.net/chinese/dictionary?wdqb=%2A${char}%2A&wdrst=0`;

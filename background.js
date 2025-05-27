@@ -1,63 +1,82 @@
-chrome.runtime.onInstalled.addListener(function (details) {
-  let pinyinText, simplifiedText;
-  let ua = navigator.userAgent;
-  
-  if (details.reason === "install") {
-  // BETA fix Safari encoding issue omg, see https://stackoverflow.com/a/42096487
-  if (ua.indexOf("Chrome") != -1) {
-    pinyinText = "nǐhǎo";
-    simplifiedText = "你好";
-} else if (ua.indexOf("Safari") != -1) {
-    pinyinText = "ni3hao3";
-    // TODO: fix Safari encoding issue
-    simplifiedText = ":)";
-}
+let defaultSettings = {
+  testType: "hsk3",
+  level: "1",
+  char: "simplified",
+  dayLimit: "0",
+  fontType: "PingFang",
+  // date: new Date().getDate(),
+  randomWords: [],
+  sentenceExamples: true,
+  color: true,
+  pinyin: true,
+  zhuyin: false,
+  translation: true,
+  ai: false,
+  firstLaunch: true,
+  // ua: "", // you can detect it at runtime
+  game: {
+    // get from cookie? .sync isn't supported on Safari
+    wordsSeen: 1,
+  },
+  cache: {
+    english: "Hello~",
+    pinyinNumbered: "ni3hao3",
+    pinyin: "nǐhǎo",
+    simplified: "你好",
+  },
+};
+    // TODO: version tracking
+    // version: "0.3"
 
+chrome.runtime.onInstalled.addListener(function (details) {
+
+  let ua = parseUserAgent();
+  let pinyinText, simplifiedText;
+
+  // run only on install
+  if (details.reason === "install") {
+    // BETA fix Safari encoding issue omg, see https://stackoverflow.com/a/42096487
+    if (ua.browser == "Safari") {
+      defaultSettings.cache.pinyinText = "ni3hao3";
+      // TODO: fix Safari encoding issue
+      defaultSettings.cache.simplifiedText = ":)\u4f60\u597d";
+    }
 
     // TODO sync after install, leave only cache
     chrome.storage.local.set({
-      testType: "hsk3",
-      level: "1", // string for easier convertation
-      char: "simplified",
-      dayLimit: "0",
-      fontType: "PingFang", // TODO implement .woff2 fonts?
-      date: new Date().getDate(),
+      ...defaultSettings,
       // date: new Date().getMinutes() }); // debug
-      randomWords: [],
-      sentenceExamples: true,
-      color: true,
-      pinyin: true,
-      zhuyin: false,
-      translation: true,
-      ai: false,
-      // qr: true,
-      firstLaunch: true,
+      date: new Date().getDate(),
       ua: ua,
-      game: {
-        wordsSeen: 1, // :(
-        // get from cookie? .sync isn't supported on Safari
-      },
-      cache: {
-        english: "Hello~",
-        pinyinNumbered: "ni3hao3",
-        pinyin: pinyinText,
-        simplified: simplifiedText,
-        // zhuyin: "ㄋㄧˇ ㄏㄠˇ",
-        // traditional: "你好",
-        // "漢語拼音": pinyinText,
-        // "注音": "ㄋㄧˇ ㄏㄠˇ",
-        // "展開表": "你好",
-      },
     });
 
     chrome.tabs.create({
       url: "index.html", // works in Safari
     });
+    console.log("installed!")
+
   } else if (details.reason === "update") {
-    chrome.storage.local.set({ updated: true });
-    console.log("updated!")
-    // TODO: messaging instead of storage?
+        console.log("verifying data...")
+        let updatedData = defaultSettings;
+        chrome.storage.local.get(null, (items) => {
+          updatedData = { ...updatedData, ...items };
+          console.log(updatedData)
+          chrome.storage.local.set(updatedData);
+        });
+
+    chrome.storage.local.set({
+      updated: true,
+      ua: parseUserAgent(),
+    });
+
+    console.log("background updated!")
   }
+
+
+
+
+  // TODO: messaging instead of storage?
+}
   // } else if (details.reason === "chrome_update") {
   // When browser is updated
   // Not supported by Safari
@@ -68,7 +87,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
 
   // localStorage is the synchronous, this way white flash can be avoided
   // TODO: implement messaging to localStorage approach
-});
+);
 
 /* BETA 150525 | to launch new page instantly without `offscreen` */
 // to prevent Firefox from throwing warnings 
@@ -115,20 +134,34 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 });
 
-// background.js
-// chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
-//   if (message.type === "ollama-fetch") {
-//       try {
-//           const res = await fetch(message.url, {
-//               method: "POST",
-//               headers: { "Content-Type": "application/json" },
-//               body: JSON.stringify(message.body)
-//           });
-//           const text = await res.json(); // 或 .json()，看 API 回傳格式
-//           sendResponse({ success: true, data: text });
-//       } catch (e) {
-//           sendResponse({ success: false, error: e.toString() });
-//       }
-//       return true; // 表示會 async 回應
-//   }
-// });
+
+// BETA, check for browser
+parseUserAgent = (uaString = navigator.userAgent) => {
+  const ua = uaString.toLowerCase();
+
+  // 檢查平台
+  const os = (() => {
+    if (ua.includes('iphone') || ua.includes('ipad') || ua.includes('ipod')) return 'iOS';
+    if (ua.includes('android')) return 'Android';
+    if (ua.includes('macintosh') || ua.includes('mac os x')) return 'macOS';
+    if (ua.includes('windows')) return 'Windows';
+    return 'other';
+  })();
+
+  // 檢查是否為手機
+  const mobile = /mobile|iphone|android/.test(ua);
+
+  // 檢查瀏覽器
+  const browser = (() => {
+    if (/edga\//.test(ua)) return 'Edge'; // Edge on Android
+    if (/edg\//.test(ua)) return 'Edge'; // Edge on Windows
+    if (/firefox\//.test(ua)) return 'Firefox';
+    if (/safari/.test(ua) && /version/.test(ua) && !/chrome|crios|edg\//.test(ua)) return 'Safari';
+    if (/chrome\//.test(ua) && !/edg\//.test(ua)) return 'Chrome';
+    return 'other';
+  })();
+
+  return { os, browser, mobile };
+}
+
+

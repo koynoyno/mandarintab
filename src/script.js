@@ -6,6 +6,7 @@ chrome.storage.local.get(null, async (items) => {
   const luck = 88;
 
   // if extension is updated
+  // TODO verify chrome.storage integrity on update
   if (items.updated) {
     const { postUpdate } = await import("./npm/postUpdate.js");
     await postUpdate();
@@ -50,7 +51,7 @@ chrome.storage.local.get(null, async (items) => {
     }
 
     const { ifFirstLaunch } = await import("./firstLaunch.js");
-    await ifFirstLaunch(items.char);
+    await ifFirstLaunch(items.char, items.ua);
   } else if (Math.floor(Math.random() * luck) % luck == 0) {
     const { confetti } = await import("./npm/confetti.browser.js");
     const { showSeenWords } = await import("./showSeenWords.js");

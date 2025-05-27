@@ -22,9 +22,7 @@ export let ollamaPrompt = async (items) => {
 
     // BETA workaround for Safari ignoring Origin header rule
     // TODO: remove
-    const isSafariUA = /^Mozilla\/5.0.*Macintosh.*AppleWebKit(?!.*Chrome).*Safari/.test(items.ua);
-
-    if (isSafariUA) {
+    if (items.ua.browser == "Safari") {
         await ollamaSafari(model, prompt, items.fontType);
         console.log("Safari")
     } else {

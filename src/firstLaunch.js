@@ -1,21 +1,11 @@
-export let ifFirstLaunch = (char) => {
-  const ua = navigator.userAgent
+export let ifFirstLaunch = (char, ua) => {
   let shortcut;
-  let desktop = true;
-  if (ua.indexOf('Windows') > -1 || ua.indexOf('Linux') > -1) {
+
+  if (ua.os == "Windows" || ua.os == "other") {
     shortcut = 'Alt+S'
   }
-  else if (ua.indexOf('Mac') > -1) {
+  else if (ua.os == "macOS") {
     shortcut = 'Opt+S'
-  }
-  if (ua.indexOf('iPhone') > -1) {
-    desktop = false;
-  }
-  if (ua.indexOf('iPad') > -1) {
-    desktop = false;
-  }
-  if (ua.indexOf('iPod') > -1) {
-    desktop = false;
   }
 
   let message = `Press ${shortcut} to open settings 🐼`;
@@ -34,7 +24,7 @@ export let ifFirstLaunch = (char) => {
   //  if (char == "simplified" ) { message = `继续浏览`} else { message =`繼續瀏覽`}
 
   // if desktop
-  if (desktop) {
+  if (!ua.mobile) {
     app.insertAdjacentHTML(
       "afterbegin",
       // `<p id="welcome" align="center">${message}</p>`

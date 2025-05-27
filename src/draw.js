@@ -128,7 +128,7 @@ export let draw = (items) => {
   if (items.pinyin) {
     minHeight += 2;
     // drawObject += `<p class="pinyin ${items.fontType}-font" align="center">${data.pinyin}</p>`;
-    drawObject += `<p class="pinyin align="center">${data.pinyin}</p>`;
+    drawObject += `<p class="pinyin" align="center">${data.pinyin}</p>`;
   }
 
   // show AI output

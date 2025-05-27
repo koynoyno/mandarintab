@@ -89,12 +89,25 @@ chrome.runtime.onInstalled.addListener(function (details) {
   // TODO: implement messaging to localStorage approach
 );
 
+
+/* BETA 080924 | to launch new page instantly */
+async function createOffscreen() {
+  await chrome.offscreen.createDocument({
+    url: 'offscreen.html',
+    reasons: ['BLOBS'],
+    justification: 'speed up new page opening',
+  }).catch(() => { });
+}
+
+chrome.runtime.onStartup.addListener(createOffscreen);
+self.onmessage = e => { }; // keepAlive
+createOffscreen();
 /* BETA 150525 | to launch new page instantly without `offscreen` */
 // to prevent Firefox from throwing warnings 
 // I think it doesn't work, REMOVE!
-const keepAlive = () => setInterval(chrome.runtime.getPlatformInfo, 20e3);
-chrome.runtime.onStartup.addListener(keepAlive);
-keepAlive();
+// const keepAlive = () => setInterval(chrome.runtime.getPlatformInfo, 20e3);
+// chrome.runtime.onStartup.addListener(keepAlive);
+// keepAlive();
 
 
 // DEV logger to monitor storage changes

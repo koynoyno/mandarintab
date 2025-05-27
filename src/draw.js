@@ -10,7 +10,7 @@ export let draw = (items) => {
   let char = "";
   let drawObject = ""; // to call insertAdjacentHTML only once
   let minHeight = 3.5; // BETA for AI to prevent jumping text
-  if (items.ua.browser == "Safari") {
+  if (items.ua.browser == "Safari" || items.ua.browser == "Firefox") {
     minHeight += 2.5; // BETA for Safari to prevent jumping text   
   }
 

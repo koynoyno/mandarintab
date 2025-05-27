@@ -426,7 +426,11 @@ a {
     padding-bottom: 1em; */
     margin-top: 1em;
     margin-bottom: 0;
+    opacity: 0.8
   }
+  /* .ai:hover {
+    opacity: 1;
+  } */
   
   .output {
     font-family: "Noto Sans", Fallback, sans-serif;

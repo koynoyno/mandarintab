@@ -37,9 +37,9 @@ chrome.runtime.onInstalled.addListener(function (details) {
   if (details.reason === "install") {
     // BETA fix Safari encoding issue omg, see https://stackoverflow.com/a/42096487
     if (ua.browser == "Safari") {
-      defaultSettings.cache.pinyinText = "ni3hao3";
+      defaultSettings.cache.pinyin = "ni3hao3"; 
       // TODO: fix Safari encoding issue
-      defaultSettings.cache.simplifiedText = ":)\u4f60\u597d";
+      defaultSettings.cache.simplified = ":)";
     }
 
     // TODO sync after install, leave only cache
@@ -51,7 +51,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
     });
 
     chrome.tabs.create({
-      url: "index.html", // works in Safari
+      url: "index.html", // works in Safari 
     });
     console.log("installed!")
 

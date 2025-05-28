@@ -1,6 +1,12 @@
 export let ollamaPrompt = async (items) => {
     let model;
     let prompt;
+    let duration;
+    if (items.keepInRAM) {
+        duration = -1;
+    } else {
+        duration = 300;
+    }
 
     if (!items.customPrompt) {
     // example.addEventListener("click", async () => {
@@ -17,28 +23,28 @@ export let ollamaPrompt = async (items) => {
     // if (items.zhuyin) { prompt += " Provide zhuyin for the generated sentence example on a separate line."} else {prompt += " Don't provide zhuyin for the generated sentence example."}
     if (items.translation && items.testType !== "tocfl") { prompt += " Provide English translation for the generated sentence example on a separate line." } else { prompt += " Don't provide translation for the generated sentence example." }
     prompt += " Don't output anything else. Reply in plain text. Don't add periods."
+    console.log(prompt)
     } else {
+        console.log(`items.customPrompt: ${items.customPrompt}`)
         prompt = items.customPrompt;
     }
-    console.log(prompt)
-    console.log(`items.customPrompt: ${items.customPrompt}`)
 
-    console.log(`items.customModel: ${items.customModel}`)
     if (!items.customModel) {
-    // let model = "gemma3:12b" // 9.8Gb RAM
-    // let model = "glm4-0414:9b" // ??Gb RAM
-    model = "gemma3:latest" // 4.2Gb RAM
+        // let model = "gemma3:12b" // 9.8Gb RAM
+        // let model = "glm4-0414:9b" // ??Gb RAM
+        model = "gemma3:latest" // 4.2Gb RAM
     } else {
+        console.log(`items.customModel: ${items.customModel}`)
         model = items.customModel
     }
 
     // BETA workaround for Safari ignoring Origin header rule
     // TODO: remove
     if (items.ua.browser == "Safari") {
-        await ollamaSafari(model, prompt, items.fontType);
+        await ollamaSafari(model, prompt, items.fontType, duration);
         console.log("Safari")
     } else {
-        await ollama(model, prompt, items.fontType);
+        await ollama(model, prompt, items.fontType, duration);
         console.log("Chrome")
     }
     // });
@@ -54,7 +60,7 @@ output.textContent = ''; // Clear previous
 //     console.log("logRulesets", error);
 // });
 
-export let ollama = async (model, prompt, fontType) => {
+export let ollama = async (model, prompt, fontType, duration) => {
 
     const response = await fetch('http://localhost:11434/api/generate', {
         method: "POST",
@@ -63,7 +69,7 @@ export let ollama = async (model, prompt, fontType) => {
             model: model, // 4.2Gb RAM
             prompt: prompt,
             stream: true,
-            keep_alive: -1 // BETA highly experimental lol 
+            keep_alive: duration // BETA highly experimental lol 
         })
     });
     // console.log(response)
@@ -114,7 +120,7 @@ export let ollama = async (model, prompt, fontType) => {
 }
 
 // BETA workaround for Safari ignoring Origin header rule
-export let ollamaSafari = async (model, prompt, fontType) => {
+export let ollamaSafari = async (model, prompt, fontType, duration) => {
     const response = await new Promise((resolve, reject) => {
         chrome.runtime.sendMessage({
             type: "ollama-fetch",
@@ -123,7 +129,7 @@ export let ollamaSafari = async (model, prompt, fontType) => {
                 model: model, 
                 prompt: prompt,
                 stream: false, // fails when true
-                keep_alive: -1
+                keep_alive: duration
             }
         }, (response) => {
             if (response && response.success) {

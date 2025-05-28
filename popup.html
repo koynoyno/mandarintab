@@ -141,16 +141,21 @@
   <label class="cb" for="ai" id="aiLabel" hidden><input type="checkbox" id="ai" name="ai" hidden /> Sentence example (AI)</label>
   <!-- <br /> -->
   <!-- <br /> -->
+   <!-- AI ✨ -->
   <!-- <hr align="center" width="100%"> -->
 
 <div id="aiSettings" hidden>
   <br />
-<label for="customModel">Model name</label>
+<label for="customModel">Model name (Ollama)</label>
 <input type="text" name="customModel" id="customModel" placeholder="gemma3:latest">
 
 <label for="customPrompt">Custom prompt</label>
 <input type="text" name="customPrompt" id="customPrompt" placeholder="Leave empty for default">
+
+<label class="cb" for="keepInRAM"><input type="checkbox" id="keepInRAM" name="keepInRAM" /> Keep model in RAM <span id="info" title="By default models are kept in memory for 5 minutes before being unloaded. This allows for quicker response times if you are making numerous requests to the LLM. Turn on during study sessions or if you have a lot of RAM.">⚠️</span></label>
 </div>
+
+
 
 
 
@@ -158,8 +163,7 @@
 <br />
 
   <!-- <input type="button" value="Set wallpaper" disabled/> -->
-  <button id="support">
-      ɴᴇxᴛ-ʟᴇᴠᴇʟ ᴛɪᴘs ʏᴏᴜ ɴᴇᴇᴅ ᴏɴ<br/>
+  <button id="support"><div id="supportText">ɴᴇxᴛ-ʟᴇᴠᴇʟ ᴛɪᴘs ʏᴏᴜ ɴᴇᴇᴅ ᴏɴ</div><div id="supportTextAI" hidden>ɢᴜɪᴅᴇ ꜰᴏʀ ᴜꜱɪɴɢ ᴀɪ ᴏɴ</div>
         <strong><span id="supportLink">ᴄʜɪɴᴇsᴇᴛᴀʙ.ᴄᴏᴍ</span></strong>
     </button>
 

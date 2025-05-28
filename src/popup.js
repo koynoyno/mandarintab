@@ -117,6 +117,8 @@ let saveSettings = (id, checkbox = false) => {
       chrome.storage.local.set({ ai: value });
       chrome.tabs.reload();
       aiSettings.hidden = !value;
+      supportText.hidden = value;
+      supportTextAI.hidden = !value;
       break;
     default:
       chrome.storage.local.set({ [id]: value });
@@ -143,6 +145,7 @@ let restoreSettings = () => {
       ua: null, // i don't really understand it
       customModel: customModel,
       customPrompt: customPrompt,
+      keepInRAM: keepInRAM,
     },
     (items) => {
       redrawTestLevels(items.testType);
@@ -171,13 +174,21 @@ let restoreSettings = () => {
       }
       // ai settings
       aiSettings.hidden = !items.ai;
-      if (items.customModel) {
-        customModel.value = items.customModel;
-      }
-      if (items.customPrompt) {
-        customPrompt.value = items.customPrompt;
-      }
+      if (items.ai) {
+        document.getElementById('supportTextAI').removeAttribute("hidden")
+        document.getElementById('supportText').setAttribute("hidden", "hidden")
 
+        if (items.customModel) {
+          customModel.value = items.customModel;
+        }
+        if (items.customPrompt) {
+          customPrompt.value = items.customPrompt;
+        }
+        if (items.keepInRAM) {
+          keepInRAM.checked = items.keepInRAM;
+        }
+      } 
+      
       // fonts settings for various platforms 
       const ua = items.ua;
 
@@ -321,7 +332,9 @@ customPrompt.addEventListener("focusout", (event) => {
   saveSettings("customPrompt");
 })
 
-
+keepInRAM.addEventListener("click", () => {
+  saveSettings("keepInRAM", { checkbox: true });
+})
 
 
 

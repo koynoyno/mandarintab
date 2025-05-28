@@ -171,8 +171,12 @@ let restoreSettings = () => {
       }
       // ai settings
       aiSettings.hidden = !items.ai;
-      // customModel.value = items.customModel;
-      // customPrompt.value = items.customPrompt;
+      if (items.customModel) {
+        customModel.value = items.customModel;
+      }
+      if (items.customPrompt) {
+        customPrompt.value = items.customPrompt;
+      }
 
       // fonts settings for various platforms 
       const ua = items.ua;
@@ -308,6 +312,20 @@ window.addEventListener("load", async () => {
   //   });
   //   window.close();
   // });
+
+customModel.addEventListener("focusout", (event) => {
+  saveSettings("customModel");
+})  
+
+customPrompt.addEventListener("focusout", (event) => {
+  saveSettings("customPrompt");
+})
+
+
+
+
+
+
 
   support.addEventListener("click", () => {
     chrome.tabs.create({

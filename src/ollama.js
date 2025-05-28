@@ -1,7 +1,10 @@
 export let ollamaPrompt = async (items) => {
+    let model;
+    let prompt;
 
+    if (!items.customPrompt) {
     // example.addEventListener("click", async () => {
-    let prompt = "Provide a single sentence example with the ";
+    prompt = "Provide a single sentence example with the ";
     if (items.char == "simplified" && items.testType === "hsk3") {
         prompt += `${items.cache.simplified} word in Simplified Chinese.`
     } else if (items.char == "traditional" && items.testType === "hsk3") {
@@ -14,11 +17,20 @@ export let ollamaPrompt = async (items) => {
     // if (items.zhuyin) { prompt += " Provide zhuyin for the generated sentence example on a separate line."} else {prompt += " Don't provide zhuyin for the generated sentence example."}
     if (items.translation && items.testType !== "tocfl") { prompt += " Provide English translation for the generated sentence example on a separate line." } else { prompt += " Don't provide translation for the generated sentence example." }
     prompt += " Don't output anything else. Reply in plain text. Don't add periods."
+    } else {
+        prompt = items.customPrompt;
+    }
     console.log(prompt)
-    
+    console.log(`items.customPrompt: ${items.customPrompt}`)
+
+    console.log(`items.customModel: ${items.customModel}`)
+    if (!items.customModel) {
     // let model = "gemma3:12b" // 9.8Gb RAM
     // let model = "glm4-0414:9b" // ??Gb RAM
-    let model = "gemma3:latest" // 4.2Gb RAM
+    model = "gemma3:latest" // 4.2Gb RAM
+    } else {
+        model = items.customModel
+    }
 
     // BETA workaround for Safari ignoring Origin header rule
     // TODO: remove

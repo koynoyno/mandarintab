@@ -168,12 +168,12 @@ select,
     color: white;
   }
 
-  select {
+  select, input {
     background: rgba(0, 0, 0, 0.3);
     color: #fff;
   }
 
-  select:hover {
+  select:hover, input:hover {
     background-color: #111;
   }
 
@@ -192,7 +192,12 @@ select,
     border-radius: 1px;
   }
 
-  input[type="button"]:hover {
+  input[type="text"] {
+    border: 1px solid #707070;
+    border-radius: 1px;
+  }
+
+  input[type="button"]:hover, input[type="text"]:hover {
     background-color: #111;
     border: 1px solid #aaa;
   }

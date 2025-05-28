@@ -55,7 +55,7 @@ chrome.storage.local.get(null, async (items) => {
   } else if (Math.floor(Math.random() * luck) % luck == 0) {
     const { confetti } = await import("./npm/confetti.browser.js");
     const { showSeenWords } = await import("./showSeenWords.js");
-    await showSeenWords(items.game.wordsSeen, items.color, items.char, items.fontType);
+    await showSeenWords(items.game.wordsSeen, items.testType, items.color, items.char, items.fontType);
   } else {
     // ...
   }

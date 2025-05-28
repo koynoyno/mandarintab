@@ -92,48 +92,38 @@ p {
 
 #panda {
   position: absolute;
-  /* transform: rotate(180deg); */
-  /* top: -1px; */
-  bottom: 0px;
-  opacity: 0.87;
-  transition: opacity .2s ease-in-out;
+  bottom: -120px;
   cursor: pointer;
   width: 240px;
-  /* height: 172px; */
-  /* -webkit-animation-name: fadeInPanda, floatBubble;
-  -webkit-animation-duration: 1s, 1s; */
-  animation: fadeIn .4s,
-    floatBubble .2s normal ease-out
+  z-index: 1;
+  transition-property: bottom;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+/* Initial animation on appearance */
+#panda.animate-in {
+  animation: floatIn .2s ease-out forwards;
 }
 
-@keyframes floatBubble {
-  from {
-    bottom: -100px;
-  }
-
-  to {
-    bottom: -1px;
-  }
-}
-
-@keyframes fadeInPanda {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 0.87;
-  }
-}
-
+/* Hover to float fully up */
 #panda:hover {
-  opacity: 1;
+  bottom: -12px;
+}
+
+/* Keyframes */
+@keyframes floatIn {
+  from { bottom: -160px; }
+  to { bottom: -120px; }
 }
 
 #panda.fade {
   opacity: 0;
   cursor: default !important;
 }
+
+
+
+
 
 #wordsSeen,
 #welcome {
@@ -147,6 +137,7 @@ p {
   /* padding-bottom: 1em; */
   padding-top: 1em;
   transition: opacity .2s ease-in-out;
+  transition-delay: 2s;
 }
 
 #wordsSeenNumber,
@@ -210,7 +201,7 @@ p {
   }
 
   #panda {
-    width: 160px;
+    /* width: 160px; */
   }
 }
 
@@ -242,7 +233,7 @@ p {
   }
 
   #panda {
-    width: 120px;
+    /* width: 120px; */
   }
 }
 
@@ -315,14 +306,15 @@ a {
 
 .charClickable {
   cursor: pointer;
-  transition: transform .2s ease-in-out;
+  transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 
 
 .charClickable:hover {
-  transition: transform 0.225s ease-in;
-  transform: scale(1.01);
+  /* transition: transform 0.225s ease-in; */
+  transform: scale(1.05);
+  transition-duration: .3s;
 }
 
 /* .zhuyin, */

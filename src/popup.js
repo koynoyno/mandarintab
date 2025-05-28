@@ -1,21 +1,21 @@
 // darkMode
 // document.body.classList.add(localStorage.getItem("darkMode"));
-let ua = chrome.storage.local.get("ua");
-if (ua.os == "Mac") {
-  document.getElementById('fontTypeLabel').removeAttribute("hidden")
-  if (ua.browser == "Chrome") {
-    document.getElementById('fontType').removeAttribute("hidden")
-    // document.getElementById('fontTypeSafari').removeAttribute("hidden")
-  } else if (ua.browser == "Safari") {
-    document.getElementById('fontTypeSafari').removeAttribute("hidden")
-  }
-}
+// const { ua } = await chrome.storage.local.get("ua");
+//   // if (!ua) return;
+// if (ua.os == "macOS") {
+//   document.getElementById('fontTypeLabel').removeAttribute("hidden")
+//   if (ua.browser == "Chrome") {
+//     document.getElementById('fontType').removeAttribute("hidden")
+//   } else if (ua.browser == "Safari") {
+//     document.getElementById('fontTypeSafari').removeAttribute("hidden")
+//   }
+// }
 
-// hide AI checkbox on mobile
-if (!ua.mobile) {
-  document.getElementById('ai').removeAttribute("hidden")
-  document.getElementById('aiLabel').removeAttribute("hidden")
-}
+// // hide AI checkbox on mobile
+// if (!ua.mobile) {
+//   document.getElementById('ai').removeAttribute("hidden")
+//   document.getElementById('aiLabel').removeAttribute("hidden")
+// }
 
 // ==========================================
 // apply settings
@@ -69,9 +69,9 @@ let saveSettings = (id, checkbox = false) => {
         chrome.storage.local.set({ char: "traditional" });
       } else if (value == "hsk3") {
         char.value = "simplified";
-    chrome.storage.local.set({ char: "simplified" });
-  }
-      
+        chrome.storage.local.set({ char: "simplified" });
+      }
+
       // BETA
       // hide 'translationLabel' and 'colorLabel' when switching to TOCFL
       if (value == "tocfl") {
@@ -79,7 +79,7 @@ let saveSettings = (id, checkbox = false) => {
         document.getElementById('charLabel').hidden = true;
         document.getElementById('colorLabel').hidden = true;
         document.getElementById('translationLabel').hidden = true;
-      // display them back when switching to HSK
+        // display them back when switching to HSK
       } else {
         document.getElementById('char').hidden = false;
         document.getElementById('charLabel').hidden = false;
@@ -134,8 +134,8 @@ let restoreSettings = () => {
       pinyin: pinyin,
       zhuyin: zhuyin,
       translation: translation,
-      ai: ai
-      // darkMode: darkMode
+      ai: ai,
+      ua: null, // i don't really understand it
     },
     (items) => {
       redrawTestLevels(items.testType);
@@ -157,10 +157,29 @@ let restoreSettings = () => {
         document.getElementById('translationLabel').hidden = false;
         document.getElementById('charLabel').hidden = false;
         document.getElementById('char').hidden = false;
-        
+
         color.checked = items.color;
         translation.checked = items.translation;
         char.value = items.char;
+      }
+
+      const ua = items.ua;
+
+      console.log(`items.ua: ${ua}`)
+      // if (!ua) return;
+      if (ua.os == "macOS") {
+        document.getElementById('fontTypeLabel').removeAttribute("hidden")
+        if (ua.browser == "Chrome") {
+          document.getElementById('fontType').removeAttribute("hidden")
+        } else if (ua.browser == "Safari") {
+          document.getElementById('fontTypeSafari').removeAttribute("hidden")
+        }
+      }
+
+      // hide AI checkbox on mobile
+      if (!ua.mobile) {
+        document.getElementById('ai').removeAttribute("hidden")
+        document.getElementById('aiLabel').removeAttribute("hidden")
       }
     }
   );

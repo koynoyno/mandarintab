@@ -17,8 +17,8 @@ export let ollamaPrompt = async (items) => {
     console.log(prompt)
     
     // let model = "gemma3:12b" // 9.8Gb RAM
-    let model = "glm4-0414:9b" // ??Gb RAM
-    // let model = "gemma3" // 4.2Gb RAM
+    // let model = "glm4-0414:9b" // ??Gb RAM
+    let model = "gemma3:latest" // 4.2Gb RAM
 
     // BETA workaround for Safari ignoring Origin header rule
     // TODO: remove

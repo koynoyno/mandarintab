@@ -136,10 +136,26 @@
     <!-- TODO add support for TOCFL -->
     <div id="colorLabel" hidden><label class="cb" for="color"><input type="checkbox" id="color" name="color" /> Tone colors<sup
       style="font-size: 8px;"> (HSK only)</sup></label></div>
+  <!-- <hr align="center" width="100%"> -->
       
   <label class="cb" for="ai" id="aiLabel" hidden><input type="checkbox" id="ai" name="ai" hidden /> Sentence example (AI)</label>
-  <br />
   <!-- <br /> -->
+  <!-- <br /> -->
+  <!-- <hr align="center" width="100%"> -->
+
+<div id="aiSettings" hidden>
+  <br />
+<label for="customModel">Model name</label>
+<input type="text" name="customModel" id="customModel" value="gemma3:latest" placeholder="gemma3:latest">
+
+<label for="customPrompt">Custom prompt</label>
+<input type="text" name="customPrompt" id="customPrompt" placeholder="Leave empty for default">
+</div>
+
+
+
+    <!-- <br /> -->
+<br />
 
   <!-- <input type="button" value="Set wallpaper" disabled/> -->
   <button id="support">

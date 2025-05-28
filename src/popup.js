@@ -113,6 +113,11 @@ let saveSettings = (id, checkbox = false) => {
       chrome.storage.local.set({ fontType: value });
       chrome.tabs.reload();
       break;
+    case "ai":
+      chrome.storage.local.set({ ai: value });
+      chrome.tabs.reload();
+      aiSettings.hidden = !value;
+      break;
     default:
       chrome.storage.local.set({ [id]: value });
       chrome.tabs.reload();
@@ -136,6 +141,8 @@ let restoreSettings = () => {
       translation: translation,
       ai: ai,
       ua: null, // i don't really understand it
+      customModel: customModel,
+      customPrompt: customPrompt,
     },
     (items) => {
       redrawTestLevels(items.testType);
@@ -162,7 +169,12 @@ let restoreSettings = () => {
         translation.checked = items.translation;
         char.value = items.char;
       }
+      // ai settings
+      aiSettings.hidden = !items.ai;
+      // customModel.value = items.customModel;
+      // customPrompt.value = items.customPrompt;
 
+      // fonts settings for various platforms 
       const ua = items.ua;
 
       console.log(`items.ua: ${ua}`)

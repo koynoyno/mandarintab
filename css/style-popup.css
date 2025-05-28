@@ -44,7 +44,7 @@ label {
   font-weight: normal;
 }
 
-select {
+select, input {
   margin-top: 0.1em;
   margin-bottom: 0.4em;
 }
@@ -203,7 +203,15 @@ select,
   } */
 
   #info:hover {
-      color: #fff;
-      opacity: 1;
-    }
+    color: #fff;
+    opacity: 1;
+  }
+
+
+
+
+  /* Solid border */
+  hr.solid {
+    border-top: 3px solid #bbb;
+  }
 }

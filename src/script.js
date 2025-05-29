@@ -28,20 +28,47 @@ chrome.storage.local.get(null, async (items) => {
     // });
   }
 
-  // BETA check if online, TEST if it introduces delay! 
-  // draw characters, pinyin, tones, translation, QR
-  let char = draw(items, window.navigator.onLine);
-  // let char = draw(items);
+  // draw characters, pinyin, tones, translation. TIME CRITICAL.
+  let word = draw(items);
+  
+  // add sentence examples link
+  // moved from draw.js to support text selection
+  let online = window.navigator.onLine;
+  if (items.sentenceExamples) {
+    let url;
+    if (items.ua.mobile) {
+      // console.log('mobile')
+      url = `plecoapi://x-callback-url/df?hw=${word}&sec=dict`;
+      // dict|stroke|chars|words|sents
+      char.addEventListener("click", (e) => {
+        window.open(url, '_blank');
+      });
+      char.classList.add("charClickable");
+    } else if (!items.ua.mobile && online) {
+      // console.log('desktop')
+      if (items.char == "simplified") {
+        char.addEventListener("click", (e) => {
+          url = `https://www.mdbg.net/chinese/dictionary?wdqb=%2A${word}%2A&wdrst=0`;
+          window.open(url, '_blank');
+        });
+      } else {
+        char.addEventListener("click", (e) => {
+          url = `https://www.mdbg.net/chinese/dictionary?wdqb=%2A${word}%2A&wdrst=1`;
+          window.open(url, '_blank');
+        });
+      }
+      char.classList.add("charClickable");
+    }
+  }
 
   // BETA UNOPTIMIZED update title
-  document.title = char;
+  document.title = word;
 
   // BETA unoptimized
   // window.addEventListener("mousedown", (e) => {
   //   chrome.tabs.reload();
   // }) 
   // document.getElementsByClassName('char').mousedown = '';
-
 
   // display first launch greeting or seen words message
   // items.firstLaunch = true;
@@ -61,7 +88,6 @@ chrome.storage.local.get(null, async (items) => {
   } else {
     // ...
   }
-
 
   // repopulate cache and update counter
   // items.game.wordsSeen++;
@@ -118,19 +144,3 @@ chrome.storage.local.get(null, async (items) => {
     });
   }
 });
-
-
-// apply dark mode beautiful way
-// chrome.storage.onChanged.addListener(function (changes, namespace) {
-//   for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
-//     switch (key) {
-//       case "darkMode":
-//         document.body.classList.toggle("darkMode");
-//       default:
-//       // console.log(
-//       //   `Storage key "${key}" in namespace "${namespace}" changed.`,
-//       //   `Old value was "${JSON.stringify(oldValue, undefined, 4)}", new value is "${JSON.stringify(newValue, undefined, 4)}".`
-//       // );
-//     }
-//   }
-// });

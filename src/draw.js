@@ -2,12 +2,7 @@ import splitAndKeep from "./npm/color.js";
 
 // TODO: if items.timesFont then ${times-font} resolves to CSS class
 
-export let draw = (items, online) => {
-
-  // debug
-  // console.log(items)
-
-
+export let draw = (items) => {
   let char = "";
   let drawObject = ""; // to call insertAdjacentHTML only once
   let minHeight = 3.5; // BETA for AI to prevent jumping text
@@ -29,10 +24,6 @@ export let draw = (items, online) => {
     // ...or just retrieve word from HSK dictionary
     char = data[items.char]; // why items.char and not data.char? 
   }
-
-  // whether the word should be clickable or not
-  // let classChar = items.sentenceExamples ? "char charClickable" : "char";
-  let classChar = ((items.sentenceExamples && items.ua.mobile) || (items.sentenceExamples && online && !items.ua.mobile)) ? "char charClickable" : "char";
 
   // DEV show pinyin and english on hover
   let title = ""; // hover suggestion if pinyin or translation are turned off
@@ -68,32 +59,10 @@ export let draw = (items, online) => {
       }
     }
 
-    drawObject += `<p class="${classChar} ${items.fontType}-font" align="center" ${title}>${coloredChar}</p>`;
+    drawObject += `<p id="char" class="char ${items.fontType}-font" align="center" ${title}>${coloredChar}</p>`;
   } else {
     // just draw characters
-    drawObject += `<p class="${classChar} ${items.fontType}-font" align="center" ${title}>${char}</p>`;
-  }
-
-  // add sentence examples link
-  // BETA: or deeplink to pleco, taken from https://stackoverflow.com/a/29509267
-  // TODO: doesn't work for some reason
-
-  if (items.sentenceExamples) {
-    let url;
-    if (items.ua.mobile) {
-      // console.log('mobile')
-      url = `plecoapi://x-callback-url/df?hw=${char}&sec=dict`;
-      // dict|stroke|chars|words|sents
-      drawObject = `<a href="${url}" class="link" target="_blank">${drawObject}</a>`;
-    } else if (!items.ua.mobile && online) {
-      // console.log('desktop')
-      if (items.char == "simplified") {
-        url = `https://www.mdbg.net/chinese/dictionary?wdqb=%2A${char}%2A&wdrst=0`;
-      } else {
-        url = `https://www.mdbg.net/chinese/dictionary?wdqb=%2A${char}%2A&wdrst=1`;
-      }
-      drawObject = `<a href="${url}" class="link" target="_blank">${drawObject}</a>`;
-    }
+    drawObject += `<p id="char" class="char ${items.fontType}-font" align="center" ${title}>${char}</p>`;
   }
 
   // IDEA what if not to draw it? 

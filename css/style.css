@@ -315,7 +315,7 @@ a {
 
 .charClickable:hover {
   /* transition: transform 0.225s ease-in; */
-  transform: scale(1.05);
+  transform: scale(1.01);
   transition-duration: .3s;
   
 }
@@ -417,7 +417,7 @@ color: rgba(36, 32, 255, 1);
 color: rgba(160, 16, 218, 1);
 }
 .tone5::selection {
-color: rgba(0, 0, 0, 0.67);
+color: rgba(255, 255, 255, 0.67);
 }
 .tone1::selection,
 .tone2::selection,

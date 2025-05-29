@@ -184,10 +184,10 @@ let restoreSettings = () => {
       // if (!ua) return;
       if (items.ua.os == "macOS") {
         document.getElementById('fontTypeLabel').removeAttribute("hidden")
-        if (items.ua.browser == "Chrome") {
-          document.getElementById('fontType').removeAttribute("hidden")
-        } else if (items.ua.browser == "Safari") {
+        if (items.ua.browser == "Safari") {
           document.getElementById('fontTypeSafari').removeAttribute("hidden")
+        } else {
+          document.getElementById('fontType').removeAttribute("hidden")
         }
       }
 

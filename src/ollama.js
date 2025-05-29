@@ -81,7 +81,8 @@ export let ollamaPrompt = async (items) => {
     // });
 }
 
-const output = document.querySelector('.ai');
+// const output = document.querySelector('.ai');
+let output = document.getElementById("ai");
 output.textContent = ''; // Clear previous
 
 // debug

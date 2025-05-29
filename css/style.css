@@ -29,6 +29,7 @@ body {
   /* overflow: hidden; */
   user-select: none;
   -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 /* to be able to select text */
@@ -41,6 +42,7 @@ body {
 #wordsSeenNumber {
   user-select: text;
   -webkit-user-select: text;
+  -moz-user-select: text;
 }
 
 p {
@@ -352,36 +354,11 @@ a {
 }
 
 /* Pleco Tone Colors */
-.tone1 {
-  /* background-image: rgb(227,0,0); */
-  background: linear-gradient(180deg,
-      rgba(227, 0, 0, 0.67) 0%,
-      rgba(227, 0, 0, 1) 100%);
-}
-
-.tone2 {
-  background: linear-gradient(180deg,
-      rgba(2, 179, 28, 0.67) 0%,
-      rgba(2, 179, 28, 1) 100%);
-}
-
-.tone3 {
-  background: linear-gradient(180deg,
-      rgba(36, 32, 255, 0.67) 0%,
-      rgb(36, 32, 255) 100%);
-}
-
-.tone4 {
-  background: linear-gradient(180deg,
-      rgba(160, 16, 218, 0.67) 0%,
-      rgb(160, 16, 218) 100%);
-}
-
-.tone5 {
-  background: linear-gradient(180deg,
-      rgba(0, 0, 0, 0.67) 0%,
-      rgba(0, 0, 0, 1) 100%);
-}
+.tone1 { background-image: linear-gradient(rgba(227, 0, 0, 0.67), rgba(227, 0, 0, 1));}
+.tone2 { background-image: linear-gradient(rgba(2, 179, 28, 0.67), rgba(2, 179, 28, 1));}
+.tone3 { background-image: linear-gradient(rgba(36, 32, 255, 0.67), rgba(36, 32, 255, 1));}
+.tone4 { background-image: linear-gradient(rgba(160, 16, 218, 0.67), rgba(160, 16, 218, 1));}
+.tone5 { background-image: linear-gradient(rgba(0, 0, 0, 0.67), rgba(0, 0, 0, 1));}
 
 .tone1,
 .tone2,
@@ -389,14 +366,69 @@ a {
 .tone4,
 .tone5 {
   /* padding-top: 0.3em; */
-  background-clip: text;
+  /* background-clip: text;
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
+  -moz-text-fill-color: transparent; */
+  color: transparent;
+  background-clip: text;
 }
 
+.tone1::selection {
+color: rgba(227, 0, 0, 0.67);
+}
+.tone2::selection {
+color: rgba(2, 179, 28, 0.67);
+}
+.tone3::selection {
+color: rgba(36, 32, 255, 0.67);
+}
+.tone4::selection {
+color: rgba(160, 16, 218, 0.67);
+}
+.tone5::selection {
+color: rgba(0, 0, 0, 0.67);
+}
+.tone1::selection,
+.tone2::selection,
+.tone3::selection,
+.tone4::selection,
+.tone5::selection {
+background-color: #c4dbfc;
+}
+
+/* DARK MODE, these settings should be applied at the end */
+@media (prefers-color-scheme: dark) {
+
+.tone5 { background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1)); }
+
+.tone1::selection {
+color: rgba(227, 0, 0, 1);
+}
+.tone2::selection {
+color: rgba(2, 179, 28, 1);
+}
+.tone3::selection {
+color: rgba(36, 32, 255, 1);
+}
+.tone4::selection {
+color: rgba(160, 16, 218, 1);
+}
+.tone5::selection {
+color: rgba(0, 0, 0, 0.67);
+}
+.tone1::selection,
+.tone2::selection,
+.tone3::selection,
+.tone4::selection,
+.tone5::selection {
+background-color: #374964;
+}
+}
+
+/* ============= AI ============ */
 
 
 /* BETA AI */
@@ -410,7 +442,7 @@ a {
   max-width: 90%;
   white-space: pre-wrap;
   } */
-  .ai {
+  #ai {
     /* align-self: flex-start; */
     /* align-self: baseline; */
     /* margin: 0em; */
@@ -437,6 +469,7 @@ a {
     white-space: pre-wrap;
     user-select: all;
     -webkit-user-select: all;
+    -moz-user-select: all;
     transition: opacity .2s ease-in-out;
     text-align: center;
     /* to prevent content from moving */
@@ -445,26 +478,8 @@ a {
     margin-bottom: 0;
 }
 
-.ai pre:first-of-type {
+#ai pre:first-of-type {
   /* margin-top: 0.5em; */
   font-size: 3em;
   margin-bottom: 0.1em;
-}
-
-
-/* DARK MODE, these settings should be applied at the end */
-/* .darkMode .tone5 { */
-@media (prefers-color-scheme: dark) {
-   .tone5 {
-      background: linear-gradient(180deg,
-          rgba(255, 255, 255, 0.5) 0%,
-          rgb(255, 255, 255) 100%);
-      /* padding-top: 1em; */
-      background-clip: text;
-      background-size: 100%;
-      -webkit-background-clip: text;
-      -moz-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      -moz-text-fill-color: transparent;
-    }
 }

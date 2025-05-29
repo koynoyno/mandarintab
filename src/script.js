@@ -78,6 +78,7 @@ chrome.storage.local.get(null, async (items) => {
       chrome.tabs.reload();
     }
   });
+
   window.addEventListener("keydown", (e) => {
     if (e.code === "Space") {
       chrome.tabs.reload();
@@ -91,13 +92,27 @@ chrome.storage.local.get(null, async (items) => {
     return false;
   })
 
+  // prevent page from reloading on char right click
+  let charOutput = document.querySelector(".char");
+  charOutput.addEventListener("mousedown", (e) => {
+    if (e.button == 2) {
+      e.stopPropagation();
+    }
+  });
+
+  // prevent context menu being hidden on char right click
+  charOutput.addEventListener("contextmenu", (e) => {
+    e.stopPropagation();
+    return false;
+  })
+
   if (items.ai) {
     const { ollamaPrompt } = await import("./ollama.js");
     await ollamaPrompt(items)
-    document.getElementsByClassName("ai")[0].addEventListener("mousedown", async (e) => {
+    ai.addEventListener("mousedown", async (e) => {
       if (e.button == 2) {
         e.stopPropagation();
-        document.getElementsByClassName("ai")[0].innerHTML = "";
+        ai.innerHTML = "";
         await ollamaPrompt(items)
       }
     });

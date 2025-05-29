@@ -138,7 +138,7 @@ export let draw = (items, online) => {
   if (items.ai) {
     // drawObject += `<button id="example">Example</button><div class="ai"><pre id="output"></pre></div>`
      // BETA for AI to prevent jumping text
-    drawObject += `<div class="ai" style="min-height: ${minHeight}rem;"></div>`
+    drawObject += `<div id="ai" style="min-height: ${minHeight}rem;"></div>`
   }
 
   // draw everything

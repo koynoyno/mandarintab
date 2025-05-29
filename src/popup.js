@@ -361,7 +361,7 @@ keepInRAM.addEventListener("click", () => {
 chrome.storage.local.get(
   {ua: null},
   (items) => {
-    if (items.ua.os == "macOS") {
+    if (items.ua.os == "Safari") {
       window.onblur = function(){
         saveSettings("customModel");
         saveSettings("customPrompt");

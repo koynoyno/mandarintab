@@ -61,7 +61,6 @@ output.textContent = ''; // Clear previous
 // });
 
 export let ollama = async (model, prompt, fontType, duration) => {
-
     const response = await fetch('http://localhost:11434/api/generate', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -72,7 +71,11 @@ export let ollama = async (model, prompt, fontType, duration) => {
             keep_alive: duration // BETA highly experimental lol 
         })
     });
-    // console.log(response)
+
+    if (!response.ok) {
+        document.querySelector('.ai').innerHTML = "<pre class='output'>model not found</pre>";
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
@@ -93,17 +96,8 @@ export let ollama = async (model, prompt, fontType, duration) => {
             if (!line.trim()) continue;
             try {
                 const json = JSON.parse(line);
-                // if (json.response) {
-                //     result += json.response;
-                //     output.textContent = result;
-                // }
                 if (json.response) {
                     result += json.response;
-                    // 將每一行用 <pre> 包起來
-                    // const html = result
-                    //     .split('\n')
-                    //     .map(line => `<pre class="output">${line}</pre>`)
-                    //     .join('');
                     const html = result
                         .split('\n')
                         .map((line, idx) => 
@@ -139,6 +133,10 @@ export let ollamaSafari = async (model, prompt, fontType, duration) => {
             }
         });
     });
+
+    if (JSON.stringify(response).includes('error')) {
+        document.querySelector('.ai').innerHTML = `<pre class='output'>${JSON.stringify(response)}</pre>`;
+    }
 
     const html = response.response
         .split('\n')

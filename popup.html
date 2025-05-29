@@ -128,44 +128,49 @@
 
   <label class="cb" for="zhuyin"><input type="checkbox" id="zhuyin" name="zhuyin" /> Zhuyin</label>
 
-  
+
   <!-- TODO add support for TOCFL -->
-  <div id="translationLabel" hidden><label class="cb" for="translation"><input type="checkbox" id="translation" name="translation" />
-    Translation<sup style="font-size: 8px;"> (HSK only)</sup></label></div>
-    
-    <!-- TODO add support for TOCFL -->
-    <div id="colorLabel" hidden><label class="cb" for="color"><input type="checkbox" id="color" name="color" /> Tone colors<sup
-      style="font-size: 8px;"> (HSK only)</sup></label></div>
-  <!-- <hr align="center" width="100%"> -->
-      
-  <label class="cb" for="ai" id="aiLabel" hidden><input type="checkbox" id="ai" name="ai" hidden /> Sentence example (AI)</label>
-  <!-- <br /> -->
-  <!-- <br /> -->
-   <!-- AI ✨ -->
+  <div id="translationLabel" hidden><label class="cb" for="translation"><input type="checkbox" id="translation"
+        name="translation" />
+      Translation<sup style="font-size: 8px;"> (HSK only)</sup></label></div>
+
+  <!-- TODO add support for TOCFL -->
+  <div id="colorLabel" hidden><label class="cb" for="color"><input type="checkbox" id="color" name="color" /> Tone
+      colors<sup style="font-size: 8px;"> (HSK only)</sup></label></div>
   <!-- <hr align="center" width="100%"> -->
 
-<div id="aiSettings" hidden>
-  <br />
-<label for="customModel">Model name (Ollama)</label>
-<input type="text" name="customModel" id="customModel" placeholder="gemma3:latest">
+  <label class="cb" for="ai" id="aiLabel" hidden><input type="checkbox" id="ai" name="ai" hidden /> Sentence example
+    (AI)</label>
+  <!-- <br /> -->
+  <!-- <br /> -->
+  <!-- AI ✨ -->
+  <!-- <hr align="center" width="100%"> -->
 
-<label for="customPrompt">Custom prompt</label>
-<input type="text" name="customPrompt" id="customPrompt" placeholder="Leave empty for default">
+  <div id="aiSettings" hidden>
+    <br />
+    <label for="customModel">Model name (Ollama)</label>
+    <input type="text" name="customModel" id="customModel" placeholder="gemma3:latest">
 
-<label class="cb" for="keepInRAM"><input type="checkbox" id="keepInRAM" name="keepInRAM" /> Keep model in RAM <span id="info" title="By default models are kept in memory for 5 minutes before being unloaded. This allows for quicker response times if you are making numerous requests to the LLM. Turn on during study sessions or if you have a lot of RAM.">⚠️</span></label>
-</div>
+    <label for="customPrompt">Custom prompt</label>
+    <textarea name="customPrompt" id="customPrompt" placeholder="Leave empty for default"></textarea>
+
+    <label class="cb" for="keepInRAM"><input type="checkbox" id="keepInRAM" name="keepInRAM" /> Keep model in RAM <span
+        id="info"
+        title="By default models are kept in memory for 5 minutes before being unloaded. This allows for quicker response times if you are making numerous requests to the LLM. Turn on during study sessions or if you have a lot of RAM.">⚠️</span></label>
+  </div>
 
 
 
 
 
-    <!-- <br /> -->
-<br />
+ 
 
   <!-- <input type="button" value="Set wallpaper" disabled/> -->
-  <button id="support"><div id="supportText">ɴᴇxᴛ-ʟᴇᴠᴇʟ ᴛɪᴘs ʏᴏᴜ ɴᴇᴇᴅ ᴏɴ</div><div id="supportTextAI" hidden>ɢᴜɪᴅᴇ ꜰᴏʀ ᴜꜱɪɴɢ ᴀɪ ᴏɴ</div>
-        <strong><span id="supportLink">ᴄʜɪɴᴇsᴇᴛᴀʙ.ᴄᴏᴍ</span></strong>
-    </button>
+  <button id="support">
+    <div id="supportText">ɴᴇxᴛ-ʟᴇᴠᴇʟ ᴛɪᴘs ʏᴏᴜ ɴᴇᴇᴅ ᴏɴ</div>
+    <div id="supportTextAI" hidden>ɢᴜɪᴅᴇ ꜰᴏʀ ᴜꜱɪɴɢ ᴀɪ ᴏɴ</div>
+    <strong><span id="supportLink">ᴄʜɪɴᴇsᴇᴛᴀʙ.ᴄᴏᴍ</span></strong>
+  </button>
 
   <!-- <br /> -->
 

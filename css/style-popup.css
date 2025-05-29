@@ -11,12 +11,14 @@ body {
   margin: 2em;
   user-select: none;
   font-family: "Noto Sans", Fallback, sans-serif;
-  /* width: 165px; */
+  width: 200px;
   display: flex;
   flex-direction: column;
   background: linear-gradient(0deg, #f1f3f4 0%, #dee1e6 100%);
   line-height: 1em;
   min-width: 150px;
+  max-width: 200px;
+  /* zoom: 1; */
   /* TODO: lazy fix, replace with em */
 }
 
@@ -44,7 +46,7 @@ label {
   font-weight: normal;
 }
 
-select, input {
+select, input, textarea {
   margin-top: 0.1em;
   margin-bottom: 0.4em;
 }
@@ -58,7 +60,7 @@ select:hover {
   border: none;
   text-align: center;
   font-size: 0.7em;
-  margin-top: 3px;
+  margin-top: 2em;
   margin-bottom: 0;
   padding: 0;
 }
@@ -157,6 +159,25 @@ select,
 }
 
 
+
+
+#customPrompt {
+  resize: vertical;
+  overflow: hidden;
+  /* height: 5em; */
+  width: 100%;
+  min-height: 1em;
+  field-sizing: content; 
+  -webkit-field-sizing: content;
+  -moz-field-sizing: content;
+}
+
+input[type="text"], textarea {
+  font-family: "Noto Sans", Fallback, sans-serif;
+  width: 100%;
+}
+
+
 /* DARK MODE, these settings should be applied at the end */
 @media (prefers-color-scheme: dark) {
   body {
@@ -168,12 +189,12 @@ select,
     color: white;
   }
 
-  select, input {
+  select, input, textarea {
     background: rgba(0, 0, 0, 0.3);
     color: #fff;
   }
 
-  select:hover, input:hover {
+  select:hover, input:hover, textarea:hover {
     background-color: #111;
   }
 

@@ -28,8 +28,10 @@ chrome.storage.local.get(null, async (items) => {
     // });
   }
 
+  // BETA check if online, TEST if it introduces delay! 
   // draw characters, pinyin, tones, translation, QR
-  let char = draw(items);
+  let char = draw(items, window.navigator.onLine);
+  // let char = draw(items);
 
   // BETA UNOPTIMIZED update title
   document.title = char;

@@ -129,24 +129,28 @@ let saveSettings = (id, checkbox = false) => {
 // =============================================
 // get settings on window load
 let restoreSettings = () => {
+  // chrome.storage.local.get({ua: null}, (items) => {
+  //   console.log(`WTFFFF items.ua: ${items.ua.browser}`);
+
+  //     // if (!ua) return;
+  //     if (items.ua.os == "macOS") {
+  //       document.getElementById('fontTypeLabel').removeAttribute("hidden")
+  //       if (items.ua.browser == "Chrome") {
+  //         document.getElementById('fontType').removeAttribute("hidden")
+  //       } else if (items.ua.browser == "Safari") {
+  //         document.getElementById('fontTypeSafari').removeAttribute("hidden")
+  //       }
+  //     }
+
+  //     // hide AI checkbox on mobile
+  //     if (!items.ua.mobile) {
+  //       document.getElementById('ai').removeAttribute("hidden")
+  //       document.getElementById('aiLabel').removeAttribute("hidden")
+  //     }
+  //   }); 
+  
   chrome.storage.local.get(
-    {
-      testType: testType,
-      level: level,
-      char: char,
-      dayLimit: dayLimit,
-      fontType: fontType,
-      sentenceExamples: sentenceExamples,
-      color: color,
-      pinyin: pinyin,
-      zhuyin: zhuyin,
-      translation: translation,
-      ai: ai,
-      ua: null, // i don't really understand it
-      customModel: customModel,
-      customPrompt: customPrompt,
-      keepInRAM: keepInRAM,
-    },
+    null,
     (items) => {
       redrawTestLevels(items.testType);
       testType.value = items.testType;
@@ -172,6 +176,26 @@ let restoreSettings = () => {
         translation.checked = items.translation;
         char.value = items.char;
       }
+
+      // fonts settings for various platforms 
+      // const ua = items.ua;
+
+      console.log(`items.ua: ${items.ua}`)
+      // if (!ua) return;
+      if (items.ua.os == "macOS") {
+        document.getElementById('fontTypeLabel').removeAttribute("hidden")
+        if (items.ua.browser == "Chrome") {
+          document.getElementById('fontType').removeAttribute("hidden")
+        } else if (items.ua.browser == "Safari") {
+          document.getElementById('fontTypeSafari').removeAttribute("hidden")
+        }
+      }
+
+      // hide AI checkbox on mobile
+      if (!items.ua.mobile) {
+        document.getElementById('ai').removeAttribute("hidden")
+        document.getElementById('aiLabel').removeAttribute("hidden")
+      }
       // ai settings
       aiSettings.hidden = !items.ai;
       if (items.ai) {
@@ -188,26 +212,6 @@ let restoreSettings = () => {
           keepInRAM.checked = items.keepInRAM;
         }
       } 
-      
-      // fonts settings for various platforms 
-      const ua = items.ua;
-
-      console.log(`items.ua: ${ua}`)
-      // if (!ua) return;
-      if (ua.os == "macOS") {
-        document.getElementById('fontTypeLabel').removeAttribute("hidden")
-        if (ua.browser == "Chrome") {
-          document.getElementById('fontType').removeAttribute("hidden")
-        } else if (ua.browser == "Safari") {
-          document.getElementById('fontTypeSafari').removeAttribute("hidden")
-        }
-      }
-
-      // hide AI checkbox on mobile
-      if (!ua.mobile) {
-        document.getElementById('ai').removeAttribute("hidden")
-        document.getElementById('aiLabel').removeAttribute("hidden")
-      }
     }
   );
 };
@@ -324,19 +328,47 @@ window.addEventListener("load", async () => {
   //   window.close();
   // });
 
+
+// doesn't work properly in Safari
 customModel.addEventListener("focusout", (event) => {
   saveSettings("customModel");
-})  
+})
 
+// workaround for Safari
+customModel.addEventListener("keydown", (e) => {
+  if (e.code === "Enter") {
+    saveSettings("customModel");
+  }
+});
+
+// doesn't work properly in Safari
 customPrompt.addEventListener("focusout", (event) => {
   saveSettings("customPrompt");
+})
+
+// customPrompt field requires separate lines?
+// workaround for Safari
+customPrompt.addEventListener("keydown", (e) => {
+  if (e.code === "Enter") {
+    saveSettings("customPrompt");
+  }
 })
 
 keepInRAM.addEventListener("click", () => {
   saveSettings("keepInRAM", { checkbox: true });
 })
 
-
+chrome.storage.local.get(
+  {ua: null},
+  (items) => {
+    if (items.ua.os == "macOS") {
+      window.onblur = function(){
+        saveSettings("customModel");
+        saveSettings("customPrompt");
+      }
+    }
+  }
+)
 
 
 

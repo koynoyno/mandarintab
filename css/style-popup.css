@@ -7,13 +7,13 @@ body {
   margin: 1em 2em;
   user-select: none;
   font-family: "Noto Sans", Fallback, sans-serif;
-  /* width: 200px; */
+  width: 200px;
   display: flex;
   flex-direction: column;
   background: linear-gradient(0deg, #dee1e6 0%, #f1f3f4 100%);
   line-height: 1em;
   min-width: 150px;
-  max-width: 180px;
+  max-width: 200px;
   /* zoom: 1; */ /* set up in popup.html to avoid zoom bugs */
   /* TODO: lazy fix, replace with em */
 }
@@ -146,18 +146,18 @@ input[type="text"], textarea {
     padding: 2px 0;
     background: rgba(0, 0, 0, 0.3);
     color: #fff;
-    border: 1px solid #707070;
+    border: 1px solid #525252;
     border-radius: 1px;
   }
 
-  input[type="text"] {
-    border: 1px solid #707070;
+  input[type="text"], textarea {
+    border: 1px solid #525252;
     border-radius: 1px;
   }
 
-  input[type="button"]:hover, input[type="text"]:hover {
+  input[type="button"]:hover, input[type="text"]:hover, textarea:hover {
     background-color: #111;
-    border: 1px solid #aaa;
+    /* border: 1px solid #aaa; */
   }
 
   /* #panda,
@@ -170,11 +170,4 @@ input[type="text"], textarea {
     opacity: 1;
   }
 
-
-
-
-  /* Solid border */
-  hr.solid {
-    border-top: 3px solid #bbb;
-  }
 }

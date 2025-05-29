@@ -1,6 +1,6 @@
 // apply settings
 let saveSettings = (id, checkbox = false) => {
-  
+
   let value;
   if (checkbox) {
     value = document.querySelector(`#${id}`).checked;
@@ -97,7 +97,11 @@ let restoreSettings = () => {
       level.value = items.level;
       // char.value = items.char;
       dayLimit.value = items.dayLimit;
-      fontType.value = items.fontType;
+      if (items.ua.browser == "Safari") {
+        fontTypeSafari.value = items.fontType;
+      } else {
+        fontType.value = items.fontType;
+      }
       sentenceExamples.checked = items.sentenceExamples;
       // color.checked = items.color;
       pinyin.checked = items.pinyin;
@@ -124,7 +128,7 @@ let restoreSettings = () => {
       // if (!ua) return;
       if (items.ua.os == "macOS") {
         document.getElementById('fontTypeLabel').removeAttribute("hidden")
-        if (items.ua.browser == "Safari") {
+        if (items.ua.browser == "Safari" || items.ua.os == "iOS") {
           document.getElementById('fontTypeSafari').removeAttribute("hidden")
         } else {
           document.getElementById('fontType').removeAttribute("hidden")

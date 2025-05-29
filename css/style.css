@@ -294,8 +294,8 @@ p {
   margin-bottom: 0.1em;
 }
 
-.Songti-font {
-  /* not required to be set */
+.Times-font {
+  font-family: "Times New Roman" !important;
 }
 
 /* nice fonts */

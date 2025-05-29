@@ -148,10 +148,10 @@
 
   <div id="aiSettings" hidden>
     <br />
-    <label for="customModel">Model name (Ollama)</label>
+    <label for="customModel">Model name (Ollama) <span id="info" title="Run `ollama list` to see the list of available models">ℹ️</span></label>
     <input type="text" name="customModel" id="customModel" placeholder="gemma3:latest">
 
-    <label for="customPrompt">Custom prompt</label>
+    <label for="customPrompt">Custom prompt <span id="info" title="{word}, {translation}, {pinyin}, {zhuyin} are available for substitution. {translation} is currently unavailable for TOCFL test. Leave empty for default.">ℹ️</span></label>
     <textarea name="customPrompt" id="customPrompt" placeholder="Leave empty for default"></textarea>
 
     <label class="cb" for="keepInRAM"><input type="checkbox" id="keepInRAM" name="keepInRAM" /> Keep model in RAM <span

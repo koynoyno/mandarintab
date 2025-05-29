@@ -25,8 +25,39 @@ export let ollamaPrompt = async (items) => {
     prompt += " Don't output anything else. Reply in plain text. Don't add periods."
     console.log(prompt)
     } else {
-        console.log(`items.customPrompt: ${items.customPrompt}`)
-        prompt = items.customPrompt;
+        // console.log(`items.customPrompt: ${items.customPrompt}`)
+
+        // BETA 
+        function parseCustomPrompt(items) {
+            let word;
+            let translation = items.cache.translation;
+            let pinyin = items.cache.pinyin;
+            let zhuyin = items.cache.zhuyin;
+            
+            if (items.char == "simplified" && items.testType === "hsk3") {
+                word = items.cache.simplified;
+            } else if (items.char == "traditional" && items.testType === "hsk3") {
+                word = items.cache.traditional;
+            } else {
+                word = items.cache.詞彙;
+            }
+
+            const replacements = {
+              '{word}': word || '',
+              '{translation}': translation || '',
+              '{pinyin}': pinyin || '',
+              '{zhuyin}': zhuyin || ''
+            };
+          
+            let prompt = items.customPrompt || '';
+            for (const [key, value] of Object.entries(replacements)) {
+              prompt = prompt.replaceAll(key, value);
+            }
+          
+            return prompt;
+          }
+        prompt = parseCustomPrompt(items) 
+        console.log(`parsed custom prompt: ${prompt}`)         
     }
 
     if (!items.customModel) {
@@ -34,7 +65,7 @@ export let ollamaPrompt = async (items) => {
         // let model = "glm4-0414:9b" // ??Gb RAM
         model = "gemma3:latest" // 4.2Gb RAM
     } else {
-        console.log(`items.customModel: ${items.customModel}`)
+        // console.log(`items.customModel: ${items.customModel}`)
         model = items.customModel
     }
 
@@ -42,10 +73,10 @@ export let ollamaPrompt = async (items) => {
     // TODO: remove
     if (items.ua.browser == "Safari") {
         await ollamaSafari(model, prompt, items.fontType, duration);
-        console.log("Safari")
+        // console.log("Safari")
     } else {
         await ollama(model, prompt, items.fontType, duration);
-        console.log("Chrome")
+        // console.log("Chrome")
     }
     // });
 }

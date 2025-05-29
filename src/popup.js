@@ -1,40 +1,12 @@
-// darkMode
-// document.body.classList.add(localStorage.getItem("darkMode"));
-// const { ua } = await chrome.storage.local.get("ua");
-//   // if (!ua) return;
-// if (ua.os == "macOS") {
-//   document.getElementById('fontTypeLabel').removeAttribute("hidden")
-//   if (ua.browser == "Chrome") {
-//     document.getElementById('fontType').removeAttribute("hidden")
-//   } else if (ua.browser == "Safari") {
-//     document.getElementById('fontTypeSafari').removeAttribute("hidden")
-//   }
-// }
-
-// // hide AI checkbox on mobile
-// if (!ua.mobile) {
-//   document.getElementById('ai').removeAttribute("hidden")
-//   document.getElementById('aiLabel').removeAttribute("hidden")
-// }
-
-// ==========================================
 // apply settings
 let saveSettings = (id, checkbox = false) => {
+  
   let value;
   if (checkbox) {
     value = document.querySelector(`#${id}`).checked;
   } else {
     value = document.querySelector(`#${id}`).value;
   }
-
-  // DELETE if settings are stable
-  // remove cache if level or day limit is changed
-  // if (id == "level" || id == "dayLimit") {
-  //   chrome.storage.local.set({ [id]: value, randomWords: [], cache: {} });
-  // } else {
-  //   // otherwise just apply id (minimize sync.set calls)
-  //   chrome.storage.local.set({ [id]: value });
-  // }
 
   switch (id) {
     // remove cache if level or day limit is changed
@@ -95,19 +67,6 @@ let saveSettings = (id, checkbox = false) => {
       chrome.tabs.reload();
       break;
 
-    // redraw popup if darkMode is toggled
-    // case "darkMode":
-    //   chrome.storage.local.set({ [id]: value });
-    //   document.body.classList.toggle("darkMode");
-    //   if (value) {
-    //     // document.body.classList.add("darkMode");
-    //     localStorage.setItem("darkMode", "darkMode");
-
-    //   } else {
-    //     // document.body.classList.remove("darkMode");
-    //     localStorage.removeItem("darkMode");
-    //   }
-    //   break;
     // TODO: disable Simplified when TOCFL is selected?
     case "fontTypeSafari":
       chrome.storage.local.set({ fontType: value });
@@ -129,25 +88,6 @@ let saveSettings = (id, checkbox = false) => {
 // =============================================
 // get settings on window load
 let restoreSettings = () => {
-  // chrome.storage.local.get({ua: null}, (items) => {
-  //   console.log(`WTFFFF items.ua: ${items.ua.browser}`);
-
-  //     // if (!ua) return;
-  //     if (items.ua.os == "macOS") {
-  //       document.getElementById('fontTypeLabel').removeAttribute("hidden")
-  //       if (items.ua.browser == "Chrome") {
-  //         document.getElementById('fontType').removeAttribute("hidden")
-  //       } else if (items.ua.browser == "Safari") {
-  //         document.getElementById('fontTypeSafari').removeAttribute("hidden")
-  //       }
-  //     }
-
-  //     // hide AI checkbox on mobile
-  //     if (!items.ua.mobile) {
-  //       document.getElementById('ai').removeAttribute("hidden")
-  //       document.getElementById('aiLabel').removeAttribute("hidden")
-  //     }
-  //   }); 
   
   chrome.storage.local.get(
     null,

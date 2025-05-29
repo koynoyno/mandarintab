@@ -4,24 +4,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- BETA browser interface color -->
-  <!-- <meta name="theme-color" media="(prefers-color-scheme: light)" content="white" />
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="black" /> -->
   <meta name="color-scheme" content="light dark">
   <style>
     body {
       zoom: 1.2;
     }
   </style>
-  <!-- <link rel="stylesheet" href="css/dark.css" media="(prefers-color-scheme: dark)" />
-  <link rel="stylesheet" href="css/light.css" media="(prefers-color-scheme: light)" /> -->
   <!-- <link rel="preload" href="fonts/noto-sans.woff2" as="font" type="font/woff2" crossorigin /> -->
   <link rel="preload" as="style" href="css/style-popup.css" />
   <link rel="stylesheet" href="css/style-popup.css" />
-  <!-- <script>
-    // document.body.classList.add(localStorage.getItem("darkMode"));
-  </script> -->
-  <!-- <script src="src/popup.js"></script> -->
   <link rel="preload" as="script" href="src/popup.js" crossorigin />
   <script type="module" src="src/popup.js"></script>
 </head>
@@ -29,7 +20,6 @@
 <body>
   <!-- introduces white square bug -->
   <!-- <img src="images/pusheencat.png" id="kofi" /> -->
-
 
   <!-- TODO: add zh_TW and zh_CN -->
 
@@ -89,42 +79,14 @@
     <option disabled>🇹🇼 Taiwan</option>
   </select>
 
-  <!-- BETA -->
-  <!-- <label for="onClick">On click</label>
-  <select name="onClick" id="onClick">
-    <option value="">Do nothing</option>
-    <option value="next">Show next word</option>
-    <option value="mdbg">Show MDBG dictionary</option>
-    <option value="pleco">Show Pleco dictionary</option>
-    <option value="ai">Sentence example (Ollama)</option>
-  </select> -->
+  <!-- <br /> -->
 
+  <!-- <div id="checkboxOptions"> -->
+    <label class="cb" for="sentenceExamples"><input type="checkbox" id="sentenceExamples" name="sentenceExamples" />
+      Tap to open dictionary
+      <!--      <span id="info" title="Click the word">ℹ</span>--></label>
 
-
-
-
-
-
-
-  <!-- <label for="clickAction">On click</label>
-    <select name="clickAction" id="clickAction">
-      <option value="nothing">Do nothing</option>
-      <option value="next">Show next word</option>
-      <option value="reverso">Sentence examples</option>
-      <option value="translate">Translate</option>
-    </select> -->
-
-  <br />
-
-  <!-- <label class="cb" for="qr"><input type="checkbox" id="qr" name="qr" disabled /> QR for Pleco</label> -->
-
-  <!-- <label class="cb" for="darkMode"><input type="checkbox" id="darkMode" name="darkMode" /> 🌙</label> -->
-
-  <label class="cb" for="sentenceExamples"><input type="checkbox" id="sentenceExamples" name="sentenceExamples" />
-    Tap to open dictionary
-    <!--      <span id="info" title="Click the word">ℹ</span>--></label>
-
-  <label class="cb" for="pinyin"><input type="checkbox" id="pinyin" name="pinyin" /> Pinyin</label>
+    <label class="cb" for="pinyin"><input type="checkbox" id="pinyin" name="pinyin" /> Pinyin</label>
 
   <label class="cb" for="zhuyin"><input type="checkbox" id="zhuyin" name="zhuyin" /> Zhuyin</label>
 
@@ -141,10 +103,7 @@
 
   <label class="cb" for="ai" id="aiLabel" hidden><input type="checkbox" id="ai" name="ai" hidden /> Sentence example
     (AI)</label>
-  <!-- <br /> -->
-  <!-- <br /> -->
-  <!-- AI ✨ -->
-  <!-- <hr align="center" width="100%"> -->
+  <!-- </div> -->
 
   <div id="aiSettings" hidden>
     <br />
@@ -159,27 +118,17 @@
         title="By default models are kept in memory for 5 minutes before being unloaded. This allows for quicker response times if you are making numerous requests to the LLM. Turn on during study sessions or if you have a lot of RAM.">⚠️</span></label>
   </div>
 
-
-
-
-
- 
-
-  <!-- <input type="button" value="Set wallpaper" disabled/> -->
   <button id="support">
     <div id="supportText">ɴᴇxᴛ-ʟᴇᴠᴇʟ ᴛɪᴘs ʏᴏᴜ ɴᴇᴇᴅ ᴏɴ</div>
     <div id="supportTextAI" hidden>ɢᴜɪᴅᴇ ꜰᴏʀ ᴜꜱɪɴɢ ᴀɪ ᴏɴ</div>
     <strong><span id="supportLink">ᴄʜɪɴᴇsᴇᴛᴀʙ.ᴄᴏᴍ</span></strong>
   </button>
 
-  <!-- <br /> -->
-
   <!-- <input type="button" id="feedback" value="Share feedback" /> -->
 
   <!-- TODO: make a game too? -->
   <!-- <img src="images/panda.png" id="panda" draggable="false" /> -->
   <!-- <img src="images/corner.png" id="panda" draggable="false" title="" /> -->
-
 
   <!-- <script src="src/popup.js"></script> -->
 </body>

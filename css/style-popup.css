@@ -1,28 +1,22 @@
-/* :root {
-  color-scheme: light dark;
-} */
-
 @font-face {
   font-family: "Noto Sans";
   src: url("../fonts/noto-sans.woff2") format("woff2");
 }
 
 body {
-  margin: 2em;
+  margin: 1em 2em;
   user-select: none;
   font-family: "Noto Sans", Fallback, sans-serif;
-  width: 200px;
+  /* width: 200px; */
   display: flex;
   flex-direction: column;
-  background: linear-gradient(0deg, #f1f3f4 0%, #dee1e6 100%);
+  background: linear-gradient(0deg, #dee1e6 0%, #f1f3f4 100%);
   line-height: 1em;
   min-width: 150px;
-  max-width: 200px;
-  /* zoom: 1; */
+  max-width: 180px;
+  /* zoom: 1; */ /* set up in popup.html to avoid zoom bugs */
   /* TODO: lazy fix, replace with em */
 }
-
-
 
 /* multiple select */
 /* #testType {
@@ -92,63 +86,6 @@ select,
   cursor: default !important;
 }
 
-#panda {
-  /* BIG CUP STYLE */
-  /* margin: 2em; */
-  /* position: absolute; */
-  /* bottom: -50px; */
-  /* right: -40px !important; */
-  /* width: 160px; */
-  /* margin: auto;
-  width: 48px;
-  opacity: 0.87;
-  transition: opacity .2s ease-in-out;
-  cursor: pointer;
-  transform: scaleX(-1); */
-
-  /* margin: auto; */
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  width: 10em;
-  /* opacity: 0.87; */
-  /* transition: opacity .2s ease-in-out; */
-  /* cursor: pointer; */
-  /* transform: scaleX(-1); */
-}
-
-/* #panda.darkMode,
-#kofi.darkMode {
-  filter: invert(1);
-} */
-
-/* #panda:hover {
-  opacity: 1;
-  transition: opacity 0.225s ease-in;
-
-} */
-
-#kofi {
-  /* mix-blend-mode: darken; */
-  /* position: absolute; */
-  /* bottom: .2em; */
-  /* right: 0em; */
-  width: 4.5em;
-  padding-top: 1em;
-  margin: auto;
-  z-index: 10;
-  opacity: 0.87;
-  transition: opacity .2s ease-in-out;
-  cursor: pointer;
-  filter: drop-shadow(1px 1px 1px #222);
-}
-
-#kofi:hover {
-  opacity: 1;
-  transition: opacity 0.225s ease-in;
-  /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px; */
-}
-
 #info {
   opacity: 0.7;
   transition: opacity .2s ease-in-out;
@@ -159,7 +96,7 @@ select,
 }
 
 
-
+/* ====== AI ======== */
 
 #customPrompt {
   resize: vertical;
@@ -181,7 +118,7 @@ input[type="text"], textarea {
 /* DARK MODE, these settings should be applied at the end */
 @media (prefers-color-scheme: dark) {
   body {
-    background: linear-gradient(180deg, #202124 0%, #353535 100%) !important;
+    background: linear-gradient(180deg, #353535 0%, #202124 100%) !important;
     color: #fff !important;
   }
 

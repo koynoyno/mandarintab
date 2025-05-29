@@ -2,7 +2,7 @@
 
 <img align="right" src=images/panda.png title="酷酷酷！">
 
-Memorize Chinese words ****every time you open a new Chrome tab****. Works both on desktop (Chrome, Safari) and mobile (Safari, Kiwi) browsers. 
+Memorize Chinese words ****every time you open a new Chrome tab****. Works both on desktop (Chrome, Safari, Firefox, Edge) and mobile (Safari, Kiwi) browsers. 
 
 <img src="https://github.com/koynoyno/chinesetab/assets/46102189/6319d82b-2e64-4d25-b364-692bb44f87f8" width="200">
 <img src="https://github.com/koynoyno/chinesetab/assets/46102189/3ba17852-00bb-46b8-9a3a-a8945febcc66" width="200">

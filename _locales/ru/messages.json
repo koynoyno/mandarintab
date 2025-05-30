@@ -1,0 +1,164 @@
+{
+    "extName": {
+        "message": "Китайская вкладка"
+    },
+    "extDescription": {
+        "message": "Учите китайский в своём любимом браузере!"
+    },
+    "popup": {
+        "message": "-------------------------------------------------------"
+    },
+    "fontType": {
+        "message": "Шрифт"
+    },
+    "dayLimit": {
+        "message": "Учить сегодня"
+    },
+    "dayLimit5": {
+        "message": "5 слов"
+    },
+    "dayLimit10": {
+        "message": "10 слов"
+    },
+    "dayLimit15": {
+        "message": "15 слов"
+    },
+    "dayLimit20": {
+        "message": "20 слов"
+    },
+    "dayLimit0": {
+        "message": "Все слова"
+    },
+    "level": {
+        "message": "Уровень"
+    },
+    "levelHSK": {
+        "message": "11 000 слов 😱"
+    },
+    "levelHSK1": {
+        "message": "HSK 1 (500 слов)"
+    },
+    "levelHSK2": {
+        "message": "HSK 2 (772 слова)"
+    },
+    "levelHSK3": {
+        "message": "HSK 3 (973 слова)"
+    },
+    "levelHSK4": {
+        "message": "HSK 4 (1000 слов)"
+    },
+    "levelHSK5": {
+        "message": "HSK 5 (1071 слово)"
+    },
+    "levelHSK6": {
+        "message": "HSK 6 (1140 слов)"
+    },
+    "levelHSK7": {
+        "message": "HSK 7-9 (5636 слов)"
+    },
+    "levelTOCFL": {
+        "message": "8000 слов 🙀"
+    },
+    "levelTOCFL1": {
+        "message": "A1 (500 слов)"
+    },
+    "levelTOCFL2": {
+        "message": "A2 (500 слов)"
+    },
+    "levelTOCFL3": {
+        "message": "B1 (1500 слов)"
+    },
+    "levelTOCFL4": {
+        "message": "B2 (2500 слов)"
+    },
+    "levelTOCFL5": {
+        "message": "C1+ (3000 слов)"
+    },
+    "char": {
+        "message": "Иероглифы"
+    },
+    "charSimplified": {
+        "message": "Упрощённые"
+    },
+    "charTraditional": {
+        "message": "Традиционные"
+    },
+    "testType": {
+        "message": "Тест"
+    },
+    "China": {
+        "message": "🇨🇳 Китай"
+    },
+    "HongKong": {
+        "message": "🇭🇰 Гонконг"
+    },
+    "Macau": {
+        "message": "🇲🇴 Макао"
+    },
+    "Taiwan": {
+        "message": "🇹🇼 Тайвань"
+    },
+    "sentenceExamples": {
+        "message": "Открыть словарь по нажатию"
+    },
+    "pinyin": {
+        "message": "Пиньинь"
+    },
+    "zhuyin": {
+        "message": "Бопомофо"
+    },
+    "translation": {
+        "message": "Перевод"
+    },
+    "color": {
+        "message": "Цвет тонов"
+    },
+    "aiLabel": {
+        "message": "Пример предложения (ИИ)"
+    },
+    "customModel": {
+        "message": "Название модели (Ollama) "
+    },
+    "customModelInfo": {
+        "message": "Введите в терминале `ollama list`, чтобы увидеть доступные модели"
+    },
+    "customPrompt": {
+        "message": "Пользовательский запрос "
+    },
+    "customPromptInfo": {
+        "message": "{word}, {translation}, {pinyin} и {zhuyin} можно использовать для подстановки. В тесте TOCFL {translation} пока недоступен. Оставьте поле пустым для значения по умолчанию."
+    },
+    "customPromptPlaceholder": {
+        "message": "Оставьте пустым для значения по умолчанию"
+    },
+    "keepInRAM": {
+        "message": "Держать модель в памяти "
+    },
+    "keepInRAMInfo": {
+        "message": "По умолчанию модель хранится в памяти 5 минут перед выгрузкой. Опция выключает выгрузку и сокращает задержку при частых обращениях к ИИ. Включать во время интенсивных занятий или если у вас достаточно памяти."
+    },
+    "supportText": {
+        "message": "Полезные советы на"
+    },
+    "supportTextAI": {
+        "message": "Руководство по настройке ИИ на"
+    },
+    "supportLink": {
+        "message": "chinesetab.com"
+    },
+    "HSKOnly": {
+        "message": "(только HSK)"
+    },
+    "app": {
+        "message": "-------------------------------------------------------"
+    },
+    "modelNotFound": {
+        "message": "Модель не найдена"
+    },
+    "prompt": {
+        "message": "-------------------------------------------------------"
+    },
+    "translationLanguage": {
+        "message": "Russian"
+    }
+}

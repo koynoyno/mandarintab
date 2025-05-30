@@ -18,10 +18,15 @@ export let ollamaPrompt = async (items) => {
     } else {
         prompt += `${items.cache.詞彙} word in Traditional Chinese (Taiwan).`
     }
+    // BETA level + testType
+    if ((items.testType === "hsk3" && items.level < 7) || (items.testType === "tocfl" && items.level < 5)) {
+    prompt += ` Use vocabulary not higher than ${items.testType.toUpperCase()} level ${items.level}.`
+    }
+
     if (items.pinyin) { prompt += " Provide pinyin for the generated sentence example on a separate line." } else { prompt += " Don't provide pinyin for the generated sentence example." }
     // 2025 May: I'm yet to find a local model which can produce Zhuyin
     // if (items.zhuyin) { prompt += " Provide zhuyin for the generated sentence example on a separate line."} else {prompt += " Don't provide zhuyin for the generated sentence example."}
-    if (items.translation && items.testType !== "tocfl") { prompt += " Provide English translation for the generated sentence example on a separate line." } else { prompt += " Don't provide translation for the generated sentence example." }
+    if (items.translation) { prompt += ` Provide ${chrome.i18n.getMessage('translationLanguage')} translation for the generated sentence example on a separate line.` } else { prompt += " Don't provide translation for the generated sentence example." }
     prompt += " Don't output anything else. Reply in plain text. Don't add periods."
     console.log(prompt)
     } else {
@@ -105,7 +110,8 @@ export let ollama = async (model, prompt, fontType, duration) => {
     });
 
     if (!response.ok) {
-        document.getElementById('ai').innerHTML = "<pre class='output'>model not found</pre>";
+        let modelNotFound = chrome.i18n.getMessage('modelNotFound');
+        document.getElementById('ai').innerHTML = `<pre class='output'>${modelNotFound}</pre>`;
         throw new Error(`HTTP error! status: ${response.status}`);
     }
 

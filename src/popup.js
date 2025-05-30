@@ -51,15 +51,15 @@ let saveSettings = (id, checkbox = false) => {
       // hide 'translationLabel' and 'colorLabel' when switching to TOCFL
       if (value == "tocfl") {
         document.getElementById('char').hidden = true;
-        document.getElementById('charLabel').hidden = true;
-        document.getElementById('colorLabel').hidden = true;
-        document.getElementById('translationLabel').hidden = true;
-        // display them back when switching to HSK
+        document.getElementById('charOptions').hidden = true;
+      //   document.getElementById('colorLabel').hidden = true;
+      //   document.getElementById('translationLabel').hidden = true;
+      //   // display them back when switching to HSK
       } else {
         document.getElementById('char').hidden = false;
-        document.getElementById('charLabel').hidden = false;
-        document.getElementById('colorLabel').hidden = false;
-        document.getElementById('translationLabel').hidden = false;
+        document.getElementById('charOptions').hidden = false;
+      //   document.getElementById('colorLabel').hidden = false;
+      //   document.getElementById('translationLabel').hidden = false;
       }
 
       // TODO: switch to traditional if tocfl
@@ -115,10 +115,10 @@ let restoreSettings = () => {
       // BETA show translation and colors only if HSK selected
       if (testType.value === "hsk3") {
         levelHSK.value = items.level;
-        document.getElementById('colorLabel').hidden = false;
-        document.getElementById('translationLabel').hidden = false;
-        document.getElementById('charLabel').hidden = false;
+        // document.getElementById('colorLabel').hidden = false;
+        // document.getElementById('translationLabel').hidden = false;
         document.getElementById('char').hidden = false;
+        document.getElementById('charOptions').hidden = false;
 
         color.checked = items.color;
         translation.checked = items.translation;

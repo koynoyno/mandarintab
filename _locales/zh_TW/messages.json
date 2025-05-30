@@ -4,5 +4,161 @@
     },
     "extDescription": {
         "message": "邊瀏覽邊學中文。"
+    },
+    "popup": {
+        "message": "-------------------------------------------------------"
+    },
+    "fontType": {
+        "message": "字體"
+    },
+    "dayLimit": {
+        "message": "今日學習"
+    },
+    "dayLimit5": {
+        "message": "5 個單字"
+    },
+    "dayLimit10": {
+        "message": "10 個單字"
+    },
+    "dayLimit15": {
+        "message": "15 個單字"
+    },
+    "dayLimit20": {
+        "message": "20 個單字"
+    },
+    "dayLimit0": {
+        "message": "所有單字"
+    },
+    "level": {
+        "message": "等級"
+    },
+    "levelHSK": {
+        "message": "11000 字 😱"
+    },
+    "levelHSK1": {
+        "message": "HSK 1（500 字）"
+    },
+    "levelHSK2": {
+        "message": "HSK 2（772 字）"
+    },
+    "levelHSK3": {
+        "message": "HSK 3（973 字）"
+    },
+    "levelHSK4": {
+        "message": "HSK 4（1000 字）"
+    },
+    "levelHSK5": {
+        "message": "HSK 5（1071 字）"
+    },
+    "levelHSK6": {
+        "message": "HSK 6（1140 字）"
+    },
+    "levelHSK7": {
+        "message": "HSK 7-9（5636 字）"
+    },
+    "levelTOCFL": {
+        "message": "8000 字 🙀"
+    },
+    "levelTOCFL1": {
+        "message": "A1（500 字）"
+    },
+    "levelTOCFL2": {
+        "message": "A2（500 字）"
+    },
+    "levelTOCFL3": {
+        "message": "B1（1500 字）"
+    },
+    "levelTOCFL4": {
+        "message": "B2（2500 字）"
+    },
+    "levelTOCFL5": {
+        "message": "C1+（3000 字）"
+    },
+    "char": {
+        "message": "文字"
+    },
+    "charSimplified": {
+        "message": "簡體字"
+    },
+    "charTraditional": {
+        "message": "繁體字"
+    },
+    "testType": {
+        "message": "測驗"
+    },
+    "China": {
+        "message": "🇨🇳 中國"
+    },
+    "HongKong": {
+        "message": "🇭🇰 香港"
+    },
+    "Macau": {
+        "message": "🇲🇴 澳門"
+    },
+    "Taiwan": {
+        "message": "🇹🇼 台灣"
+    },
+    "sentenceExamples": {
+        "message": "點擊開啟字典"
+    },
+    "pinyin": {
+        "message": "拼音"
+    },
+    "zhuyin": {
+        "message": "注音"
+    },
+    "translation": {
+        "message": "翻譯"
+    },
+    "color": {
+        "message": "聲調顏色"
+    },
+    "aiLabel": {
+        "message": "範例句（AI）"
+    },
+    "customModel": {
+        "message": "模型名稱（Ollama）"
+    },
+    "customModelInfo": {
+        "message": "執行 `ollama list` 以查看可用模型"
+    },
+    "customPrompt": {
+        "message": "自訂提示 "
+    },
+    "customPromptInfo": {
+        "message": "{word}、{translation}、{pinyin}、{zhuyin} 可用於替換。目前 TOCFL 測驗尚未提供 {translation}。留空將使用預設值。"
+    },
+    "customPromptPlaceholder": {
+        "message": "空白代表預設"
+    },
+    "keepInRAM": {
+        "message": "將模型保留於 RAM "
+    },
+    "keepInRAMInfo": {
+        "message": "可縮短頻繁呼叫 LLM 時的延遲。學習期間或 RAM 充裕時可啟用。"
+    },
+    "supportText": {
+        "message": "進階提示"
+    },
+    "supportTextAI": {
+        "message": "AI 使用指南"
+    },
+    "supportLink": {
+        "message": "chinesetab.com"
+    },
+    "HSKOnly": {
+        "message": "（僅限 HSK）"
+    },
+    "app": {
+        "message": "-------------------------------------------------------"
+    },
+    "modelNotFound": {
+        "message": "找不到模型"
+    },
+    "prompt": {
+        "message": "-------------------------------------------------------"
+    },
+    "translationLanguage": {
+        "message": "English"
     }
 }

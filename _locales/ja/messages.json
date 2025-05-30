@@ -5,6 +5,9 @@
     "extDescription": {
         "message": "ブラウジングしながら中国語を学ぶ"
     },
+    "popup": {
+        "message": "-------------------------------------------------------"
+    },
     "fontType": {
         "message": "フォント"
     },
@@ -120,7 +123,7 @@
         "message": "利用可能なモデルを確認するには `ollama list` を実行してください"
     },
     "customPrompt": {
-        "message": "カスタムプロンプト"
+        "message": "カスタムプロンプト "
     },
     "customPromptInfo": {
         "message": "{word}、{translation}、{pinyin}、{zhuyin} を置換に使用できます。TOCFLテストでは現在 {translation} は利用できません。既定値を使用するには空のままにしてください。"
@@ -129,10 +132,10 @@
         "message": "空欄でデフォルト"
     },
     "keepInRAM": {
-        "message": "モデルをRAMに保持"
+        "message": "モデルをRAMに保持 "
     },
     "keepInRAMInfo": {
-        "message": "デフォルトでは、モデルはアンロードされる前に5分間メモリに保持されます。これにより、LLMに対して多数のリクエストを行う場合でも応答時間が短縮されます。学習セッション中やRAMに余裕がある場合にオンにしてください。"
+        "message": "これにより、LLMに対して多数のリクエストを行う場合でも応答時間が短縮されます。学習セッション中やRAMに余裕がある場合にオンにしてください。"
     },
     "supportText": {
         "message": "で必要な次のレベルのヒント"
@@ -145,5 +148,17 @@
     },
     "HSKOnly": {
         "message": "（HSKのみ）"
+    },
+    "app": {
+        "message": "-------------------------------------------------------"
+    },
+    "modelNotFound": {
+        "message": "モデルが見つかりません"
+    },
+    "prompt": {
+        "message": "-------------------------------------------------------"
+    },
+    "translationLanguage": {
+        "message": "Japanese"
     }
 }

@@ -1,0 +1,164 @@
+{
+    "extName": {
+        "message": "Onglet d'apprentissage du chinois"
+    },
+    "extDescription": {
+        "message": "Apprenez le chinois tout en naviguant."
+    },
+    "popup": {
+        "message": "-------------------------------------------------------"
+    },
+    "fontType": {
+        "message": "Police"
+    },
+    "dayLimit": {
+        "message": "Étudier aujourd'hui"
+    },
+    "dayLimit5": {
+        "message": "5 mots"
+    },
+    "dayLimit10": {
+        "message": "10 mots"
+    },
+    "dayLimit15": {
+        "message": "15 mots"
+    },
+    "dayLimit20": {
+        "message": "20 mots"
+    },
+    "dayLimit0": {
+        "message": "Tous les mots"
+    },
+    "level": {
+        "message": "Niveau"
+    },
+    "levelHSK": {
+        "message": "11 000 mots 😱"
+    },
+    "levelHSK1": {
+        "message": "HSK 1 (500 mots)"
+    },
+    "levelHSK2": {
+        "message": "HSK 2 (772 mots)"
+    },
+    "levelHSK3": {
+        "message": "HSK 3 (973 mots)"
+    },
+    "levelHSK4": {
+        "message": "HSK 4 (1 000 mots)"
+    },
+    "levelHSK5": {
+        "message": "HSK 5 (1 071 mots)"
+    },
+    "levelHSK6": {
+        "message": "HSK 6 (1 140 mots)"
+    },
+    "levelHSK7": {
+        "message": "HSK 7-9 (5 636 mots)"
+    },
+    "levelTOCFL": {
+        "message": "8 000 mots 🙀"
+    },
+    "levelTOCFL1": {
+        "message": "A1 (500 mots)"
+    },
+    "levelTOCFL2": {
+        "message": "A2 (500 mots)"
+    },
+    "levelTOCFL3": {
+        "message": "B1 (1 500 mots)"
+    },
+    "levelTOCFL4": {
+        "message": "B2 (2 500 mots)"
+    },
+    "levelTOCFL5": {
+        "message": "C1+ (3 000 mots)"
+    },
+    "char": {
+        "message": "Caractères"
+    },
+    "charSimplified": {
+        "message": "Chinois simplifié"
+    },
+    "charTraditional": {
+        "message": "Chinois traditionnel"
+    },
+    "testType": {
+        "message": "Test"
+    },
+    "China": {
+        "message": "🇨🇳 Chine"
+    },
+    "HongKong": {
+        "message": "🇭🇰 Hong Kong"
+    },
+    "Macau": {
+        "message": "🇲🇴 Macao"
+    },
+    "Taiwan": {
+        "message": "🇹🇼 Taïwan"
+    },
+    "sentenceExamples": {
+        "message": "Cliquez pour ouvrir le dictionnaire"
+    },
+    "pinyin": {
+        "message": "Pinyin"
+    },
+    "zhuyin": {
+        "message": "Zhuyin"
+    },
+    "translation": {
+        "message": "Traduction"
+    },
+    "color": {
+        "message": "Couleurs de ton"
+    },
+    "aiLabel": {
+        "message": "Phrase exemple (IA)"
+    },
+    "customModel": {
+        "message": "Nom du modèle (Ollama) "
+    },
+    "customModelInfo": {
+        "message": "Exécutez `ollama list` pour voir les modèles disponibles"
+    },
+    "customPrompt": {
+        "message": "Invite personnalisée "
+    },
+    "customPromptInfo": {
+        "message": "{word}, {translation}, {pinyin} et {zhuyin} peuvent être utilisés pour la substitution. {translation} n'est pas encore disponible pour le test TOCFL. Laissez vide pour la valeur par défaut."
+    },
+    "customPromptPlaceholder": {
+        "message": "Vide = par défaut"
+    },
+    "keepInRAM": {
+        "message": "Garder le modèle en RAM "
+    },
+    "keepInRAMInfo": {
+        "message": "Ce qui réduit la latence lors d'appels fréquents au LLM. Activez-le pendant les sessions d'étude ou si vous disposez de suffisamment de RAM."
+    },
+    "supportText": {
+        "message": "Astuces avancées"
+    },
+    "supportTextAI": {
+        "message": "Guide d'utilisation de l'IA"
+    },
+    "supportLink": {
+        "message": "chinesetab.com"
+    },
+    "HSKOnly": {
+        "message": "(HSK uniquement)"
+    },
+    "app": {
+        "message": "-------------------------------------------------------"
+    },
+    "modelNotFound": {
+        "message": "Modèle introuvable"
+    },
+    "prompt": {
+        "message": "-------------------------------------------------------"
+    },
+    "translationLanguage": {
+        "message": "French"
+    }
+}

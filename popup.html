@@ -84,7 +84,7 @@
     <option data-locale="Taiwan" disabled>🇹🇼 Taiwan</option>
   </select>
 
-  <div><label for="char" id="charLabel" data-locale="char" hidden>Characters</label><sup style="font-size: 8px;" data-locale="HSKOnly"> (HSK only)</sup></div>
+  <div id="charOptions" hidden><label for="char" id="charLabel" data-locale="char">Characters</label><sup style="font-size: 8px;" data-locale="HSKOnly"> (HSK only)</sup></div>
   <select name="char" id="char" hidden>
     <option value="simplified" data-locale="charSimplified">Simplified</option>
     <option data-locale="China" disabled>🇨🇳 China</option>
@@ -109,10 +109,10 @@
 
 
   <!-- TODO add support for TOCFL -->
-  <div id="translationLabel" hidden><div><input type="checkbox" id="translation" name="translation" /><label class="cb" for="translation" data-locale="translation"> Translation</label><sup style="font-size: 8px;" data-locale="HSKOnly"> (HSK only)</sup></div></div>
+  <div id="translationLabel" ><div><input type="checkbox" id="translation" name="translation" /><label class="cb" for="translation" data-locale="translation"> Translation</label><sup style="font-size: 8px;" data-locale="HSKOnly"> (HSK only)</sup></div></div>
 
   <!-- TODO add support for TOCFL -->
-  <div id="colorLabel" hidden><div><input type="checkbox" id="color" name="color" /><label class="cb" for="color" data-locale="color"> Tone colors</label><sup style="font-size: 8px;" data-locale="HSKOnly"> (HSK only)</sup></div></div>
+  <div id="colorLabel" ><div><input type="checkbox" id="color" name="color" /><label class="cb" for="color" data-locale="color"> Tone colors</label><sup style="font-size: 8px;" data-locale="HSKOnly"> (HSK only)</sup></div></div>
   <!-- <hr align="center" width="100%"> -->
 
   <div><input type="checkbox" id="ai" name="ai" hidden /><label class="cb" for="ai" id="aiLabel" data-locale="aiLabel" hidden>Sentence example

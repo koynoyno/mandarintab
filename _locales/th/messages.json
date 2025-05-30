@@ -1,0 +1,164 @@
+{
+    "extName": {
+        "message": "แท็บเรียนภาษาจีน"
+    },
+    "extDescription": {
+        "message": "เรียนภาษาจีนไปพร้อมกับการท่องเว็บ"
+    },
+    "popup": {
+        "message": "-------------------------------------------------------"
+    },
+    "fontType": {
+        "message": "ฟอนต์"
+    },
+    "dayLimit": {
+        "message": "เรียนวันนี้"
+    },
+    "dayLimit5": {
+        "message": "5 คำศัพท์"
+    },
+    "dayLimit10": {
+        "message": "10 คำศัพท์"
+    },
+    "dayLimit15": {
+        "message": "15 คำศัพท์"
+    },
+    "dayLimit20": {
+        "message": "20 คำศัพท์"
+    },
+    "dayLimit0": {
+        "message": "คำศัพท์ทั้งหมด"
+    },
+    "level": {
+        "message": "ระดับ"
+    },
+    "levelHSK": {
+        "message": "11,000 คำ 😱"
+    },
+    "levelHSK1": {
+        "message": "HSK 1 (500 คำ)"
+    },
+    "levelHSK2": {
+        "message": "HSK 2 (772 คำ)"
+    },
+    "levelHSK3": {
+        "message": "HSK 3 (973 คำ)"
+    },
+    "levelHSK4": {
+        "message": "HSK 4 (1,000 คำ)"
+    },
+    "levelHSK5": {
+        "message": "HSK 5 (1,071 คำ)"
+    },
+    "levelHSK6": {
+        "message": "HSK 6 (1,140 คำ)"
+    },
+    "levelHSK7": {
+        "message": "HSK 7-9 (5,636 คำ)"
+    },
+    "levelTOCFL": {
+        "message": "8,000 คำ 🙀"
+    },
+    "levelTOCFL1": {
+        "message": "A1 (500 คำ)"
+    },
+    "levelTOCFL2": {
+        "message": "A2 (500 คำ)"
+    },
+    "levelTOCFL3": {
+        "message": "B1 (1,500 คำ)"
+    },
+    "levelTOCFL4": {
+        "message": "B2 (2,500 คำ)"
+    },
+    "levelTOCFL5": {
+        "message": "C1+ (3,000 คำ)"
+    },
+    "char": {
+        "message": "อักษร"
+    },
+    "charSimplified": {
+        "message": "อักษรจีนตัวย่อ"
+    },
+    "charTraditional": {
+        "message": "อักษรจีนตัวเต็ม"
+    },
+    "testType": {
+        "message": "แบบทดสอบ"
+    },
+    "China": {
+        "message": "🇨🇳 จีน"
+    },
+    "HongKong": {
+        "message": "🇭🇰 ฮ่องกง"
+    },
+    "Macau": {
+        "message": "🇲🇴 มาเก๊า"
+    },
+    "Taiwan": {
+        "message": "🇹🇼 ไต้หวัน"
+    },
+    "sentenceExamples": {
+        "message": "คลิกเพื่อเปิดพจนานุกรม"
+    },
+    "pinyin": {
+        "message": "พินอิน"
+    },
+    "zhuyin": {
+        "message": "จู้อิน"
+    },
+    "translation": {
+        "message": "คำแปล"
+    },
+    "color": {
+        "message": "สีโทนเสียง"
+    },
+    "aiLabel": {
+        "message": "ประโยคตัวอย่าง (AI)"
+    },
+    "customModel": {
+        "message": "ชื่อโมเดล (Ollama)"
+    },
+    "customModelInfo": {
+        "message": "รัน `ollama list` เพื่อดูรายการโมเดลที่มี"
+    },
+    "customPrompt": {
+        "message": "พรอมต์กำหนดเอง"
+    },
+    "customPromptInfo": {
+        "message": "{word}、{translation}、{pinyin} และ {zhuyin} สามารถใช้แทนค่าได้ ขณะนี้ {translation} ยังไม่รองรับในแบบทดสอบ TOCFL ปล่อยว่างเพื่อใช้ค่าเริ่มต้น"
+    },
+    "customPromptPlaceholder": {
+        "message": "ปล่อยว่างเพื่อใช้ค่าเริ่มต้น"
+    },
+    "keepInRAM": {
+        "message": "เก็บโมเดลไว้ใน RAM"
+    },
+    "keepInRAMInfo": {
+        "message": "ช่วยลดเวลาแฝงเมื่อเรียก LLM บ่อย ๆ เปิดใช้ได้ระหว่างเรียนหรือหากมี RAM เพียงพอ"
+    },
+    "supportText": {
+        "message": "เคล็ดลับขั้นสูง"
+    },
+    "supportTextAI": {
+        "message": "คู่มือการใช้ AI"
+    },
+    "supportLink": {
+        "message": "chinesetab.com"
+    },
+    "HSKOnly": {
+        "message": "(เฉพาะ HSK)"
+    },
+    "app": {
+        "message": "-------------------------------------------------------"
+    },
+    "modelNotFound": {
+        "message": "ไม่พบโมเดล"
+    },
+    "prompt": {
+        "message": "-------------------------------------------------------"
+    },
+    "translationLanguage": {
+        "message": "Thai"
+    }
+}

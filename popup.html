@@ -23,9 +23,9 @@
 
   <!-- TODO: add zh_TW and zh_CN -->
 
-  <label for="fontType" id="fontTypeLabel" data-locale="fontTypeLabel" hidden>Font</label>
+  <label for="fontType" id="fontTypeLabel" data-locale="fontType" hidden>Font</label>
   <select name="fontType" id="fontType" hidden>
-    <option value="PingFang">PingFang (default)</option>
+    <option value="PingFang">PingFang</option>
     <option value="Baoli">Baoli</option>
     <option value="Hannotate">Hannotate</option>
     <option value="HanziPen">HanziPen</option>
@@ -37,91 +37,107 @@
     <option value="Kaiti">Kaiti</option>
   </select>
   <select name="fontTypeSafari" id="fontTypeSafari" hidden>
-    <option value="PingFang">PingFang (default)</option>
+    <option value="PingFang">PingFang</option>
     <option value="Heiti">Heiti</option>
     <option value="Times">Times</option>
   </select>
 
-  <label for="dayLimit">Study today</label>
+  <label for="dayLimit" data-locale="dayLimit">Study today</label>
   <select name="dayLimit" id="dayLimit">
-    <option value="5">5 words</option>
-    <option value="10">10 words</option>
-    <option value="15">15 words</option>
-    <option value="20">20 words</option>
-    <option value="0">All words</option>
+    <option value="5" data-locale="dayLimit5">5 words</option>
+    <option value="10" data-locale="dayLimit10">10 words</option>
+    <option value="15" data-locale="dayLimit15">15 words</option>
+    <option value="20" data-locale="dayLimit20">20 words</option>
+    <option value="0" data-locale="dayLimit0">All words</option>
   </select>
 
-  <label for="level">Level</label>
-  <select name="level" id="level">
-    <!-- substituted in popup.js:restoreSettings() -->
+  <label for="level" data-locale="level">Level</label>
+  <select name="level" id="levelHSK">
+    <option id="levelHSK0" data-locale="levelHSK" disabled>~11000 words 😱</option>
+    <option id="levelHSK1" value="1" data-locale="levelHSK1">HSK 1 (500 words)</option>
+    <option id="levelHSK2" value="2" data-locale="levelHSK2">HSK 2 (772 words)</option>
+    <option id="levelHSK3" value="3" data-locale="levelHSK3">HSK 3 (973 words)</option>
+    <option id="levelHSK4" value="4" data-locale="levelHSK4">HSK 4 (1000 words)</option>
+    <option id="levelHSK5" value="5" data-locale="levelHSK5">HSK 5 (1071 words)</option>
+    <option id="levelHSK6" value="6" data-locale="levelHSK6">HSK 6 (1140 words)</option>
+    <option id="levelHSK7" value="7" data-locale="levelHSK7">HSK 7-9 (5636 words)</option>
+  </select>
+    <!-- hidden options for TOCFL -->
+  <select name="level" id="levelTOCFL" hidden>
+    <option id="levelTOCFL0" data-locale="levelTOCFL" disabled>8000 words 🙀</option>
+    <option id="levelTOCFL1" value="1" data-locale="levelTOCFL1">A1 (500 words)</option>
+    <option id="levelTOCFL2" value="2" data-locale="levelTOCFL2">A2 (500 words)</option>
+    <option id="levelTOCFL3" value="3" data-locale="levelTOCFL3">B1 (1500 words)</option>
+    <option id="levelTOCFL4" value="4" data-locale="levelTOCFL4">B2 (2500 words)</option>
+    <option id="levelTOCFL5" value="5" data-locale="levelTOCFL5">C1+ (3000 words)</option>
+  
   </select>
 
-  <label for="char" id="charLabel" hidden>Characters<sup style="font-size: 8px;"> (HSK only)</sup></label>
-  <select name="char" id="char" hidden>
-    <option value="simplified">Simplified</option>
-    <option disabled>🇨🇳 China</option>
-    <!-- <option disabled>🇸🇬 Singapore</option> -->
-    <option disabled></option>
-    <option value="traditional">Traditional</option>
-    <option disabled>🇭🇰 Hong Kong</option>
-    <option disabled>🇲🇴 Macau</option>
-    <option disabled>🇹🇼 Taiwan</option>
-  </select>
-
-  <label for="testType">Test</label>
+  <label for="testType" data-locale="testType">Test</label>
   <select name="testType" id="testType">
     <option value="hsk3">HSK</option>
-    <option disabled>🇨🇳 China</option>
-    <option disabled>🇭🇰 Hong Kong</option>
-    <option disabled>🇲🇴 Macau</option>
+    <option data-locale="China" disabled>🇨🇳 China</option>
+    <option data-locale="HongKong" disabled>🇭🇰 Hong Kong</option>
+    <option data-locale="Macau" disabled>🇲🇴 Macau</option>
     <option disabled></option>
     <option value="tocfl">TOCFL</option>
-    <option disabled>🇹🇼 Taiwan</option>
+    <option data-locale="Taiwan" disabled>🇹🇼 Taiwan</option>
+  </select>
+
+  <div><label for="char" id="charLabel" data-locale="char" hidden>Characters</label><sup style="font-size: 8px;" data-locale="HSKOnly"> (HSK only)</sup></div>
+  <select name="char" id="char" hidden>
+    <option value="simplified" data-locale="charSimplified">Simplified</option>
+    <option data-locale="China" disabled>🇨🇳 China</option>
+    <!-- <option disabled>🇸🇬 Singapore</option> -->
+    <option disabled></option>
+    <option value="traditional" data-locale="charTraditional">Traditional</option>
+    <option data-locale="HongKong" disabled>🇭🇰 Hong Kong</option>
+    <option data-locale="Macau" disabled>🇲🇴 Macau</option>
+    <option data-locale="Taiwan" disabled>🇹🇼 Taiwan</option>
   </select>
 
   <!-- <br /> -->
 
   <!-- <div id="checkboxOptions"> -->
-    <label class="cb" for="sentenceExamples"><input type="checkbox" id="sentenceExamples" name="sentenceExamples" />
+    <div><input type="checkbox" id="sentenceExamples" name="sentenceExamples" /><label class="cb" for="sentenceExamples" data-locale="sentenceExamples">
       Tap to open dictionary
-      <!--      <span id="info" title="Click the word">ℹ</span>--></label>
+      <!--      <span id="info" title="Click the word">ℹ</span>--></label></div>
 
-    <label class="cb" for="pinyin"><input type="checkbox" id="pinyin" name="pinyin" /> Pinyin</label>
+    <div><input type="checkbox" id="pinyin" name="pinyin" /><label class="cb" for="pinyin" data-locale="pinyin"> Pinyin</label></div>
 
-  <label class="cb" for="zhuyin"><input type="checkbox" id="zhuyin" name="zhuyin" /> Zhuyin</label>
+    <div><input type="checkbox" id="zhuyin" name="zhuyin" /><label class="cb" for="zhuyin" data-locale="zhuyin"> Zhuyin</label></div>
 
-
-  <!-- TODO add support for TOCFL -->
-  <div id="translationLabel" hidden><label class="cb" for="translation"><input type="checkbox" id="translation"
-        name="translation" />
-      Translation<sup style="font-size: 8px;"> (HSK only)</sup></label></div>
 
   <!-- TODO add support for TOCFL -->
-  <div id="colorLabel" hidden><label class="cb" for="color"><input type="checkbox" id="color" name="color" /> Tone
-      colors<sup style="font-size: 8px;"> (HSK only)</sup></label></div>
+  <div id="translationLabel" hidden><div><input type="checkbox" id="translation" name="translation" /><label class="cb" for="translation" data-locale="translation"> Translation</label><sup style="font-size: 8px;" data-locale="HSKOnly"> (HSK only)</sup></div></div>
+
+  <!-- TODO add support for TOCFL -->
+  <div id="colorLabel" hidden><div><input type="checkbox" id="color" name="color" /><label class="cb" for="color" data-locale="color"> Tone colors</label><sup style="font-size: 8px;" data-locale="HSKOnly"> (HSK only)</sup></div></div>
   <!-- <hr align="center" width="100%"> -->
 
-  <label class="cb" for="ai" id="aiLabel" hidden><input type="checkbox" id="ai" name="ai" hidden /> Sentence example
-    (AI)</label>
+  <div><input type="checkbox" id="ai" name="ai" hidden /><label class="cb" for="ai" id="aiLabel" data-locale="aiLabel" hidden>Sentence example
+    (AI)</label></div>
   <!-- </div> -->
 
   <div id="aiSettings" hidden>
     <br />
-    <label for="customModel">Model name (Ollama) <span id="info" title="Run `ollama list` to see the list of available models">ℹ️</span></label>
+    <label for="customModel" data-locale="customModel">Model name (Ollama) </label><span id="info" data-locale="customModelInfo"
+    title="Run `ollama list` to see the list of available models">ℹ️</span>
     <input type="text" name="customModel" id="customModel" placeholder="gemma3:latest">
 
-    <label for="customPrompt">Custom prompt <span id="info" title="{word}, {translation}, {pinyin}, {zhuyin} are available for substitution. {translation} is currently unavailable for TOCFL test. Leave empty for default.">ℹ️</span></label>
-    <textarea name="customPrompt" id="customPrompt" placeholder="Leave empty for default"></textarea>
+    <label for="customPrompt" data-locale="customPrompt">Custom prompt </label><span id="info" data-locale="customPromptInfo"
+    title="{word}, {translation}, {pinyin}, {zhuyin} are available for substitution. {translation} is currently unavailable for TOCFL test. Leave empty for default.">ℹ️</span>
+    <textarea name="customPrompt" id="customPrompt" data-locale="customPromptPlaceholder" placeholder="Leave empty for default"></textarea>
 
-    <label class="cb" for="keepInRAM"><input type="checkbox" id="keepInRAM" name="keepInRAM" /> Keep model in RAM <span
-        id="info"
-        title="By default models are kept in memory for 5 minutes before being unloaded. This allows for quicker response times if you are making numerous requests to the LLM. Turn on during study sessions or if you have a lot of RAM.">⚠️</span></label>
+    <div><input type="checkbox" id="keepInRAM" name="keepInRAM" /><label class="cb" for="keepInRAM" data-locale="keepInRAM"> Keep model in RAM </label><span
+      id="info" data-locale="keepInRAMInfo"
+      title="By default models are kept in memory for 5 minutes before being unloaded. This allows for quicker response times if you are making numerous requests to the LLM. Turn on during study sessions or if you have a lot of RAM.">⚠️</span></div>
   </div>
 
   <button id="support">
-    <div id="supportText">ɴᴇxᴛ-ʟᴇᴠᴇʟ ᴛɪᴘs ʏᴏᴜ ɴᴇᴇᴅ ᴏɴ</div>
-    <div id="supportTextAI" hidden>ɢᴜɪᴅᴇ ꜰᴏʀ ᴜꜱɪɴɢ ᴀɪ ᴏɴ</div>
-    <strong><span id="supportLink">ᴄʜɪɴᴇsᴇᴛᴀʙ.ᴄᴏᴍ</span></strong>
+    <div id="supportText" data-locale="supportText">ɴᴇxᴛ ʟᴇᴠᴇʟ ᴛɪᴘs ʏᴏᴜ ɴᴇᴇᴅ ᴏɴ</div>
+    <div id="supportTextAI" hidden data-locale="supportTextAI">ɢᴜɪᴅᴇ ꜰᴏʀ ᴜꜱɪɴɢ ᴀɪ ᴏɴ</div>
+    <strong><span id="supportLink" data-locale="supportLink">ᴄʜɪɴᴇsᴇᴛᴀʙ.ᴄᴏᴍ</span></strong>
   </button>
 
   <!-- <input type="button" id="feedback" value="Share feedback" /> -->
@@ -132,5 +148,5 @@
 
   <!-- <script src="src/popup.js"></script> -->
 </body>
-<script src="src/npm/localizeHtmlPage.js"></script>
+<script src="src/npm/localizeHtmlPage.js" defer></script>
 </html>

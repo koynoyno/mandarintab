@@ -105,7 +105,7 @@ export let ollama = async (model, prompt, fontType, duration) => {
     });
 
     if (!response.ok) {
-        document.querySelector('.ai').innerHTML = "<pre class='output'>model not found</pre>";
+        document.getElementById('ai').innerHTML = "<pre class='output'>model not found</pre>";
         throw new Error(`HTTP error! status: ${response.status}`);
     }
 

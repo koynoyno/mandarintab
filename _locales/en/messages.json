@@ -6,9 +6,5 @@
     "extDescription": {
         "message": "Learn Chinese while browsing",
         "description": "Extension description"
-    },
-    "fontTypeLabel": {
-        "message": "Font",
-        "description": "Font label"
     }
 }

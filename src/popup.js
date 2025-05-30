@@ -1,8 +1,6 @@
 // apply settings
 let saveSettings = (id, checkbox = false) => {
 
-  localizeHtmlPage();
-
   let value;
   if (checkbox) {
     value = document.querySelector(`#${id}`).checked;
@@ -12,7 +10,12 @@ let saveSettings = (id, checkbox = false) => {
 
   switch (id) {
     // remove cache if level or day limit is changed
-    case "level":
+    case "levelHSK":
+    case "levelTOCFL":
+      chrome.storage.local.set({ level: value, randomWords: [], cache: {} });
+      chrome.tabs.reload();
+      break;
+      
     case "dayLimit":
       chrome.storage.local.set({ [id]: value, randomWords: [], cache: {} });
       chrome.tabs.reload();
@@ -22,17 +25,15 @@ let saveSettings = (id, checkbox = false) => {
     case "testType":
       // reset cache
       chrome.storage.local.set({ [id]: value, randomWords: [], cache: {} });
-      let level = document.querySelector("#level");
-      let levelValue = level.value;
-      while (level.lastElementChild) {
-        level.removeChild(level.lastElementChild);
-      }
       redrawTestLevels(value);
-      if (value == "tocfl" && levelValue > 5) {
+      let currentTest = (value == "hsk3") ? document.querySelector("#levelTOCFL") : document.querySelector("#levelHSK");
+      let currentValue = currentTest.value;
+      // set level to 5 if tocfl selected
+      if (value == "tocfl" && currentValue > 5) {
         chrome.storage.local.set({ level: "5" });
-        level.value = "5";
+        levelTOCFL.value = "5";
       } else {
-        level.value = levelValue;
+        levelHSK.value = currentValue;
       }
 
       // BETA
@@ -96,7 +97,7 @@ let restoreSettings = () => {
     (items) => {
       redrawTestLevels(items.testType);
       testType.value = items.testType;
-      level.value = items.level;
+      // level.value = items.level;
       // char.value = items.char;
       dayLimit.value = items.dayLimit;
       if (items.ua.browser == "Safari") {
@@ -113,6 +114,7 @@ let restoreSettings = () => {
       // darkMode.checked = items.darkMode;
       // BETA show translation and colors only if HSK selected
       if (testType.value === "hsk3") {
+        levelHSK.value = items.level;
         document.getElementById('colorLabel').hidden = false;
         document.getElementById('translationLabel').hidden = false;
         document.getElementById('charLabel').hidden = false;
@@ -121,6 +123,8 @@ let restoreSettings = () => {
         color.checked = items.color;
         translation.checked = items.translation;
         char.value = items.char;
+      } else {
+        levelTOCFL.value = items.level;
       }
 
       // fonts settings for various platforms 
@@ -162,30 +166,14 @@ let restoreSettings = () => {
   );
 };
 
-// TODO: it takes 250ms, can I optimize it?
 let redrawTestLevels = (testType) => {
   if (testType == "hsk3") {
-    level.insertAdjacentHTML(
-      "afterbegin",
-      "<option disabled>~11000 words 😱</option>" +
-      '<option value="1">[HSK 1] 500 words</option>' +
-      '<option value="2">[HSK 2] 772 words</option>' +
-      '<option value="3">[HSK 3] 973 words</option>' +
-      '<option value="4">[HSK 4] 1000 words</option>' +
-      '<option value="5">[HSK 5] 1071 words</option>' +
-      '<option value="6">[HSK 6] 1140 words</option>' +
-      '<option value="7">[HSK 7-9] 5636 words</option>'
-    );
-  } else if (testType == "tocfl") {
-    level.insertAdjacentHTML(
-      "afterbegin",
-      "<option disabled>8000 words 🙀</option>" +
-      '<option value="1">[A1] 500 words</option>' +
-      '<option value="2">[A2] 500 words</option>' +
-      '<option value="3">[B1] 1500 words</option>' +
-      '<option value="4">[B2] 2500 words</option>' +
-      '<option value="5">[C1+] 3000 words</option>'
-    );
+    levelTOCFL.hidden = true;
+    levelHSK.hidden = false;
+  }
+  if (testType == "tocfl") {
+    levelHSK.hidden = true;
+    levelTOCFL.hidden = false;
   }
 };
 
@@ -209,8 +197,12 @@ window.addEventListener("load", async () => {
     saveSettings("testType");
   });
 
-  level.addEventListener("change", () => {
-    saveSettings("level");
+  levelHSK.addEventListener("change", () => {
+    saveSettings("levelHSK");
+  });
+
+  levelTOCFL.addEventListener("change", () => {
+    saveSettings("levelTOCFL");
   });
 
   char.addEventListener("change", () => {

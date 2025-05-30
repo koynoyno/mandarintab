@@ -5,8 +5,145 @@
     "extDescription": {
         "message": "ブラウジングしながら中国語を学ぶ"
     },
-    "fontTypeLabel": {
+    "fontType": {
         "message": "フォント"
+    },
+    "dayLimit": {
+        "message": "今日の学習"
+    },
+    "dayLimit5": {
+        "message": "5語"
+    },
+    "dayLimit10": {
+        "message": "10語"
+    },
+    "dayLimit15": {
+        "message": "15語"
+    },
+    "dayLimit20": {
+        "message": "20語"
+    },
+    "dayLimit0": {
+        "message": "すべての語"
+    },
+    "level": {
+        "message": "レベル"
+    },
+    "levelHSK": {
+        "message": "11000語 😱"
+    },
+    "levelHSK1": {
+        "message": "HSK 1（500語）"
+    },
+    "levelHSK2": {
+        "message": "HSK 2（772語）"
+    },
+    "levelHSK3": {
+        "message": "HSK 3（973語）"
+    },
+    "levelHSK4": {
+        "message": "HSK 4（1000語）"
+    },
+    "levelHSK5": {
+        "message": "HSK 5（1071語）"
+    },
+    "levelHSK6": {
+        "message": "HSK 6（1140語）"
+    },
+    "levelHSK7": {
+        "message": "HSK 7-9（5636語）"
+    },
+    "levelTOCFL": {
+        "message": "8000語 🙀"
+    },
+    "levelTOCFL1": {
+        "message": "A1（500語）"
+    },
+    "levelTOCFL2": {
+        "message": "A2（500語）"
+    },
+    "levelTOCFL3": {
+        "message": "B1（1500語）"
+    },
+    "levelTOCFL4": {
+        "message": "B2（2500語）"
+    },
+    "levelTOCFL5": {
+        "message": "C1+（3000語）"
+    },
+    "char": {
+        "message": "文字"
+    },
+    "charSimplified": {
+        "message": "簡体字"
+    },
+    "charTraditional": {
+        "message": "繁體字"
+    },
+    "testType": {
+        "message": "テスト"
+    },
+    "China": {
+        "message": "🇨🇳 中国"
+    },
+    "HongKong": {
+        "message": "🇭🇰 香港"
+    },
+    "Macau": {
+        "message": "🇲🇴 マカオ"
+    },
+    "Taiwan": {
+        "message": "🇹🇼 台湾"
+    },
+    "sentenceExamples": {
+        "message": "タップして辞書を開く"
+    },
+    "pinyin": {
+        "message": "ピンイン"
+    },
+    "zhuyin": {
+        "message": "注音"
+    },
+    "translation": {
+        "message": "翻訳"
+    },
+    "color": {
+        "message": "声調カラー"
+    },
+    "aiLabel": {
+        "message": "例文（AI）"
+    },
+    "customModel": {
+        "message": "モデル名（Ollama）"
+    },
+    "customModelInfo": {
+        "message": "利用可能なモデルを確認するには `ollama list` を実行してください"
+    },
+    "customPrompt": {
+        "message": "カスタムプロンプト"
+    },
+    "customPromptInfo": {
+        "message": "{word}、{translation}、{pinyin}、{zhuyin} を置換に使用できます。TOCFLテストでは現在 {translation} は利用できません。既定値を使用するには空のままにしてください。"
+    },
+    "customPromptPlaceholder": {
+        "message": "空欄でデフォルト"
+    },
+    "keepInRAM": {
+        "message": "モデルをRAMに保持"
+    },
+    "keepInRAMInfo": {
+        "message": "デフォルトでは、モデルはアンロードされる前に5分間メモリに保持されます。これにより、LLMに対して多数のリクエストを行う場合でも応答時間が短縮されます。学習セッション中やRAMに余裕がある場合にオンにしてください。"
+    },
+    "supportText": {
+        "message": "で必要な次のレベルのヒント"
+    },
+    "supportTextAI": {
+        "message": "でAIを使用するためのガイド"
+    },
+    "supportLink": {
+        "message": "chinesetab.com"
+    },
+    "HSKOnly": {
+        "message": "（HSKのみ）"
     }
-
 }

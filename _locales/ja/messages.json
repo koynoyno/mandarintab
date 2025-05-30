@@ -4,5 +4,9 @@
     },
     "extDescription": {
         "message": "ブラウジングしながら中国語を学ぶ"
+    },
+    "fontTypeLabel": {
+        "message": "フォント"
     }
+
 }

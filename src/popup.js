@@ -1,6 +1,8 @@
 // apply settings
 let saveSettings = (id, checkbox = false) => {
 
+  localizeHtmlPage();
+
   let value;
   if (checkbox) {
     value = document.querySelector(`#${id}`).checked;
@@ -88,7 +90,7 @@ let saveSettings = (id, checkbox = false) => {
 // =============================================
 // get settings on window load
 let restoreSettings = () => {
-  
+
   chrome.storage.local.get(
     null,
     (items) => {
@@ -155,7 +157,7 @@ let restoreSettings = () => {
         if (items.keepInRAM) {
           keepInRAM.checked = items.keepInRAM;
         }
-      } 
+      }
     }
   );
 };
@@ -273,46 +275,46 @@ window.addEventListener("load", async () => {
   // });
 
 
-// doesn't work properly in Safari
-customModel.addEventListener("focusout", (event) => {
-  saveSettings("customModel");
-})
-
-// workaround for Safari
-customModel.addEventListener("keydown", (e) => {
-  if (e.code === "Enter") {
+  // doesn't work properly in Safari
+  customModel.addEventListener("focusout", (event) => {
     saveSettings("customModel");
-  }
-});
+  })
 
-// doesn't work properly in Safari
-customPrompt.addEventListener("focusout", (event) => {
-  saveSettings("customPrompt");
-})
+  // workaround for Safari
+  customModel.addEventListener("keydown", (e) => {
+    if (e.code === "Enter") {
+      saveSettings("customModel");
+    }
+  });
 
-// customPrompt field requires separate lines?
-// workaround for Safari
-customPrompt.addEventListener("keydown", (e) => {
-  if (e.code === "Enter") {
+  // doesn't work properly in Safari
+  customPrompt.addEventListener("focusout", (event) => {
     saveSettings("customPrompt");
-  }
-})
+  })
 
-keepInRAM.addEventListener("click", () => {
-  saveSettings("keepInRAM", { checkbox: true });
-})
+  // customPrompt field requires separate lines?
+  // workaround for Safari
+  customPrompt.addEventListener("keydown", (e) => {
+    if (e.code === "Enter") {
+      saveSettings("customPrompt");
+    }
+  })
 
-chrome.storage.local.get(
-  {ua: null},
-  (items) => {
-    if (items.ua.browser == "Safari") {
-      window.onblur = function(){
-        saveSettings("customModel");
-        saveSettings("customPrompt");
+  keepInRAM.addEventListener("click", () => {
+    saveSettings("keepInRAM", { checkbox: true });
+  })
+
+  chrome.storage.local.get(
+    { ua: null },
+    (items) => {
+      if (items.ua.browser == "Safari") {
+        window.onblur = function () {
+          saveSettings("customModel");
+          saveSettings("customPrompt");
+        }
       }
     }
-  }
-)
+  )
 
 
 

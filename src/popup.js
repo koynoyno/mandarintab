@@ -79,8 +79,8 @@ let saveSettings = (id, checkbox = false) => {
       chrome.storage.local.set({ ai: value });
       chrome.tabs.reload();
       aiSettings.hidden = !value;
-      supportText.hidden = value;
-      supportTextAI.hidden = !value;
+      // supportText.hidden = value;
+      // supportTextAI.hidden = !value;
       break;
     default:
       chrome.storage.local.set({ [id]: value });
@@ -110,7 +110,8 @@ let restoreSettings = () => {
       pinyin.checked = items.pinyin;
       zhuyin.checked = items.zhuyin;
       ai.checked = items.ai;
-      // translation.checked = items.translation;
+      color.checked = items.color;
+      translation.checked = items.translation;
       // darkMode.checked = items.darkMode;
       // BETA show translation and colors only if HSK selected
       if (testType.value === "hsk3") {
@@ -120,8 +121,8 @@ let restoreSettings = () => {
         document.getElementById('char').hidden = false;
         document.getElementById('charOptions').hidden = false;
 
-        color.checked = items.color;
-        translation.checked = items.translation;
+        // color.checked = items.color;
+        // translation.checked = items.translation;
         char.value = items.char;
       } else {
         levelTOCFL.value = items.level;
@@ -149,8 +150,8 @@ let restoreSettings = () => {
       // ai settings
       aiSettings.hidden = !items.ai;
       if (items.ai) {
-        document.getElementById('supportTextAI').removeAttribute("hidden")
-        document.getElementById('supportText').setAttribute("hidden", "hidden")
+        // document.getElementById('supportTextAI').removeAttribute("hidden")
+        // document.getElementById('supportText').setAttribute("hidden", "hidden")
 
         if (items.customModel) {
           customModel.value = items.customModel;
@@ -310,12 +311,12 @@ window.addEventListener("load", async () => {
 
 
 
-  support.addEventListener("click", () => {
-    chrome.tabs.create({
-      url: "https://chinesetab.com",
-    });
-    // window.close();
-  });
+  // support.addEventListener("click", () => {
+  //   chrome.tabs.create({
+  //     url: "https://chinesetab.com",
+  //   });
+  //   // window.close();
+  // });
 
   // kofi.addEventListener("click", () => {
   //   chrome.tabs.update({

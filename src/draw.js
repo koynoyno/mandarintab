@@ -5,14 +5,17 @@ import splitAndKeep from "./npm/color.js";
 export let draw = (items) => {
   let char = "";
   let drawObject = ""; // to call insertAdjacentHTML only once
-  let minHeight = 3.5; // BETA for AI to prevent jumping text
-  if (items.ua.browser == "Safari" || items.ua.browser == "Firefox") {
-    minHeight += 2.5; // BETA for Safari to prevent jumping text   
-  }
+  let minHeight = 4; // BETA for AI to prevent jumping text
+  // if (items.ua.browser == "Safari" || items.ua.browser == "Firefox") {
+  //   minHeight += 3.5; // BETA for Safari to prevent jumping text
+  // }
+  // if (items.customPrompt) {
+  //   minHeight += 7;
+  // }
 
   //  let data = testType.words[rand];
   let data = items.cache;
-  // console.log(items.fontType)
+   console.log(items)
 
   // adapter for TOCFL dictionaries...
   if (items.testType === "tocfl") {
@@ -22,23 +25,30 @@ export let draw = (items) => {
     data.english = "";
   } else {
     // ...or just retrieve word from HSK dictionary
-    char = data[items.char]; // why items.char and not data.char? 
+    char = data[items.char]; // why items.char and not data.char?
   }
 
   // DEV show pinyin and english on hover
-  let title = ""; // hover suggestion if pinyin or translation are turned off
-  if (!items.pinyin && !items.translation) {
-    title = `title="${data.pinyin}\n\n${data.english}"`;
-  } else if (!items.pinyin) {
-    title = `title="${data.pinyin}"`;
-  // zhuyin shouldn't be displayed when `hsk3` is used 
-  } else if (!items.zhuyin && items.testType === "tocfl") {
-    title = `title="${data.zhuyin}"`;
-  } else if (!items.translation) {
-    title = `title="${data.english}"`;
-  }
+  let title = 'title="'; // hover suggestion if pinyin or translation are turned off
+//    if (!items.pinyin) {
+//        title += `${data.pinyin}\n`; }
+    if (!items.pinyin) {
+        title += `${data.pinyin}\n`;}
+  // zhuyin shouldn't be displayed when `hsk3` is used
+  // } else if (!items.zhuyin && items.testType === "tocfl") {
+    if (!items.zhuyin && items.testType === "tocfl") {
+        title += `${data.zhuyin}\n`;}
+    // TODO add translation to `tocfl` dictionary
+    if (!items.translation && items.testType === "hsk3") {
+        title += `${data.english}\n`;}
+//  title += '"';
+    if (title != 'title="') { 
+      title = title.slice(0, -1) + '"';
+    } else {
+      title = 'title=""'
+    }
 
-  // // IDEA what if not to draw it? 
+  // // IDEA what if not to draw it?
   // // show translation
   // if (items.translation) {
   //   drawObject += `<p class="english" align="center">${data.english}</p>`;
@@ -65,7 +75,7 @@ export let draw = (items) => {
     drawObject += `<p id="char" class="char ${items.fontType}-font" align="center" ${title}>${char}</p>`;
   }
 
-  // IDEA what if not to draw it? 
+  // IDEA what if not to draw it?
   // show translation
   if (items.translation) {
     minHeight += 2;
@@ -108,6 +118,7 @@ export let draw = (items) => {
     // drawObject += `<button id="example">Example</button><div class="ai"><pre id="output"></pre></div>`
      // BETA for AI to prevent jumping text
     drawObject += `<div id="ai" style="min-height: ${minHeight}rem;"></div>`
+    // drawObject += `<div id="ai"></div>`
   }
 
   // draw everything

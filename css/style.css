@@ -72,7 +72,7 @@ p {
 	animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-out;
-	animation-duration: .25s;
+	animation-duration: .1s;
 }
 
 @keyframes fadeInOpacity {
@@ -93,13 +93,15 @@ p {
 
 
 #panda {
+  filter: grayscale(0.5);
+  /* opacity: .7; */
   position: absolute;
   bottom: -120px;
   cursor: pointer;
   width: 240px;
   z-index: 1;
   transition-property: bottom;
-  transition-duration: .2s;
+  transition-duration: .1s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 /* Initial animation on appearance */
@@ -109,6 +111,8 @@ p {
 
 /* Hover to float fully up */
 #panda:hover {
+  filter: none;
+  opacity: 1;
   bottom: -12px;
 }
 
@@ -142,10 +146,18 @@ p {
   transition-delay: 2s;
 }
 
+/* #welcome {
+    top: 0px;
+}
+
+#wordsSeen {
+  bottom: 0px;
+} */
+
 #wordsSeenNumber,
 #welcome {
   vertical-align: middle;
-  font-size: 4em !important;
+  /* font-size: 4em !important; */
 }
 
 #easter {
@@ -170,7 +182,7 @@ p {
 .char {
   margin: 0 0.1em;
   /* font-size: 20rem; */
-  font-size: clamp(2rem, 23vw, 20rem);
+  font-size: clamp(3rem, 23vw, 20rem);
   /* white-space: nowrap; */
   /* overflow: hidden; */
 }
@@ -446,12 +458,13 @@ background-color: #374964;
     /* align-self: flex-start; */
     /* align-self: baseline; */
     /* margin: 0em; */
-    /* position: absolute;
+    position: absolute;
+    /* top: 2rem; */
     bottom: 0px;
-    padding-bottom: 1em; */
+    /* padding-bottom: 1em; */
     margin-top: 1em;
-    margin-bottom: 0;
-    opacity: 0.8;
+    margin-bottom: 4em;
+    /* opacity: 0.8;
     /* user-select: text;
     -webkit-user-select: text; */
   }
@@ -467,15 +480,17 @@ background-color: #374964;
     opacity: 1;
     /* padding-top: 1em; */
     white-space: pre-wrap;
-    user-select: all;
-    -webkit-user-select: all;
-    -moz-user-select: all;
-    transition: opacity .2s ease-in-out;
+    /* user-select: all; */
+    user-select: text;
+    /* -webkit-user-select: all; */
+    /* -moz-user-select: all; */
+    transition: opacity .1s ease-in-out;
     text-align: center;
     /* to prevent content from moving */
     /* min-height: 2em;  */
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 0.1em; 
+    /* margin: 0 4rem 22rem 4rem; */
 }
 
 #ai pre:first-of-type {

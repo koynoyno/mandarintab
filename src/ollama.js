@@ -5,7 +5,7 @@ export let ollamaPrompt = async (items) => {
     if (items.keepInRAM) {
         duration = -1;
     } else {
-        duration = 300;
+        duration = 600; // 10 minutes
     }
 
     if (!items.customPrompt) {
@@ -26,7 +26,10 @@ export let ollamaPrompt = async (items) => {
     if (items.pinyin) { prompt += " Provide pinyin for the generated sentence example on a separate line." } else { prompt += " Don't provide pinyin for the generated sentence example." }
     // 2025 May: I'm yet to find a local model which can produce Zhuyin
     // if (items.zhuyin) { prompt += " Provide zhuyin for the generated sentence example on a separate line."} else {prompt += " Don't provide zhuyin for the generated sentence example."}
-    if (items.translation) { prompt += ` Provide ${chrome.i18n.getMessage('translationLanguage')} translation for the generated sentence example on a separate line.` } else { prompt += " Don't provide translation for the generated sentence example." }
+    
+    // console.log(`items.translation: ${items.translation}`)
+    if (items.translation) { prompt += ` Provide ${chrome.i18n.getMessage('translationLanguage')} translation for the generated sentence example on a separate line.` } 
+        else { prompt += " Don't provide translation for the generated sentence example." }
     prompt += " Don't output anything else. Reply in plain text. Don't add periods."
     console.log(prompt)
     } else {
@@ -139,7 +142,8 @@ export let ollama = async (model, prompt, fontType, duration) => {
                     const html = result
                         .split('\n')
                         .map((line, idx) => 
-                            `<pre class="${idx === 0 ? `${fontType}-font output` : 'output'}">${line}</pre>`
+                            // `<pre class="${idx === 0 ? `${fontType}-font output` : 'output'}">${line}</pre>`
+                            `<pre class="${fontType}-font output">${line}</pre>`
                         )
                         .join('');
                     output.innerHTML = html;

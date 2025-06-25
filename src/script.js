@@ -3,7 +3,10 @@ import { cacheUpdate } from "./cacheUpdate.js";
 
 chrome.storage.local.get(null, async (items) => {
 
-  const luck = 88;
+  // const luck = 88;
+  // BETA DEBUG always show when ai is active
+  let luck;
+  if (items.ai) { luck = 1 } else { luck = 88 }
 
   // if extension is updated
   // TODO verify chrome.storage integrity on update

@@ -69,7 +69,7 @@
         "message": "B1（1500 字）"
     },
     "levelTOCFL4": {
-        "message": "B2（2500 字）"
+        "message": "高級（2500 字）"
     },
     "levelTOCFL5": {
         "message": "C1+（3000 字）"
@@ -114,7 +114,7 @@
         "message": "聲調顏色"
     },
     "aiLabel": {
-        "message": "範例句（AI）"
+        "message": "人工智慧"
     },
     "customModel": {
         "message": "模型名稱（Ollama）"
@@ -129,7 +129,7 @@
         "message": "{word}、{translation}、{pinyin}、{zhuyin} 可用於替換。目前 TOCFL 測驗尚未提供 {translation}。留空將使用預設值。"
     },
     "customPromptPlaceholder": {
-        "message": "空白代表預設"
+        "message": "空白代表預設：範例句"
     },
     "keepInRAM": {
         "message": "將模型保留於 RAM "

@@ -76,24 +76,24 @@
   <label for="testType" data-locale="testType">Test</label>
   <select name="testType" id="testType">
     <option value="hsk3">HSK</option>
-    <option data-locale="China" disabled>🇨🇳 China</option>
-    <option data-locale="HongKong" disabled>🇭🇰 Hong Kong</option>
-    <option data-locale="Macau" disabled>🇲🇴 Macau</option>
+    <option disabled data-locale="China">🇨🇳</option>
+    <option disabled data-locale="HongKong">🇭🇰</option>
+    <option disabled data-locale="Macau">🇲🇴</option>
     <option disabled></option>
     <option value="tocfl">TOCFL</option>
-    <option data-locale="Taiwan" disabled>🇹🇼 Taiwan</option>
+    <option disabled data-locale="Taiwan">🇹🇼</option>
   </select>
 
   <div id="charOptions" hidden><label for="char" id="charLabel" data-locale="char">Characters</label><sup style="font-size: 8px;" data-locale="HSKOnly"> (HSK only)</sup></div>
   <select name="char" id="char" hidden>
     <option value="simplified" data-locale="charSimplified">Simplified</option>
-    <option data-locale="China" disabled>🇨🇳 China</option>
+    <option disabled data-locale="China">🇨🇳</option>
     <!-- <option disabled>🇸🇬 Singapore</option> -->
     <option disabled></option>
     <option value="traditional" data-locale="charTraditional">Traditional</option>
-    <option data-locale="HongKong" disabled>🇭🇰 Hong Kong</option>
-    <option data-locale="Macau" disabled>🇲🇴 Macau</option>
-    <option data-locale="Taiwan" disabled>🇹🇼 Taiwan</option>
+    <option disabled data-locale="HongKong" >🇭🇰</option>
+    <option disabled data-locale="Macau">🇲🇴</option>
+    <option disabled data-locale="Taiwan">🇹🇼</option>
   </select>
 
   <!-- <br /> -->
@@ -115,8 +115,7 @@
   <div id="colorLabel" ><div><input type="checkbox" id="color" name="color" /><label class="cb" for="color" data-locale="color"> Tone colors</label><sup style="font-size: 8px;" data-locale="HSKOnly"> (HSK only)</sup></div></div>
   <!-- <hr align="center" width="100%"> -->
 
-  <div><input type="checkbox" id="ai" name="ai" hidden /><label class="cb" for="ai" id="aiLabel" data-locale="aiLabel" hidden>Sentence example
-    (AI)</label></div>
+  <div><input type="checkbox" id="ai" name="ai" hidden /><label class="cb" for="ai" id="aiLabel" data-locale="aiLabel" hidden>AI (Sentence example)</label></div>
   <!-- </div> -->
 
   <div id="aiSettings" hidden>
@@ -131,14 +130,14 @@
 
     <div><input type="checkbox" id="keepInRAM" name="keepInRAM" /><label class="cb" for="keepInRAM" data-locale="keepInRAM"> Keep model in RAM </label><span
       id="info" data-locale="keepInRAMInfo"
-      title="By default models are kept in memory for 5 minutes before being unloaded. This allows for quicker response times if you are making numerous requests to the LLM. Turn on during study sessions or if you have a lot of RAM.">⚠️</span></div>
+      title="By default model is kept in memory for 10 minutes before being unloaded. This allows for quicker response times if you are opening numerous new tabs. Turn on during study sessions or if you have a lot of RAM.">⚠️</span></div>
   </div>
 
-  <button id="support">
+  <!-- <button id="support">
     <div id="supportText" data-locale="supportText">ɴᴇxᴛ ʟᴇᴠᴇʟ ᴛɪᴘs ʏᴏᴜ ɴᴇᴇᴅ ᴏɴ</div>
     <div id="supportTextAI" hidden data-locale="supportTextAI">ɢᴜɪᴅᴇ ꜰᴏʀ ᴜꜱɪɴɢ ᴀɪ ᴏɴ</div>
     <strong><span id="supportLink" data-locale="supportLink">ᴄʜɪɴᴇsᴇᴛᴀʙ.ᴄᴏᴍ</span></strong>
-  </button>
+  </button> -->
 
   <!-- <input type="button" id="feedback" value="Share feedback" /> -->
 

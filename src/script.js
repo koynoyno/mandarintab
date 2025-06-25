@@ -135,6 +135,19 @@ chrome.storage.local.get(null, async (items) => {
     return false;
   })
 
+  // BETA select ai output on :hover
+   ai.addEventListener("mouseenter", function () {
+    const firstPre = this.querySelector("pre.output");
+    if (firstPre) {
+      const range = document.createRange();
+      range.selectNodeContents(firstPre);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+  });
+
+
   if (items.ai) {
     const { ollamaPrompt } = await import("./ollama.js");
     await ollamaPrompt(items)

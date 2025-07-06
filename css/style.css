@@ -157,7 +157,7 @@ p {
 #wordsSeenNumber,
 #welcome {
   vertical-align: middle;
-  /* font-size: 4em !important; */
+  font-size: 4em !important;
 }
 
 #easter {
